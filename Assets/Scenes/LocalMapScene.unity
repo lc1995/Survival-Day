@@ -1474,6 +1474,10 @@ Prefab:
       propertyPath: m_Name
       value: Clickable Joystick
       objectReference: {fileID: 0}
+    - target: {fileID: 1058966431294526, guid: ce5089f3caa5bb042a4d4c23a427bc82, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114859346367353968, guid: ce5089f3caa5bb042a4d4c23a427bc82, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: ce5089f3caa5bb042a4d4c23a427bc82, type: 2}

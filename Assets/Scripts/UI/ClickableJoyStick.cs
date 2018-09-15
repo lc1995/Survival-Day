@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class ClickableJoyStick : Joystick {
 
-	public Text text;
 
 	Vector2 joystickPosition = Vector2.zero;
     private Camera cam = new Camera();
@@ -37,7 +36,7 @@ public class ClickableJoyStick : Joystick {
     {
 		// Check if hold time is enough small
 		if(Time.time - holdTime < 0.2f)
-			text.text = Time.time.ToString() + " : Click!\n";
+            TextManager.instance.UpdateTextField(Time.time.ToString() + " : Click!\n");
 
 		// Reset
         inputVector = Vector2.zero;
