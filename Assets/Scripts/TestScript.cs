@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestScript : MonoBehaviour {
 
-	private const string testStr = "$1 攻击了 $2";
+	public Button[] buttons;
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(YYY());
+		for(int i=0; i < 3; i++){
+			int index = new int();
+			index = i;
+			buttons[i].onClick.AddListener(delegate { OnSelect(index); });
+		}
 	}
 	
 	// Update is called once per frame
@@ -16,18 +21,7 @@ public class TestScript : MonoBehaviour {
 		
 	}
 
-	private IEnumerator FFF(){
-		Debug.Log("1");
-		yield return new WaitForSeconds(2);
-		
-		Debug.Log("2");
-	}
-
-	private IEnumerator YYY(){
-
-		yield return StartCoroutine(FFF());
-
-		Debug.Log("3");
-
+	private void OnSelect(int index=0){
+		Debug.Log(index);
 	}
 }

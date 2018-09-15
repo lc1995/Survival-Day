@@ -17,4 +17,5 @@ public static class ExtensionMethods{
 		sr.verticalNormalizedPosition = 0f;
 		Canvas.ForceUpdateCanvases();
 	}
+
 }
