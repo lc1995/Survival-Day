@@ -8,6 +8,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void PBJob();
+
 public class PBFSM{
     
     // Current state
@@ -22,13 +24,24 @@ public class PBFSM{
     }
 
     public void SelectAction(int actionIndex){
+        current.Exit();
         current = current.actions[actionIndex].NextState();
+        current.Enter();
+    }
+
+    public void SelectAction(PBEventAction action){
+        current.Exit();
+        current = action.NextState();
+        current.Enter();
     }
 }
 
 public class PBState{
 
     public List<PBAction> actions;
+
+    public PBJob[] enterJobs = new PBJob[0];
+    public PBJob[] exitJobs = new PBJob[0];
 
     public PBState(){
         actions = new List<PBAction>();
@@ -37,6 +50,18 @@ public class PBState{
     public void AddAction(params PBAction[] list){
         foreach(PBAction a in list){
             actions.Add(a);
+        }
+    }
+
+    public void Enter(){
+        foreach(PBJob j in enterJobs){
+            j();
+        }
+    }
+
+    public void Exit(){
+        foreach(PBJob j in exitJobs){
+            j();
         }
     }
 }

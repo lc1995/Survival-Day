@@ -9,7 +9,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameEvent : MonoBehaviour{
+public class GameEventManager : MonoBehaviour{
+
+    public static GameEventManager instance = null;
 
     // ------ Public Variables ------
     public Text text;
@@ -25,13 +27,36 @@ public class GameEvent : MonoBehaviour{
     // ------ Required Components ------
 
     // ------ Event Functions ------
+    void Awake(){
+		if (instance == null)
+			instance = this;
+		else if (instance != this)
+			Destroy(gameObject);    
+	}
+
     void Start(){
-        TestCase();
-
-
+        TestCase2();
     }
 
     // ------ Public Functions ------
+    public void EndBattle(){
+        PBBattleState state = currentEvent.current as PBBattleState;
+        switch(BattleManager.instance.ending){
+            case BattleEnding.Character1Win:
+                currentEvent.SelectAction(state.successAction);
+                UpdateUI();
+                break;
+            case BattleEnding.Character2Win:
+                currentEvent.SelectAction(state.failAction);
+                UpdateUI();
+                break;
+        }
+    }
+
+    public void ResetEvent(){
+        BattleManager.instance.StopAllCoroutines();
+        TestCase2();
+    }
 
     // ------ Private Functions ------
     private void TestCase(){
@@ -75,9 +100,62 @@ public class GameEvent : MonoBehaviour{
         UpdateUI();
     }
 
+    private void TestCase2(){
+        PBEventState s1 = new PBEventState("遇到一个赌博机。");
+        PBEventState s2 = new PBEventState("看起来这台老虎机还能用。");
+        PBEventState s3 = new PBEventState("你离开了。");
+        PBEventState s4 = new PBEventState("获得资源。");
+        PBEventState s5 = new PBEventState("颗粒无收。");
+        PBEventState s6 = new PBEventState("获得大笔金钱。");
+        PBEventState s7 = new PBEventState("中了超级大乐透。");
+        PBBattleState s8 = new PBBattleState("赌博机活了，并向你冲了过来");
+        s8.enterJobs = new PBJob[] { BattleEnter };
+        PBEventState s9 = new PBEventState("你摧毁了赌博机，获得了里面所有奖品");
+        PBEventState s10 = new PBEventState("你被赌博机吃了");
+
+        PBEventAction a1 = new PBEventAction("检查一下");
+        a1.AddTransition(s2, 1);
+        PBEventAction a2 = new PBEventAction("远离黄赌毒");
+        a2.AddTransition(s3, 1);
+        PBEventAction a3 = new PBEventAction("溜了溜了");
+        a3.AddTransition(s3, 1);
+        PBEventAction a4 = new PBEventAction("感觉手气爆表，有点膨胀");
+        a4.AddTransition(s4, 0.3f);
+        a4.AddTransition(s5, 0.3f);
+        a4.AddTransition(s6, 0.3f);
+        a4.AddTransition(s7, 0.1f);
+        PBEventAction a5 = new PBEventAction("...");
+        a5.AddTransition(s2, 1);
+        PBEventAction a6 = new PBEventAction("踹一脚");
+        a6.AddTransition(s8, 1);
+        PBEventAction a7 = new PBEventAction("...");
+        PBEventAction a8 = new PBEventAction("...");
+        a7.AddTransition(s9, 0);
+        a8.AddTransition(s10, 0);
+
+        s1.AddAction(a1, a2);
+        s2.AddAction(a3, a4, a6);
+        s4.AddAction(a5);
+        s5.AddAction(a5);
+        s6.AddAction(a5);
+        s7.AddAction(a5);
+        s8.AddAction(a7, a8);
+
+        currentEvent = new PBEvent(s1, "赌博机事件");
+
+        UpdateUI();
+    }
+
+    private void BattleEnter(){
+        BattleManager.instance.TestCase();
+    }
+
+    private void BattleExit(){
+
+    }
+
     private void OnSelect(int index=0){
         selectIndex = index;
-        Debug.Log(index);
 
         currentEvent.SelectAction(selectIndex);
 

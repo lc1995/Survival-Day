@@ -3,7 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BattleSystem : MonoBehaviour {
+public enum BattleEnding{
+		Character1Win,
+		Character2Win,
+		Character1Escape,
+		Character2Escape
+}
+
+public class BattleManager : MonoBehaviour {
+
+	public static BattleManager instance = null;
 
 	enum BattleState{
 		Idle,
@@ -20,7 +29,8 @@ public class BattleSystem : MonoBehaviour {
 
 	public Character player;
 	public Character enemy;
-	
+	public BattleEnding ending;
+
 	// ------ Shared Variables ------
 	
 	
@@ -34,21 +44,30 @@ public class BattleSystem : MonoBehaviour {
 	// ------ Required Components ------
 
 	// ------ Event Functions ------
+	void Awake(){
+		if (instance == null)
+			instance = this;
+		else if (instance != this)
+			Destroy(gameObject);    
+	}
+
 	void Start(){
-		TestCase();
+		// TestCase();
 	}
 	
 	// ------ Public Functions ------
-	
-	// ------ Private Functions ------
-	private void TestCase(){
+	public void TestCase(){
 		player = new Character("你", true);
-		enemy = new Character("僵尸");
+		enemy = new Character("赌博机");
 
-		StartCoroutine(StartBattle());
+		StartCoroutine(StartBattle(player, enemy));
 	}
 
-	private IEnumerator StartBattle(){
+	// ------ Private Functions ------
+	private IEnumerator StartBattle(Character c1, Character c2){
+		// Wait 0.1 seconds
+		yield return new WaitForSeconds(1f);
+
 		// Initialization
 		turns = 0;
 		btn1.onClick.AddListener(delegate { OnSelect(0); });
@@ -60,21 +79,29 @@ public class BattleSystem : MonoBehaviour {
 			turns += 1;
 
 			/// Player turn
-			yield return StartCoroutine(Turn(player, enemy));
+			yield return StartCoroutine(Turn(c1, c2));
 			// Check whether the battle is over
-			CheckBattleIsOver(player, enemy);
+			CheckBattleIsOver(c1, c2);
 			if(state == BattleState.GameOver)
 				break;
 
 			/// Enemy turn
-			yield return StartCoroutine(Turn(enemy, player));
+			yield return StartCoroutine(Turn(c2, c1));
 			// Check whether the battle is over
-			CheckBattleIsOver(player, enemy);
+			CheckBattleIsOver(c1, c2);
 			if(state == BattleState.GameOver)
 				break;
 		}
 
+		if(winner == c1)
+			ending = BattleEnding.Character1Win;
+		else if(winner == c2)
+			ending = BattleEnding.Character2Win;
 		text.AddText("获胜者 : " + winner.name, sr);
+
+		yield return new WaitForSeconds(1);
+
+		GameEventManager.instance.EndBattle();
 	}
 
 	private IEnumerator Turn(Character attacker, Character defender){

@@ -24,7 +24,21 @@ public class PBEventState : PBState{
     public PBEventState(string d) : base(){
         description = d;
     }
+}
 
+public class PBBattleState : PBEventState{
+
+    public PBEventAction successAction;
+    public PBEventAction failAction;
+
+    public PBBattleState(string d) : base(d){
+
+    }
+
+    public void AddAction(PBEventAction success, PBEventAction fail){
+        successAction = success;
+        failAction = fail;
+    }
 }
 
 public class PBEventAction : PBAction{
