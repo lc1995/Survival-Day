@@ -9,7 +9,6 @@ public class ButtonToptext : MonoBehaviour {
 	public GameObject currentCanvas;
 
 	public Text txtFull;
-	public TextManager textManager;
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +22,7 @@ public class ButtonToptext : MonoBehaviour {
 	}
 
 	void btClick(){
-		txtFull.text=textManager.ReturnText();
+		txtFull.text=TextManager.instance.ReturnText();
 		sceneText.SetActive(true);
 		currentCanvas.SetActive(false);
 		Time.timeScale=0;

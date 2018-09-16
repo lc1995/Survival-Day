@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Data{
 
+	public static Character player;
+
 	public static List<AttackAction> AllAttacks = new List<AttackAction>();
 	public static List<DefendAction> AllDefends = new List<DefendAction>();
 	public static Dictionary<ActionType, List<DefendAction>> AllDefendsByType = new Dictionary<ActionType, List<DefendAction>>();
+
 }

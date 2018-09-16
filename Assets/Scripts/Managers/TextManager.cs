@@ -16,6 +16,10 @@ public class TextManager : MonoBehaviour {
 			Destroy(gameObject);
 
 		// DontDestroyOnLoad(gameObject);
+		
+	}
+
+	void Start(){
 		InitTextfield();
 	}
 

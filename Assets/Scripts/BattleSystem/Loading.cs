@@ -21,6 +21,12 @@ public class Loading : MonoBehaviour {
 	// ------ Required Components ------
 	
 	void Awake(){
+		InitGameData();
+	}
+
+	private void InitGameData(){
+		Data.player = new Character("Player", true);
+
 		LoadDefendData();
 	}
 

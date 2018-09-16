@@ -9,14 +9,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum EventState{
+    Idle,
+    Start,
+    Stay,
+    End
+}
+
 public class GameEventManager : MonoBehaviour{
 
     public static GameEventManager instance = null;
 
     // ------ Public Variables ------
+    public Canvas eventCanvas;
     public Text text;
 	public ScrollRect sr;
 	public Button[] buttons;
+    public Text infoText;
     public PBEvent currentEvent;
 
     // ------ Shared Variables ------
@@ -35,10 +44,15 @@ public class GameEventManager : MonoBehaviour{
 	}
 
     void Start(){
-        TestCase2();
+        // TestCase2();
     }
 
     // ------ Public Functions ------
+    public void StartEvent(Character enemy, PBEvent pbe){
+        currentEvent = pbe;
+        StartCoroutine(IEStartEvent(enemy, pbe));
+    }
+
     public void EndBattle(){
         PBBattleState state = currentEvent.current as PBBattleState;
         switch(BattleManager.instance.ending){
@@ -55,10 +69,32 @@ public class GameEventManager : MonoBehaviour{
 
     public void ResetEvent(){
         BattleManager.instance.StopAllCoroutines();
-        TestCase2();
+        // TestCase2();
     }
 
     // ------ Private Functions ------
+    private IEnumerator IEStartEvent(Character enemy, PBEvent pbe){
+        infoText.gameObject.SetActive(true);
+        infoText.text = pbe.name;
+        yield return new WaitForSeconds(1f);
+        infoText.gameObject.SetActive(false);
+
+        eventCanvas.gameObject.SetActive(true);
+        UpdateUI();
+
+        yield return new WaitUntil(() => CheckFinalState());
+
+        yield return new WaitForSeconds(1f);
+        eventCanvas.gameObject.SetActive(false);
+    }
+
+    private bool CheckFinalState(){
+        if(currentEvent.current.actions.Count == 0)
+            return true;
+        else
+            return false;
+    }
+
     private void TestCase(){
         PBEventState s1 = new PBEventState("你在路上看到了一个造型奇特的灯。");
         PBEventState s2 = new PBEventState("一个身材高大的巨人从灯里跑了出来");

@@ -38,6 +38,8 @@ public class PBBattleState : PBEventState{
     public void AddAction(PBEventAction success, PBEventAction fail){
         successAction = success;
         failAction = fail;
+        actions.Add(success);
+        actions.Add(fail);
     }
 }
 

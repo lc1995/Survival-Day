@@ -60,16 +60,23 @@ public class BattleManager : MonoBehaviour {
 		player = new Character("你", true);
 		enemy = new Character("赌博机");
 
-		StartCoroutine(StartBattle(player, enemy));
+		StartCoroutine(Battle(player, enemy));
+	}
+
+	public void StartBattle(Character c1, Character c2){
+		StartCoroutine(Battle(c1, c2));
 	}
 
 	// ------ Private Functions ------
-	private IEnumerator StartBattle(Character c1, Character c2){
+	private IEnumerator Battle(Character c1, Character c2){
 		// Wait 0.1 seconds
 		yield return new WaitForSeconds(1f);
 
 		// Initialization
 		turns = 0;
+		btn1.onClick.RemoveAllListeners();
+		btn2.onClick.RemoveAllListeners();
+		btn3.onClick.RemoveAllListeners();
 		btn1.onClick.AddListener(delegate { OnSelect(0); });
 		btn2.onClick.AddListener(delegate { OnSelect(1); });
 		btn3.onClick.AddListener(delegate { OnSelect(2); });
