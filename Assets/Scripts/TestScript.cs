@@ -7,11 +7,12 @@ public class TestScript : MonoBehaviour {
 
 	public Button[] buttons;
 
+	private delegate void del(int i);
+
 	// Use this for initialization
 	void Start () {
 		for(int i=0; i < 3; i++){
-			int index = new int();
-			index = i;
+			int index = i;
 			buttons[i].onClick.AddListener(delegate { OnSelect(index); });
 		}
 	}
@@ -23,5 +24,9 @@ public class TestScript : MonoBehaviour {
 
 	private void OnSelect(int index=0){
 		Debug.Log(index);
+	}
+
+	public void TTT(){
+		Debug.Log("It works.");
 	}
 }
