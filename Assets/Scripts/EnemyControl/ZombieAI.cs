@@ -62,10 +62,6 @@ public class ZombieAI : MonoBehaviour {
         zombieEvent = new PBEvent(s1, "僵尸事件", zombie);
     }
 
-    private void BattleEnter(){
-        BattleManager.instance.StartBattle(Data.player, zombie);
-    }
-
     private void BattleWin(){
         UIManager.instance.AddInfoInBoard("你把" + zombie.name + "砍死了");
         Destroy(gameObject, 1f);
