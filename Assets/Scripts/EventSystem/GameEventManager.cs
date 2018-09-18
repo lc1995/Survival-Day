@@ -1,7 +1,8 @@
 ﻿/*******************************************
 * Description
-*
-*
+* GameEventManger will manage all game events in the scene
+* Battle can be also considered as a special event (it's encapsulated in event)
+* GameEvent Manager is a singleton which provides a global accessor
 *******************************************/
 
 using System.Collections;
@@ -9,29 +10,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum EventState{
-    Idle,
-    Start,
-    Stay,
-    End
-}
-
 public class GameEventManager : MonoBehaviour{
 
     public static GameEventManager instance = null;
 
     // ------ Public Variables ------
-    public Canvas eventCanvas;
-    public Text text;
-	public ScrollRect sr;
-	public Button[] buttons;
-    public Text infoText;
-    public PBEvent currentEvent;
+    
 
     // ------ Shared Variables ------
 
     // ------ Private Variables ------
-    private int selectIndex = 0;
+    private PBEvent currentEvent;
+    private UIManager uim;
 
     // ------ Required Components ------
 
@@ -44,15 +34,26 @@ public class GameEventManager : MonoBehaviour{
 	}
 
     void Start(){
-        // TestCase2();
+        uim = UIManager.instance;
+        
     }
 
     // ------ Public Functions ------
-    public void StartEvent(Character enemy, PBEvent pbe){
+    /// <summary>
+    /// Start an event
+    /// </summary>
+    /// <param name="ch">Owner of the event</param>
+    /// <param name="pbe">PBEvent</param>
+    public void StartEvent(Character ch, PBEvent pbe){
         currentEvent = pbe;
-        StartCoroutine(IEStartEvent(enemy, pbe));
+        uim.ShowEventBoard();
+        UpdateUI();
     }
 
+    /// <summary>
+    /// End the battle
+    /// This function can be only called by BattleManager
+    /// </summary>
     public void EndBattle(){
         PBBattleState state = currentEvent.current as PBBattleState;
         switch(BattleManager.instance.ending){
@@ -67,34 +68,10 @@ public class GameEventManager : MonoBehaviour{
         }
     }
 
-    public void ResetEvent(){
-        BattleManager.instance.StopAllCoroutines();
-        // TestCase2();
-    }
-
     // ------ Private Functions ------
-    private IEnumerator IEStartEvent(Character enemy, PBEvent pbe){
-        infoText.gameObject.SetActive(true);
-        infoText.text = pbe.name;
-        yield return new WaitForSeconds(1f);
-        infoText.gameObject.SetActive(false);
 
-        eventCanvas.gameObject.SetActive(true);
-        UpdateUI();
-
-        yield return new WaitUntil(() => CheckFinalState());
-
-        yield return new WaitForSeconds(1f);
-        eventCanvas.gameObject.SetActive(false);
-    }
-
-    private bool CheckFinalState(){
-        if(currentEvent.current.actions.Count == 0)
-            return true;
-        else
-            return false;
-    }
-
+    // Test cases before
+    /* 
     private void TestCase(){
         PBEventState s1 = new PBEventState("你在路上看到了一个造型奇特的灯。");
         PBEventState s2 = new PBEventState("一个身材高大的巨人从灯里跑了出来");
@@ -144,10 +121,10 @@ public class GameEventManager : MonoBehaviour{
         PBEventState s5 = new PBEventState("颗粒无收。");
         PBEventState s6 = new PBEventState("获得大笔金钱。");
         PBEventState s7 = new PBEventState("中了超级大乐透。");
-        PBBattleState s8 = new PBBattleState("赌博机活了，并向你冲了过来");
-        s8.enterJobs = new PBJob[] { BattleEnter };
+        PBEventState s8 = new PBEventState("赌博机活了，并向你冲了过来");
         PBEventState s9 = new PBEventState("你摧毁了赌博机，获得了里面所有奖品");
         PBEventState s10 = new PBEventState("你被赌博机吃了");
+        PBBattleState s11 = new PBBattleState();
 
         PBEventAction a1 = new PBEventAction("检查一下");
         a1.AddTransition(s2, 1);
@@ -181,39 +158,75 @@ public class GameEventManager : MonoBehaviour{
 
         UpdateUI();
     }
-
-    private void BattleEnter(){
-        BattleManager.instance.TestCase();
-    }
-
-    private void BattleExit(){
-
-    }
+    */
 
     private void OnSelect(int index=0){
-        selectIndex = index;
+        StartCoroutine(MoveNextState((PBEventAction)currentEvent.current.actions[index]));
+    }
 
-        currentEvent.SelectAction(selectIndex);
+    private void OnExit(){
+        currentEvent.current.Exit();
 
-        UpdateUI();
+        uim.ShowEventBoard(false);     
+    }
+
+    private IEnumerator MoveNextState(PBEventAction action){
+        // Select action
+        currentEvent.SelectAction(action);
+
+        // Here only normal state will update ui
+        // Battle state has its own ui behaviors
+        if(currentEvent.current.GetType() != typeof(PBBattleState))
+            UpdateUI();
+
+        // Check battle state
+        // If it's a battle state, start a coroutine for battle
+        // Then if will wait unitl battle end and check the result
+        while(currentEvent.current.GetType() == typeof(PBBattleState)){
+            yield return StartCoroutine(BattleManager.instance.Battle(Data.player, currentEvent.owner));
+
+            PBBattleState state = currentEvent.current as PBBattleState;
+            switch(BattleManager.instance.ending){
+                case BattleEnding.Character1Win:
+                    StartCoroutine(MoveNextState(state.successAction));
+                    UpdateUI();
+                    break;
+                case BattleEnding.Character2Win:
+                    StartCoroutine(MoveNextState(state.failAction));
+                    UpdateUI();
+                    break;
+            }
+        }
+
+        // Check final state
+        // If it's a final state, there will be only one button which allows player to exit the event
+        // The PBFSM will run into 
+        if(currentEvent.current.actions.Count == 0){
+            uim.SetEventBtnText(0, "离开");
+            uim.RemoveEventBtnListeners(0);
+            uim.AddEventBtnListener(0, (delegate{ OnExit(); }));
+            for(int i = 1; i < uim.GetEventBtnsNumber(); i += 1){
+                uim.SetEventBtnText(i, "");
+                uim.RemoveEventBtnListeners(i);
+            }
+        }
     }
 
     private void UpdateUI(){
         PBEventState currentState = (PBEventState)currentEvent.current;
-        text.text = currentState.description;
+        uim.SetEventInfo(currentState.description);
         List<PBAction> actions = currentEvent.current.actions;
         int i = 0;
         for(i = 0; i < currentEvent.current.actions.Count; i += 1){
-            buttons[i].GetComponentInChildren<Text>().text = ((PBEventAction)actions[i]).description;
-            buttons[i].onClick.RemoveAllListeners();
+            uim.SetEventBtnText(i, ((PBEventAction)actions[i]).description);
+            uim.RemoveEventBtnListeners(i);
             
-            int index = new int();
-            index = i;
-            buttons[i].onClick.AddListener(delegate{ OnSelect(index); });
+            int index = i;
+            uim.AddEventBtnListener(i, (delegate{ OnSelect(index); }));
         }
-        for(; i < buttons.Length; i += 1){
-            buttons[i].GetComponentInChildren<Text>().text = "";
-            buttons[i].onClick.RemoveAllListeners();
+        for(; i < uim.GetEventBtnsNumber(); i += 1){
+            uim.SetEventBtnText(i, "");
+            uim.RemoveEventBtnListeners(i);
         }
     }
 }

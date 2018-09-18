@@ -40,6 +40,10 @@ public class Character {
 	public void GetDamage(float damage){
 		currentProperty.hp -= damage;
 	}
+
+	public void Reset(){
+		currentProperty = originalProperty;
+	}
 }
 
 public struct CharProperty{

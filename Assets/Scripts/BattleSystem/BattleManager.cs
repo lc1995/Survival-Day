@@ -4,42 +4,38 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum BattleEnding{
-		Character1Win,
-		Character2Win,
-		Character1Escape,
-		Character2Escape
+	idle,
+	Character1Win,
+	Character2Win,
+	Character1Escape,
+	Character2Escape
+}
+
+public enum BattleState{
+	Idle,
+	InGame,
+	GameOver
 }
 
 public class BattleManager : MonoBehaviour {
 
 	public static BattleManager instance = null;
 
-	enum BattleState{
-		Idle,
-		InGame,
-		GameOver
-	}
-
 	// ------ Public Variables ------
-	public Text text;
-	public ScrollRect sr;
-	public Button btn1;
-	public Button btn2;
-	public Button btn3;
-
 	public Character player;
 	public Character enemy;
+	public BattleState state;
 	public BattleEnding ending;
 
 	// ------ Shared Variables ------
 	
 	
 	// ------ Private Variables ------
-	private BattleState state = BattleState.Idle;
 	private int turns = 0;
 	private int atkIndex = -1;
 	private int defIndex = -1;
 	private Character winner;
+	private UIManager uim;
 	
 	// ------ Required Components ------
 
@@ -52,7 +48,7 @@ public class BattleManager : MonoBehaviour {
 	}
 
 	void Start(){
-		// TestCase();
+		uim = UIManager.instance;
 	}
 	
 	// ------ Public Functions ------
@@ -68,20 +64,21 @@ public class BattleManager : MonoBehaviour {
 	}
 
 	// ------ Private Functions ------
-	private IEnumerator Battle(Character c1, Character c2){
-		// Wait 0.1 seconds
-		yield return new WaitForSeconds(1f);
+	public IEnumerator Battle(Character c1, Character c2){
 
 		// Initialization
 		turns = 0;
-		btn1.onClick.RemoveAllListeners();
-		btn2.onClick.RemoveAllListeners();
-		btn3.onClick.RemoveAllListeners();
-		btn1.onClick.AddListener(delegate { OnSelect(0); });
-		btn2.onClick.AddListener(delegate { OnSelect(1); });
-		btn3.onClick.AddListener(delegate { OnSelect(2); });
-		text.AddText("战斗开始！！！！！\n", sr);
+		state = BattleState.InGame;
+		ending = BattleEnding.idle;
+		for(int i = 0; i < uim.GetEventBtnsNumber(); i += 1){
+			uim.RemoveEventBtnListeners(i);
+			int index = i;
+			uim.AddEventBtnListener(i, delegate { OnSelect(index); });
+		}
+		uim.SetEventInfo("战斗开始\n");
+		uim.AddEventDividingLine();
 
+		// Game main iteration
 		while(true){
 			turns += 1;
 
@@ -100,15 +97,12 @@ public class BattleManager : MonoBehaviour {
 				break;
 		}
 
+		// Game end
 		if(winner == c1)
 			ending = BattleEnding.Character1Win;
 		else if(winner == c2)
 			ending = BattleEnding.Character2Win;
-		text.AddText("获胜者 : " + winner.name, sr);
-
-		yield return new WaitForSeconds(1);
-
-		GameEventManager.instance.EndBattle();
+		uim.SetEventInfo("获胜者 : " + winner.name, true);	
 	}
 
 	private IEnumerator Turn(Character attacker, Character defender){
@@ -129,28 +123,27 @@ public class BattleManager : MonoBehaviour {
 		// - Else
 		// 1. Defender randomly selects one attack
 		if(attacker.isPlayer){
-			btn1.GetComponentInChildren<Text>().text = attackChoices[0].description.ToBattleString(attacker, defender);
-			btn1.interactable = true;
-			btn2.GetComponentInChildren<Text>().text = attackChoices[1].description.ToBattleString(attacker, defender);
-			btn2.interactable = true;
-			btn3.GetComponentInChildren<Text>().text = attackChoices[2].description.ToBattleString(attacker, defender);
-			btn3.interactable = true;
-			text.AddText("你想要如何进攻：\n", sr);
+			int i = 0;
+			for(; i < attackChoices.Count; i += 1){
+				uim.RemoveEventBtnListeners(i);
+				int index = i;	
+				uim.AddEventBtnListener(i, delegate { OnSelect(index); });
+				uim.SetEventBtnText(i, attackChoices[i].description.ToBattleString(attacker, defender));
+			}
+			for(; i < uim.GetEventBtnsNumber(); i += 1){
+				uim.RemoveEventBtnListeners(i);
+			}
+			uim.SetEventInfo("你想要如何进攻：\n", true);
 
 			atkIndex = -1;
 			yield return new WaitWhile(() => atkIndex == -1);
-
-			// Disable attack choices buttons
-			btn1.interactable = false;
-			btn2.interactable = false;
-			btn3.interactable = false;
 		}else{
 			atkIndex = Random.Range(0, attackChoices.Count);
 		}
 
 		// Get attack choice and show text
 		AttackAction atkChoice = attackChoices[atkIndex];
-		text.AddText(attacker.name + atkChoice.description.ToBattleString(attacker, defender) + "\n", sr);
+		uim.SetEventInfo(attacker.name + atkChoice.description.ToBattleString(attacker, defender) + "\n", true);
 
 		// Updata defender's pool and generate defend choices randomly
 		UpdatePool(defender);
@@ -163,28 +156,27 @@ public class BattleManager : MonoBehaviour {
 		// - Else
 		// 1. Defender randomly selects one attack
 		if(defender.isPlayer){
-			btn1.GetComponentInChildren<Text>().text = defendChoices[0].description.ToBattleString(attacker, defender);
-			btn1.interactable = true;
-			btn2.GetComponentInChildren<Text>().text = defendChoices[1].description.ToBattleString(attacker, defender);
-			btn2.interactable = true;
-			btn3.GetComponentInChildren<Text>().text = defendChoices[2].description.ToBattleString(attacker, defender);
-			btn3.interactable = true;
-			text.AddText("你想要如何防御：\n", sr);
+			int i = 0;
+			for(; i < defendChoices.Count; i += 1){
+				uim.RemoveEventBtnListeners(i);	
+				int index = i;		
+				uim.AddEventBtnListener(i, delegate { OnSelect(index); });
+				uim.SetEventBtnText(i, defendChoices[i].description.ToBattleString(attacker, defender));
+			}
+			for(; i < uim.GetEventBtnsNumber(); i += 1){
+				uim.RemoveEventBtnListeners(i);
+			}
+			uim.SetEventInfo("你想要如何防御：\n", true);
 
 			defIndex = -1;
 			yield return new WaitWhile(() => defIndex == -1);
-
-			// Disable attack choices buttons
-			btn1.interactable = false;
-			btn2.interactable = false;
-			btn3.interactable = false;
 		}else{
 			defIndex = Random.Range(0, defendChoices.Count);
 		}
 
 		// Get defend choice and show text
 		DefendAction defChoice = defendChoices[defIndex];
-		text.AddText(defChoice.description.ToBattleString(attacker, defender) + "\n", sr);
+		uim.SetEventInfo(defChoice.description.ToBattleString(attacker, defender) + "\n", true);
 
 		// Calculate result
 		float totalProb = defChoice.GetTotalResultProb();
@@ -199,10 +191,10 @@ public class BattleManager : MonoBehaviour {
 		defender.GetDamage(result.atkFactor * atkChoice.baseDamage);
 
 		// Show result's text
-		text.AddText(result.description.ToBattleString(attacker, defender) + "\n", sr);
+		uim.SetEventInfo(result.description.ToBattleString(attacker, defender) + "\n", true);
 		// Show enemy's hp (only in demo)
 		string hpStr = defender.currentProperty.hp.ToString() + " / " + defender.originalProperty.hp.ToString();
-		text.AddText(defender.name + "的血量 : " + hpStr + "\n", sr);
+		uim.SetEventInfo(defender.name + "的血量 : " + hpStr + "\n", true);
 	}
 
 	private void UpdatePool(Character ch){

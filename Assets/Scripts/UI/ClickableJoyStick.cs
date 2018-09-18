@@ -36,7 +36,7 @@ public class ClickableJoyStick : Joystick {
     {
 		// Check if hold time is enough small
 		if(Time.time - holdTime < 0.2f)
-            TextManager.instance.UpdateTextField(Time.time.ToString() + " : Click!\n");
+            UIManager.instance.AddInfoInBoard(Time.time.ToString() + " : Click!");
 
 		// Reset
         inputVector = Vector2.zero;

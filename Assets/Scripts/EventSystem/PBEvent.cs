@@ -11,18 +11,24 @@ using UnityEngine;
 public class PBEvent : PBFSM {
 
     public string name;
+    public Character owner;
 
-    public PBEvent(PBEventState state, string n) : base(state){
+    public PBEvent(PBEventState state, string n, Character eventOwner) : base(state){
         name = n;
+        owner = eventOwner;
     }
 }
 
 public class PBEventState : PBState{
 
-    public string description;
+    public static PBEventState defaultState = new PBEventState();
 
-    public PBEventState(string d) : base(){
+    public string description;
+    public bool isFinal;
+
+    public PBEventState(string d="", bool final=false) : base(){
         description = d;
+        isFinal = final;
     }
 }
 
@@ -31,7 +37,7 @@ public class PBBattleState : PBEventState{
     public PBEventAction successAction;
     public PBEventAction failAction;
 
-    public PBBattleState(string d) : base(d){
+    public PBBattleState() : base(){
 
     }
 
@@ -46,8 +52,9 @@ public class PBBattleState : PBEventState{
 public class PBEventAction : PBAction{
 
     public string description;
+    public bool isHidden;   // The action is hidden or not
 
-    public PBEventAction(string d) : base(){
+    public PBEventAction(string d="") : base(){
         description = d;
     }
 

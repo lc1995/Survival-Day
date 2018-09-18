@@ -14,9 +14,15 @@ public class PBFSM{
     
     // Current state
     public PBState current;
+    private PBState starting;
 
     public PBFSM(PBState state){
+        starting = state;
         current = state;
+    }
+
+    public void Reset(){
+        current = starting;
     }
 
     public List<PBAction> GetCurrentActions(){
