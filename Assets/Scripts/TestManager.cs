@@ -8,59 +8,74 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GamblingMachine : MonoBehaviour {
+public class TestManager : MonoBehaviour {
 
     // ------ Public Variables ------
-    public Character gm;
-    public InteractionEvent ie;
+    public List<SmallMapObject> zombies;
+    public SmallMapObject gamblingMachine;
 
     // ------ Shared Variables ------
 
     // ------ Private Variables ------
-    public PBEvent gmEvent { get; private set; }
 
     // ------ Required Components ------
 
     // ------ Event Functions ------
     void Start () {
-		gm = new Character("Gambling Machine");
-
-        InitEvent();
-
-        ie = new InteractionEvent("互动", gmEvent, true);
+		foreach(SmallMapObject zombie in zombies){
+            InitZombie(zombie);
+        }
+        InitGamblingMachine(gamblingMachine);
 	}
 
     void Update () {
 		
 	}
 
-    void OnTriggerEnter2D(Collider2D other){
-        if(other.tag == "Player")
-            InteractionManager.instance.AddInteraction(ie);
-    }
-
-    void OnTriggerExit2D(Collider2D other){
-        if(other.tag == "Player")
-            InteractionManager.instance.RemoveInteraction(ie);
-    }
-
     // ------ Public Functions ------
 
     // ------ Private Functions ------
-    private void InitEvent(){
+    private void InitZombie(SmallMapObject zombie){
+        zombie.character = new Character("僵尸");
+
+        PBEventState s1 = new PBEventState("你遭遇了" + zombie.name);
+        PBBattleState s2 = new PBBattleState();
+        PBEventState s3 = new PBEventState("你把" + zombie.name + "砍死了");
+        s3.exitJobs = new PBJob[]{ delegate{ BattleWin(zombie); } };
+        PBEventState s4 = new PBEventState("你被" + zombie.name + "啃死了");
+        s4.exitJobs = new PBJob[]{ delegate{ BattleFail(zombie);} };
+        
+        PBEventAction a1 = new PBEventAction("战斗");
+        a1.AddTransition(s2, 1);
+        PBEventAction a2 = new PBEventAction("");
+        a2.AddTransition(s3, 1);
+        PBEventAction a3 = new PBEventAction("");
+        a3.AddTransition(s4, 1);
+
+        s1.AddAction(a1);
+        s2.AddAction(a2, a3);
+
+        zombie.pBEvent = new PBEvent(s1, "僵尸事件", zombie.character);
+        zombie.interaction = new InteractionEvent("僵尸事件", zombie.pBEvent, false);
+        zombie.ai = new ZombieAI(4f, 1f, 2f, 1f);
+    }
+
+    private void InitGamblingMachine(SmallMapObject gm){
+        gm.character = new Character("赌博机");
+
         PBEventState s1 = new PBEventState("遇到一个赌博机。");
         PBEventState s2 = new PBEventState("看起来这台老虎机还能用。");
         PBEventState s3 = new PBEventState("你离开了。");
-        s3.exitJobs = new PBJob[]{ Leave };
+        s3.exitJobs = new PBJob[]{ delegate{ Leave(gm); } };
         PBEventState s4 = new PBEventState("获得资源。");
         PBEventState s5 = new PBEventState("颗粒无收。");
         PBEventState s6 = new PBEventState("获得大笔金钱。");
         PBEventState s7 = new PBEventState("中了超级大乐透。");
         PBEventState s8 = new PBEventState("赌博机活了，并向你冲了过来");
         PBEventState s9 = new PBEventState("你摧毁了赌博机，获得了里面所有奖品");
-        s9.exitJobs = new PBJob[]{ BattleWin };
+        s9.exitJobs = new PBJob[]{ delegate{ BattleWin(gm); } };
         PBEventState s10 = new PBEventState("你被赌博机吃了");
-        s10.exitJobs = new PBJob[]{ BattleFail };
+        s10.exitJobs = new PBJob[]{ delegate{ BattleFail(gm); } };
         PBBattleState s11 = new PBBattleState();
 
         PBEventAction a1 = new PBEventAction("检查一下");
@@ -94,26 +109,28 @@ public class GamblingMachine : MonoBehaviour {
         s8.AddAction(a9);
         s11.AddAction(a7, a8);
 
-        gmEvent = new PBEvent(s1, "赌博机事件", gm);
+        gm.pBEvent = new PBEvent(s1, "赌博机事件", gm.character);
+        gm.interaction = new InteractionEvent("赌博机事件", gm.pBEvent, true);
+        gm.ai = new StaticAI();
     }
 
-    private void BattleWin(){
-        UIManager.instance.AddInfoInBoard("你把" + gm.name + "砍死了");
-        Destroy(gameObject, 1f);
+    private void BattleWin(SmallMapObject smo){
+        UIManager.instance.AddInfoInBoard("你把" + smo.character.name + "砍死了");
+        Destroy(smo.gameObject, 1f);
     }
 
-    private void BattleFail(){
-        UIManager.instance.AddInfoInBoard("你被" + gm.name + "砍死了");
+    private void BattleFail(SmallMapObject smo){
+        UIManager.instance.AddInfoInBoard("你被" + smo.character.name + "砍死了");
         UIManager.instance.AddInfoInBoard("你被阿畅复活了");
         
         // Reset event
-        gmEvent.Reset();
+        smo.pBEvent.Reset();
         // Reset property       
         Data.player.Reset();
-        gm.Reset();
+        smo.character.Reset();
     }
 
-    private void Leave(){
-        gmEvent.Reset();
+    private void Leave(SmallMapObject smo){
+        smo.pBEvent.Reset();
     }
 }

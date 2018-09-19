@@ -32,6 +32,11 @@ public class UIManager : MonoBehaviour {
     public GameObject eventBoard;
     public Text eventInfoText;
     public List<Button> eventBtns;
+    [Header("Interaction UI")]
+    public GameObject interactionBoard;
+    public GameObject interactionPanel;
+    public SimpleObjectPool buttonsPool;
+    public float interactionBoardMaxHeight = 800f;
 
     // ------ Shared Variables ------
 
@@ -39,6 +44,7 @@ public class UIManager : MonoBehaviour {
     private ScrollRect infoSR;
     private Text infoText;
     private ScrollRect eventSR;
+    private ScrollRect interactionSR;
 
     // ------ Required Components ------
 
@@ -56,6 +62,7 @@ public class UIManager : MonoBehaviour {
         infoSR = infoBoard.GetComponent<ScrollRect>();
         infoText = infoBoard.GetComponentInChildren<Text>();
         eventSR = eventBoard.GetComponentInChildren<ScrollRect>();
+        interactionSR = interactionBoard.GetComponentInChildren<ScrollRect>();
 
 		InitUIElement();
 	}
@@ -165,6 +172,18 @@ public class UIManager : MonoBehaviour {
         go.SetActive(false);
     }
 
+    /// <summary>
+    /// Onclick callback of joystick
+    /// </summary>
+    /// <param name="isExtend">Whether to extend or curtial</param>
+    public void OnJoystickClick(bool isExtend){
+        if(isExtend)
+            StartCoroutine(IEInteractionBoardExtend());
+        else
+            StartCoroutine(IEInteractionBoardCurtail());
+    }
+
+
     // ------ Private Functions ------
     /// <summary>
     /// Extend top InfoBoard
@@ -205,7 +224,7 @@ public class UIManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Inumerator for curtial of top InfoBoard
+    /// IEnumerator for curtial of top InfoBoard
     /// </summary>
     private IEnumerator IEInfoBoardCurtail(){
         infoBoard.onClick.RemoveAllListeners();
@@ -223,4 +242,44 @@ public class UIManager : MonoBehaviour {
 		infoSR.verticalNormalizedPosition = 0f;
 		Canvas.ForceUpdateCanvases();
     }    
+
+    /// <summary>
+    /// IEnumerator for extension of interaction board
+    /// </summary>
+    private IEnumerator IEInteractionBoardExtend(){
+        // Create buttons
+        foreach(Interaction inte in InteractionManager.instance.interactions){
+            GameObject go = buttonsPool.GetObject();
+            go.GetComponentInChildren<Text>().text = inte.description;
+            go.GetComponent<Button>().onClick.AddListener(delegate{ inte.Interact(); });
+            go.transform.SetParent(interactionPanel.transform, false);
+        }
+
+        // Extension
+        interactionBoard.SetActive(true);
+        RectTransform rt = interactionSR.GetComponent<RectTransform>();
+        while(rt.sizeDelta.y < interactionBoardMaxHeight){
+            rt.sizeDelta = new Vector2(rt.sizeDelta.x, rt.sizeDelta.y + infoBoardSpeed);
+            yield return null;
+        }
+    }
+
+    /// <summary>
+    /// IEnumerator for curtial of interaction board
+    /// </summary>
+    private IEnumerator IEInteractionBoardCurtail(){
+        // Curtail
+        RectTransform rt = interactionSR.GetComponent<RectTransform>();
+        while(rt.sizeDelta.y > infoBoardMinHeight){
+            rt.sizeDelta = new Vector2(rt.sizeDelta.x, rt.sizeDelta.y - infoBoardSpeed);
+            yield return null;
+        }
+        interactionBoard.SetActive(false);
+
+        // Remove buttons
+        foreach(Button btn in interactionPanel.GetComponentsInChildren<Button>()){
+            btn.onClick.RemoveAllListeners();
+            buttonsPool.ReturnObject(btn.gameObject);
+        }
+    }
 }

@@ -10,6 +10,8 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour {
 
+    public static PlayerControl instance;
+
     // ------ Public Variables ------
     [Range(0.1f, 5f)]
     public float speed = 2f;
@@ -24,6 +26,13 @@ public class PlayerControl : MonoBehaviour {
     private Rigidbody2D rb2d;
 
     // ------ Event Functions ------
+    void Awake(){
+        if (instance == null)
+			instance = this;
+		else if (instance != this)
+			Destroy(gameObject); 
+    }
+
     void Start () {
 		rb2d = GetComponent<Rigidbody2D>();
 	}

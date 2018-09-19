@@ -10,10 +10,12 @@ public class ClickableJoyStick : Joystick {
 	Vector2 joystickPosition = Vector2.zero;
     private Camera cam = new Camera();
 	private float holdTime;
+    private bool hasClicked = false;
 
     void Start()
     {
         joystickPosition = RectTransformUtility.WorldToScreenPoint(cam, background.position);
+        hasClicked = false;
     }
 
     public override void OnDrag(PointerEventData eventData)
@@ -35,8 +37,13 @@ public class ClickableJoyStick : Joystick {
     public override void OnPointerUp(PointerEventData eventData)
     {
 		// Check if hold time is enough small
-		if(Time.time - holdTime < 0.2f)
-            UIManager.instance.AddInfoInBoard(Time.time.ToString() + " : Click!");
+		if(Time.time - holdTime < 0.2f){
+            if(hasClicked)
+                UIManager.instance.OnJoystickClick(false);
+            else
+                UIManager.instance.OnJoystickClick(true);
+            hasClicked = !hasClicked;
+        }
 
 		// Reset
         inputVector = Vector2.zero;

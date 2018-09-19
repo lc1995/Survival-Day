@@ -42,9 +42,8 @@ public class GameEventManager : MonoBehaviour{
     /// <summary>
     /// Start an event
     /// </summary>
-    /// <param name="ch">Owner of the event</param>
     /// <param name="pbe">PBEvent</param>
-    public void StartEvent(Character ch, PBEvent pbe){
+    public void StartEvent(PBEvent pbe){
         Time.timeScale = 0f;
 
         currentEvent = pbe;
@@ -172,6 +171,7 @@ public class GameEventManager : MonoBehaviour{
     }
 
     private void UpdateUI(){
+        Debug.Log(currentEvent.name);
         PBEventState currentState = (PBEventState)currentEvent.current;
         uim.SetEventInfo(currentState.description);
         List<PBAction> actions = currentEvent.current.actions;
