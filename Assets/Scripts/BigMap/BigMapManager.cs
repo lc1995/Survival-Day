@@ -21,7 +21,7 @@ public class BigMapManager : MonoBehaviour {
 
     // ------ Event Functions ------
     void Start () {
-		
+		Data.inBigMap = true;
 	}
 
     void Update () {
