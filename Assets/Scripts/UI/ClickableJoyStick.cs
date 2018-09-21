@@ -20,6 +20,9 @@ public class ClickableJoyStick : Joystick {
 
     public override void OnDrag(PointerEventData eventData)
     {
+        if(Data.inBigMap)
+            return;
+
         Vector2 direction = eventData.position - joystickPosition;
         inputVector = (direction.magnitude > background.sizeDelta.x / 2f) ? direction.normalized : direction / (background.sizeDelta.x / 2f);
         ClampJoystick();

@@ -9,8 +9,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-public class UIManager : MonoBehaviour {
+public class UIManager : MonoBehaviour{
 
     public static UIManager instance;
 
@@ -37,6 +38,10 @@ public class UIManager : MonoBehaviour {
     public GameObject interactionPanel;
     public SimpleObjectPool buttonsPool;
     public float interactionBoardMaxHeight = 800f;
+    [Header("Big Map")]
+    public float dragSpeed = 0.1f;
+    public float leftBorder = -7.8f;
+    public float rightBorder = 7.8f;
 
     // ------ Shared Variables ------
 
@@ -68,7 +73,8 @@ public class UIManager : MonoBehaviour {
 	}
 
     void Update () {
-		
+		if(Data.inBigMap)
+            CheckMapDrag();
 	}
 
     // ------ Public Functions ------
@@ -182,9 +188,27 @@ public class UIManager : MonoBehaviour {
         else
             StartCoroutine(IEInteractionBoardCurtail());
     }
-
-
+    
     // ------ Private Functions ------
+    private void CheckMapDrag(){
+        #if UNITY_IOS
+        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved){
+            Camera.main.transform.position += new Vector3(-Input.GetTouch(0).deltaPosition.x, 0);
+        }
+        #endif
+
+        #if UNITY_STANDALONE
+        float horizontal = Input.GetAxis("Horizontal");
+        if(Input.GetMouseButton(0)){
+            Camera.main.transform.position += new Vector3(-horizontal * dragSpeed, 0);
+            if(Camera.main.transform.position.x < leftBorder)
+                Camera.main.transform.position = new Vector3(leftBorder, 0, -10f);
+            if(Camera.main.transform.position.x > rightBorder)
+                Camera.main.transform.position = new Vector3(rightBorder, 0, -10f);
+        }
+        #endif
+    }
+    
     /// <summary>
     /// Extend top InfoBoard
     /// </summary>
@@ -206,6 +230,7 @@ public class UIManager : MonoBehaviour {
         // Add a dynamic listener on InfoBoard
         // It can't be permanent(created in editor) since it changes in gameplay
         infoBoard.onClick.AddListener(OnInfoBoardExtend);
+
     }
 
     /// <summary>

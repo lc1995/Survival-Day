@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// This class is responsible for the local map
 /// </summary>
-public class LocalMap : MonoBehaviour {
+public class SmallMapManager : MonoBehaviour {
 
 	// ------ Public Variables ------
 	
@@ -16,6 +16,10 @@ public class LocalMap : MonoBehaviour {
 	// ------ Required Components ------
 	
 	// ------ Event Functions ------
+	void Start(){
+		Data.inBigMap = false;
+	}
+
 	void Update(){
 		SpriteRenderer[] renderers = FindObjectsOfType<SpriteRenderer>();
 

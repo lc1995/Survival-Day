@@ -11,13 +11,7 @@ public class TestScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		A b1 = new B();
-		B b2 = new B();
-		A b3 = b2;
-
-		Debug.Log("b1 : " + b1.GetType().ToString());
-		Debug.Log("b2 : " + b2.GetType().ToString());
-		Debug.Log("b3 : " + b2.GetType().ToString());
+		StartCoroutine(A());
 	}
 	
 	// Update is called once per frame
@@ -32,12 +26,30 @@ public class TestScript : MonoBehaviour {
 	public void TTT(){
 		Debug.Log("It works.");
 	}
+
+	public IEnumerator A(){
+		Debug.Log("1");
+
+		yield return StartCoroutine(B());
+
+		Debug.Log("6");
+	}
+
+	public IEnumerator B(){
+		Debug.Log("2");
+
+		yield return StartCoroutine(C());
+
+		Debug.Log("5");
+
+	}
+
+	public IEnumerator C(){
+		Debug.Log("3");
+
+		yield return null;
+
+		Debug.Log("4");
+	}
 }
 
-public class A{
-	
-}
-
-public class B : A{
-
-}

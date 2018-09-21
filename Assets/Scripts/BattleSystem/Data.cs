@@ -5,6 +5,7 @@ using UnityEngine;
 public class Data{
 
 	public static Character player;
+	public static bool inBigMap;
 
 	public static List<AttackAction> AllAttacks = new List<AttackAction>();
 	public static List<DefendAction> AllDefends = new List<DefendAction>();

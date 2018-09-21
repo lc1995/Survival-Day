@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestManager : MonoBehaviour {
+public class TestInSmallMap : MonoBehaviour {
 
     // ------ Public Variables ------
     public List<SmallMapObject> zombies;
@@ -22,6 +22,8 @@ public class TestManager : MonoBehaviour {
 
     // ------ Event Functions ------
     void Start () {
+        Data.inBigMap = false;
+
 		foreach(SmallMapObject zombie in zombies){
             InitZombie(zombie);
         }
