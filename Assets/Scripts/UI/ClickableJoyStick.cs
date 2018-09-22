@@ -18,6 +18,12 @@ public class ClickableJoyStick : Joystick {
         hasClicked = false;
     }
 
+    void OnEnable(){
+        // Reset
+        inputVector = Vector2.zero;
+        handle.anchoredPosition = Vector2.zero;
+    }
+
     public override void OnDrag(PointerEventData eventData)
     {
         if(Data.inBigMap)

@@ -27,32 +27,38 @@ public class Loading : MonoBehaviour {
 	private void InitGameData(){
 		Data.player = new Character("Player", true);
 
-		LoadDefendData();
+		StartCoroutine(LoadDefendData());
 	}
 
-	private void LoadDefendData(){
+	private IEnumerator LoadDefendData(){
 		string filePath = Path.Combine(Application.streamingAssetsPath, defActionsFileName);
+		string actionsText;
 
-		if(File.Exists(filePath)){
-			string dataAsJson = File.ReadAllText(filePath);
-			ActionsData actionsData = JsonUtility.FromJson<ActionsData>(dataAsJson);
-
-			// Loading actions
-			Data.AllDefends = actionsData.defends;
-			Data.AllAttacks = actionsData.attacks;
-			Debug.Log("Total defends loaded : " + Data.AllDefends.Count);
-			Debug.Log("Total attacks loaded : " + Data.AllAttacks.Count);
-			
-			// Classify defends
-			foreach(ActionType at in System.Enum.GetValues(typeof(ActionType)))
-				Data.AllDefendsByType[at] = new List<DefendAction>();
-			foreach(DefendAction da in Data.AllDefends){
-				Data.AllDefendsByType[da.type].Add(da);
-			}
+		if(filePath.Contains("://") || filePath.Contains(":///")){
+			// On some specific platform, StreamingAssets cannot be directly accessed
+			WWW www = new WWW(filePath);
+			yield return www;
+			actionsText = www.text;
 		}else{
-			Debug.LogError("Cannot load game data : " + defActionsFileName);
+			actionsText = File.ReadAllText(filePath);
+		}
+
+		ActionsData actionsData = JsonUtility.FromJson<ActionsData>(actionsText);
+
+		// Loading actions
+		Data.AllDefends = actionsData.defends;
+		Data.AllAttacks = actionsData.attacks;
+		Debug.Log("Total defends loaded : " + Data.AllDefends.Count);
+		Debug.Log("Total attacks loaded : " + Data.AllAttacks.Count);
+		
+		// Classify defends
+		foreach(ActionType at in System.Enum.GetValues(typeof(ActionType)))
+			Data.AllDefendsByType[at] = new List<DefendAction>();
+		foreach(DefendAction da in Data.AllDefends){
+			Data.AllDefendsByType[da.type].Add(da);
 		}
 	}
+
 }
 
 [System.Serializable]

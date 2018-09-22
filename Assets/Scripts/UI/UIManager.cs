@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour{
     public static UIManager instance;
 
     // ------ Public Variables ------
+    [Header("Map Hub")]
+    public GameObject mapHub;
     public Button stateBtn;
     public Button inventoryBtn;
     public Button buildBtn;
@@ -99,6 +101,7 @@ public class UIManager : MonoBehaviour{
     /// </summary>
     /// <param name="show">Whether to show or hide</param>
     public void ShowEventBoard(bool show=true){
+        mapHub.SetActive(!show);
         eventBoard.SetActive(show);
     }
 
@@ -195,11 +198,18 @@ public class UIManager : MonoBehaviour{
         if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved){
             Camera.main.transform.position += new Vector3(-Input.GetTouch(0).deltaPosition.x, 0);
         }
-        #endif
 
-        #if UNITY_STANDALONE
+        #elif UNITY_STANDALONE
         float horizontal = Input.GetAxis("Horizontal");
         if(Input.GetMouseButton(0)){
+            
+        }
+
+        #elif UNITY_WEBGL
+        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved){
+            Camera.main.transform.position += new Vector3(-Input.GetTouch(0).deltaPosition.x, 0);
+        }else if(Input.GetMouseButton(0)){
+            float horizontal = Input.GetAxis("Horizontal");
             Camera.main.transform.position += new Vector3(-horizontal * dragSpeed, 0);
             if(Camera.main.transform.position.x < leftBorder)
                 Camera.main.transform.position = new Vector3(leftBorder, 0, -10f);

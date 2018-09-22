@@ -34,7 +34,15 @@ public class BigMapManager : MonoBehaviour {
         #elif UNITY_IOS
         if(Input.touchCount == 0 || Input.GetTouch(0).phase != TouchPhase.Began)
             return;
-        touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+
+        #elif UNITY_WEBGL
+        if(Input.GetMouseButtonDown(0))
+            touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        else if(Input.touchCount != 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+        else
+            return;
         #endif
 
         foreach(Collider2D c in Physics2D.OverlapPointAll(touchPos)){
