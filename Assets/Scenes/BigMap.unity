@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objName: Location 2
-  sceneID: 1
+  sceneID: 2
 --- !u!58 &862501206
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -553,7 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objName: Location 1
-  sceneID: 1
+  sceneID: 2
 --- !u!58 &1016409263
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -772,7 +772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objName: Location 3
-  sceneID: 1
+  sceneID: 2
 --- !u!58 &1727041170
 CircleCollider2D:
   m_ObjectHideFlags: 0

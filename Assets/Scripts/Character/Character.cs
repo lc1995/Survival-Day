@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*******************************************
+* Description
+* This class is base class for all characters(including player, enemy, npc and etc) in the scene.
+* There is also a CharProperty struct which describes the property(attribute) of the character.
+*******************************************/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,26 +55,28 @@ public class Character {
 public struct CharProperty{
 
 	public float hp;
+	public float hunger;
 	public float strength;
 	public float speed;
 
-	public CharProperty(float hp, float strength, float speed){
+	public CharProperty(float hp, float strength, float speed, float hunger){
 		this.hp = hp;
 		this.strength = strength;
 		this.speed = speed;
+		this.hunger = hunger;
 	}
 
 	public static CharProperty zero{
 		private set{}
 		get{
-			return new CharProperty(0f, 0f, 0f);
+			return new CharProperty(0f, 0f, 0f, 0f);
 		}
 	}
 
 	public static CharProperty standard{
 		private set{}
 		get{
-			return new CharProperty(200f, 10f, 10f);
+			return new CharProperty(200f, 10f, 10f, 100f);
 		}
 	}
 

@@ -2053,6 +2053,54 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1035245640750914, guid: 1d7c557cdaee5d44da9d18f285c710a6, type: 2}
+      propertyPath: m_Name
+      value: Map Hub
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524009196620318, guid: 1d7c557cdaee5d44da9d18f285c710a6, type: 2}
+      propertyPath: m_Name
+      value: Inventory Board
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493676109957240, guid: 1d7c557cdaee5d44da9d18f285c710a6, type: 2}
+      propertyPath: m_Name
+      value: Build Board
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518368424686032, guid: 1d7c557cdaee5d44da9d18f285c710a6, type: 2}
+      propertyPath: m_Name
+      value: Mission Board
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274828412394266, guid: 1d7c557cdaee5d44da9d18f285c710a6, type: 2}
+      propertyPath: m_Name
+      value: Interaction Board
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410874358584532, guid: 1d7c557cdaee5d44da9d18f285c710a6, type: 2}
+      propertyPath: m_Name
+      value: Exit Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724060989378494, guid: 1d7c557cdaee5d44da9d18f285c710a6, type: 2}
+      propertyPath: m_Name
+      value: Exit Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699720947900262, guid: 1d7c557cdaee5d44da9d18f285c710a6, type: 2}
+      propertyPath: m_Name
+      value: Exit Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403668285321032, guid: 1d7c557cdaee5d44da9d18f285c710a6, type: 2}
+      propertyPath: m_Name
+      value: Exit Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449626190594140, guid: 1d7c557cdaee5d44da9d18f285c710a6, type: 2}
+      propertyPath: m_Name
+      value: Event Info
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068167864169684, guid: 1d7c557cdaee5d44da9d18f285c710a6, type: 2}
+      propertyPath: m_Name
+      value: Event Buttons
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790534720631824, guid: 1d7c557cdaee5d44da9d18f285c710a6, type: 2}
+      propertyPath: m_Name
+      value: Info Board
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d7c557cdaee5d44da9d18f285c710a6, type: 2}
   m_IsPrefabAsset: 0

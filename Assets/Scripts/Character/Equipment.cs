@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmallMapExitPoint : MonoBehaviour {
+public class Equipment : MonoBehaviour {
 
     // ------ Public Variables ------
 
@@ -26,11 +26,6 @@ public class SmallMapExitPoint : MonoBehaviour {
     void Update () {
 		
 	}
-
-    void OnTriggerEnter2D(Collider2D other){
-        if(other.tag == "Player")
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
-    }
 
     // ------ Public Functions ------
 
