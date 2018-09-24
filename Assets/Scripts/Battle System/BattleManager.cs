@@ -184,7 +184,7 @@ public class BattleManager : MonoBehaviour {
 		}
 
 		// Process result
-		defender.GetDamage(result.atkFactor * atkChoice.baseDamage);
+		defender.GetDamage(result.atkFactor * atkChoice.baseDamage, 0f);
 
 		// Show result's text
 		uim.SetEventInfo(result.description.ToBattleString(attacker, defender) + "\n", true);
