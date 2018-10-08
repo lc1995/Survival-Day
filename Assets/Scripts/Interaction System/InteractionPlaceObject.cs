@@ -24,6 +24,8 @@ public class InteractionPlaceObject : Interaction{
     }
 
     public override void Interact(){
+        base.Interact();
+
         PlayerControl.instance.PlaceObject(objectToPlace);
     }
 
