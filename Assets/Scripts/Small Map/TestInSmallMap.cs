@@ -13,6 +13,7 @@ public class TestInSmallMap : MonoBehaviour {
     // ------ Public Variables ------
     public List<SmallMapObject> zombies;
     public SmallMapObject gamblingMachine;
+    public GameObject trapObject;
 
     // ------ Shared Variables ------
 
@@ -28,6 +29,8 @@ public class TestInSmallMap : MonoBehaviour {
             InitZombie(zombie);
         }
         InitGamblingMachine(gamblingMachine);
+
+        InitTrapInteraction();
 	}
 
     void Update () {
@@ -37,6 +40,11 @@ public class TestInSmallMap : MonoBehaviour {
     // ------ Public Functions ------
 
     // ------ Private Functions ------
+    private void InitTrapInteraction(){
+        InteractionPlaceObject trapInteraction = new InteractionPlaceObject("放置陷阱", trapObject);
+        InteractionManager.instance.AddInteraction(trapInteraction);
+    }
+
     private void InitZombie(SmallMapObject zombie){
         zombie.character = new Character("僵尸");
 

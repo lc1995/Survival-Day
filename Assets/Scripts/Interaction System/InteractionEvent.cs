@@ -1,7 +1,6 @@
 ﻿/*******************************************
 * Description
-*
-*
+* This class is the interaction for event
 *******************************************/
 
 using System.Collections;

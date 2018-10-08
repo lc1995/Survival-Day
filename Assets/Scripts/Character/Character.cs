@@ -8,14 +8,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character {
+[System.Serializable]
+public class Character{
 
 	// ------ Public Variables ------
 	public bool isPlayer;
 	public string name;
+
 	public CharProperty originalProperty;	// Initial property
 	public CharProperty finalProperty;	// Final property considering equipments and labels
 	public CharProperty currentProperty;	// Current property
+
+	public Equipment weapon;
+	public Equipment armor;
+	public Equipment accessory;
+
+	public List<Label> labels;
+
 	public List<AttackAction> attackPool = new List<AttackAction>();
 	public Dictionary<ActionType, List<DefendAction>> defendPool = new Dictionary<ActionType, List<DefendAction>>();
 	

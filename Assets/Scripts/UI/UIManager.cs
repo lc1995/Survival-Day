@@ -81,6 +81,7 @@ public class UIManager : MonoBehaviour{
 
     // ------ Public Functions ------
     #region Event Part
+    
     /// <summary>
     /// Add information on top InfoBoard
     /// </summary>
@@ -161,6 +162,7 @@ public class UIManager : MonoBehaviour{
     public int GetEventBtnsNumber(){
         return eventBtns.Count;
     }
+    
     #endregion
 
     /// <summary>

@@ -1,7 +1,9 @@
 ﻿/*******************************************
 * Description
-*
-*
+* This class is the base class of interaction
+* Interaction has the following type:
+* 1. Event
+* 2. Place Object
 *******************************************/
 
 using System.Collections;

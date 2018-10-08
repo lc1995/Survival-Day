@@ -38,10 +38,18 @@ public class PlayerControl : MonoBehaviour {
 	}
 
     void Update () {
-		rb2d.position += speed * joystick.Direction * Time.deltaTime;
+        if(rb2d.bodyType == RigidbodyType2D.Dynamic)
+		    rb2d.position += speed * joystick.Direction * Time.deltaTime;
 	}
 
     // ------ Public Functions ------
+    /// <summary>
+    /// Place object
+    /// </summary>
+    /// <param name="pObject">GameObject to place</param>
+    public void PlaceObject(GameObject pObject){
+        Instantiate(pObject, transform.position, Quaternion.identity);
+    }
 
     // ------ Private Functions ------
 
