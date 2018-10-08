@@ -1,7 +1,7 @@
 ﻿/*******************************************
 * Description
-*
-*
+* This class is responsible for Character window in editor
+* It will simutaneously update the data of specific character
 *******************************************/
 
 using System.Collections;
@@ -19,8 +19,8 @@ public class CharacterEditor : EditorWindow {
         window.Show();
     }
 
-    private Dictionary<string, Character> characters = new Dictionary<string, Character>();
-    private int selected = 0;
+    private Dictionary<string, Character> characters = new Dictionary<string, Character>(); // characters list
+    private int selected = 0;   // index of the selected character
 
     void OnEnable(){
         Init();
@@ -44,21 +44,39 @@ public class CharacterEditor : EditorWindow {
 
         EditorGUI.BeginDisabledGroup(true);
         EditorGUILayout.TextField("Name", ch.name);
+
         GUILayout.BeginHorizontal();
-        EditorGUILayout.TextField("Hp", ch.currentProperty.hp.ToString());
-        EditorGUILayout.TextField("Max HP", ch.finalProperty.hp.ToString());
+        EditorGUILayout.TextField("Hp", ch.currentProperty.hp.ToString() + " / " + ch.finalProperty.hp.ToString());
+        EditorGUILayout.TextField("Hunger", ch.currentProperty.hunger.ToString() + " / " + ch.finalProperty.hunger.ToString());
         GUILayout.EndHorizontal();
+
         GUILayout.BeginHorizontal();
-        EditorGUILayout.TextField("Hunger", ch.currentProperty.hunger.ToString());
-        EditorGUILayout.TextField("Max Hunger", ch.finalProperty.hunger.ToString());
+        EditorGUILayout.TextField("Physical Damage", ch.currentProperty.pDamage.ToString());
+        EditorGUILayout.TextField("Magical Damage", ch.currentProperty.mDamage.ToString());
+        EditorGUILayout.TextField("Physical Resist", ch.currentProperty.pResist.ToString());
+        EditorGUILayout.TextField("Magical Resist", ch.currentProperty.mResist.ToString());
         GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        EditorGUILayout.TextField("Strength", ch.currentProperty.strength.ToString());
+        EditorGUILayout.TextField("Dexterity", ch.currentProperty.dexterity.ToString());
+        EditorGUILayout.TextField("Intellect", ch.currentProperty.intellect.ToString());
+        EditorGUILayout.TextField("Technology", ch.currentProperty.technology.ToString());
+        GUILayout.EndHorizontal();
+
+        EditorGUILayout.TextField("Dodge", ch.currentProperty.dodge.ToString());
+
         EditorGUI.EndDisabledGroup();
     }
 
+    /// <summary>
+    /// Initialize editor window
+    /// </summary>
     private void Init(){
         characters.Clear();
 
-        characters.Add("Player", Data.player);
+        if(Data.player != null)
+            characters.Add("Player", Data.player);
         foreach(GameObject go in GameObject.FindGameObjectsWithTag("Character")){
             Character ch = go.GetComponent<SmallMapObject>().character;
             characters.Add(go.name, ch);
