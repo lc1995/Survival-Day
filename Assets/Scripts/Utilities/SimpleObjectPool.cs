@@ -60,6 +60,7 @@ public class SimpleObjectPool : MonoBehaviour
             Destroy(toReturn);
         }
     }
+
 }
 
 // a component that simply identifies the pool that a GameObject came from

@@ -31,6 +31,8 @@ public class TestInSmallMap : MonoBehaviour {
         InitGamblingMachine(gamblingMachine);
 
         InitTrapInteraction();
+
+        InitTestInventory();
 	}
 
     void Update () {
@@ -122,6 +124,22 @@ public class TestInSmallMap : MonoBehaviour {
         gm.ai = new StaticAI();
     }
 
+    private void InitTestInventory(){
+        // Inventory 1
+        Inventory inv1 = new Inventory(1);
+        inv1.name = "明菊";
+        inv1.description = "一种菊花，散发着奇特的香味";
+        inv1.weight = 1;
+        Data.player.inventories.Add(inv1, 3);
+
+        // Inventory 2
+        Inventory inv2 = new Inventory(2);
+        inv2.name = "风干的咸鱼";
+        inv2.description = "风干的咸鱼";
+        inv2.weight = 2;
+        Data.player.inventories.Add(inv2, 1);
+    }
+
     private void BattleWin(SmallMapObject smo){
         UIManager.instance.AddInfoInBoard("你把" + smo.character.name + "砍死了");
         Destroy(smo.gameObject);
@@ -150,4 +168,5 @@ public class TestInSmallMap : MonoBehaviour {
         if(smo.interaction != null && smo.interaction.GetType() == typeof(InteractionEvent))
             ((InteractionEvent) smo.interaction).Reset();
     }
+
 }

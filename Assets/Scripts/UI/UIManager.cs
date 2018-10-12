@@ -40,6 +40,8 @@ public class UIManager : MonoBehaviour{
     public GameObject interactionPanel;
     public SimpleObjectPool buttonsPool;
     public float interactionBoardMaxHeight = 800f;
+    [Header("Subboard UI Manager")]
+    public InventoryUI inventoryUI;
     [Header("Big Map")]
     public float dragSpeed = 0.1f;
     public float leftBorder = -7.8f;
@@ -171,7 +173,9 @@ public class UIManager : MonoBehaviour{
     /// </summary>
     /// <param name="go">GameObject to active</param>
     public void OnBoardBtnClick(GameObject go){
+        mapHub.SetActive(false);
         go.SetActive(true);
+        go.GetComponent<BoardBase>().Enter();
     }
 
     /// <summary>
@@ -180,7 +184,9 @@ public class UIManager : MonoBehaviour{
     /// </summary>
     /// <param name="go">GameObject to disative</param>
     public void OnBoardExitClick(GameObject go){
+        go.GetComponent<BoardBase>().Exit();
         go.SetActive(false);
+        mapHub.SetActive(true);
     }
 
     /// <summary>

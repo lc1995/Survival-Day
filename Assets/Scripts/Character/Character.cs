@@ -25,6 +25,8 @@ public class Character{
 
 	public List<Label> labels;
 
+	public Dictionary<Inventory, int> inventories;
+
 	public List<AttackAction> attackPool = new List<AttackAction>();
 	public Dictionary<ActionType, List<DefendAction>> defendPool = new Dictionary<ActionType, List<DefendAction>>();
 	
@@ -46,10 +48,15 @@ public class Character{
 		name = n;
 		isPlayer = ip;
 
-		// Initialize property
+		// Initialization
+		// Property
 		originalProperty = CharProperty.standard;
 		UpdateFinalProperty();
-		currentProperty = finalProperty;	
+		currentProperty = finalProperty;
+		// Label
+		labels = new List<Label>();
+		// Inventory
+		inventories = new Dictionary<Inventory, int>();
 	}
 
 	/// <summary>
