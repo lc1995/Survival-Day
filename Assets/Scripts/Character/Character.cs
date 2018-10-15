@@ -27,8 +27,8 @@ public class Character{
 
 	public Dictionary<Inventory, int> inventories;
 
-	public List<AttackAction> attackPool = new List<AttackAction>();
-	public Dictionary<ActionType, List<DefendAction>> defendPool = new Dictionary<ActionType, List<DefendAction>>();
+	public List<Attack> attackPool = new List<Attack>();
+	public Dictionary<ActionType, List<Defend>> defendPool = new Dictionary<ActionType, List<Defend>>();
 	
 	// ------ Shared Variables ------
 	
@@ -57,6 +57,18 @@ public class Character{
 		labels = new List<Label>();
 		// Inventory
 		inventories = new Dictionary<Inventory, int>();
+
+		// Pool for test
+		// Now pool is the same as global pool
+		// foreach(Attack atk in Data.AllAttacks.Values){
+		// 	attackPool.Add(atk);
+		// }
+		foreach(ActionType type in System.Enum.GetValues(typeof(ActionType))){
+			defendPool.Add(type, new List<Defend>());
+			foreach(int defendID in Data.AllDefendsByType[type]){
+				defendPool[type].Add(Data.AllDefends[defendID]);
+			}
+		}
 	}
 
 	/// <summary>
@@ -97,7 +109,7 @@ public class Character{
 		finalProperty = originalProperty;
 
 		// Calculate 2-level property by 1-level property
-		finalProperty.dodge += finalProperty.dexterity * 1f;
+		finalProperty.dodge += finalProperty.aligity * 1f;
 		finalProperty.pResist += finalProperty.strength * 1f;
 		finalProperty.mResist += finalProperty.intellect * 1f;
 	}
@@ -109,7 +121,7 @@ public struct CharProperty{
 	public float hunger;
 
 	public float strength;
-	public float dexterity;
+	public float aligity;
 	public float intellect;
 	public float technology;
 
@@ -124,7 +136,7 @@ public struct CharProperty{
 		this.hunger = hunger;
 
 		this.strength = str;
-		this.dexterity = dex;
+		this.aligity = dex;
 		this.intellect = inte;
 		this.technology = tech;
 

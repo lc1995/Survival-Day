@@ -32,7 +32,7 @@ public class MainMenuUI : MonoBehaviour {
     /// </summary>
     public void OnStartGame(){
         // For now(testing), it simply loads BigMap scene
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class MainMenuUI : MonoBehaviour {
     /// </summary>
     public void OnContinueGame(){
         // For now(testing), it simply loads BigMap scene
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
     }
 
     /// <summary>

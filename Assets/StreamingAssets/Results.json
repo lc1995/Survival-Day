@@ -1,0 +1,404 @@
+{
+  "results": [
+    {
+      "id": 101,
+      "description": "D1\u5411\u540e\u7a7a\u7ffb\uff0c\u4e00\u8bb0\u6f02\u4eae\u7684\u9e5e\u5b50\u7ffb\u8eab\uff0c\u7075\u5de7\u7684\u8eb2\u8fc7\u4e86D2\u7684\u62f3\u5934\u3002",
+      "param": 20,
+      "aglParam": 2.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 102,
+      "description": "D1\u5411\u540e\u7a7a\u7ffb\u8bd5\u56fe\u8eb2\u907f\uff0c\u7136\u800c\u4e00\u4e0d\u5c0f\u5fc3\u626d\u5230\u4e86\u81ea\u5df1\u7684\u8170\u5bf9\u81ea\u5df1\u9020\u6210\u4e86\u5927\u91cf\u4f24\u5bb3\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 1.5,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 201,
+      "description": "D1\u4e0d\u614c\u4e0d\u5fd9\u7684\u547c\u4e86\u53e3\u6c14\uff0c\u9a6c\u6b65\u4e0b\u8170\uff0c\u659c\u7740\u63a8\u51fa\u4e00\u638c\u5316\u89e3\u4e86D2\u7684\u653b\u51fb\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 202,
+      "description": "\u8111\u6d77\u4e2d\u56de\u5fc6\u7740\u516c\u56ed\u6668\u7ec3\u8001\u5927\u7237\u7684\u52a8\u4f5c\uff0cD1\u4f38\u624b\u8bd5\u56fe\u62db\u67b6\uff0c\u5374\u4f9d\u7136\u88abD2\u4e00\u51fb\u6253\u5728\u8138\u4e0a\uff0c\u5012\u8dcc\u4e86\u51e0\u6b65\u5750\u5728\u5730\u4e0a\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 1.0,
+      "atkFactor": 1.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 301,
+      "description": "\u9762\u5bf9D2\u6765\u52bf\u6c79\u6c79\uff0cD1\u4e5f\u6325\u51fa\u4e00\u62f3\uff0c\u4e24\u4eba\u4e92\u76f8\u51fb\u4e2d\u4e86\u5bf9\u65b9\u7684\u8138\uff0c\u53cc\u53cc\u5012\u98de\u51fa\u53bb\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 1.0,
+      "ctkFactor": 1.0
+    },
+    {
+      "id": 302,
+      "description": "D1\u7528\u529b\u6325\u51fa\u4e00\u62f3\u76f4\u5954D2\u9762\u95e8\uff0cD2\u5374\u7a81\u7136\u77ee\u4e0b\u8170\u53d8\u62db\uff0c\u4e00\u62f3\u72e0\u72e0\u7684\u6253\u5728\u4e86D1\u7684\u809a\u5b50\u4e0a\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 1.0,
+      "atkFactor": 1.5,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 401,
+      "description": "D1\u7075\u5de7\u7684\u5411\u8fb9\u4e0a\u4fa7\u6eda\uff0c\u95ea\u5f00\u4e86D2\u7684\u4e00\u8bb0\u731b\u51fb\u3002",
+      "param": 50,
+      "aglParam": 2.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 402,
+      "description": "D1\u8bd5\u56fe\u5411\u8fb9\u4e0a\u4fa7\u6eda\uff0cD2\u4e00\u51fb\u843d\u7a7a\uff0c\u7d27\u8ddf\u7740\u56de\u8eab\u4e00\u811a\u8e22\u4e2d\u4e86D1\u3002",
+      "param": 30,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 1.0,
+      "atkFactor": 1.5,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 501,
+      "description": "D1\u4ea4\u53c9\u53cc\u81c2\u9632\u5fa1\uff0cD2\u4e00\u51fb\u91cd\u91cd\u7684\u6253\u5728D1\u7684\u80f3\u818a\u4e0a\uff0cD1\u5411\u540e\u8e09\u8dc4\u7740\u8fde\u9000\u4e86\u51e0\u6b65\uff0c\u7136\u800c\u8fd8\u662f\u7a33\u7a33\u7684\u6321\u4e0b\u4e86\u8fd9\u4e00\u51fb\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.2,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 502,
+      "description": "D1\u4ea4\u53c9\u53cc\u81c2\u6321\u5728\u8eab\u524d\uff0cD2\u731b\u7684\u4e00\u51fb\u6253\u5728D1\u7684\u80f3\u818a\u4e0a\uff0c\u8361\u5f00\u4e86D1\u7684\u53cc\u624b\uff0c\u7d27\u8ddf\u7740\u4e00\u51fb\u6253\u5728D1\u7684\u8138\u4e0a\uff0c\u9c9c\u8840\u56db\u6e85\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 1.0,
+      "atkFactor": 1.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 601,
+      "description": "\u773c\u89c1D3\u5df2\u7ecf\u8d34\u8fd1D1\u7684\u8111\u95e8\u513f\uff0c\u5343\u94a7\u4e00\u53d1\u4e4b\u9645D1\u7a7a\u624b\u5165\u767d\u5203\u7a33\u7a33\u7684\u63a5\u4f4f\u4e86D2\u7684\u6b66\u5668\uff0c\u63a5\u4e0b\u4e86\u8fd9\u4e00\u51fb\u3002",
+      "param": 30,
+      "aglParam": 5.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 602,
+      "description": "D1\u6446\u597d\u59ff\u52bf\u4f38\u624b\u51c6\u5907\u7a7a\u624b\u5165\u767d\u5203\uff0cD3\u63a0\u8fc7D1\u7684\u53cc\u624b\u780d\u4e2d\u4e86\u4ed6\u7684\u80a9\u8180\uff0c\u9c9c\u8840\u56db\u6ea2\u3002",
+      "param": 70,
+      "aglParam": 0.0,
+      "weapParam": 1.0,
+      "actParam": 1.0,
+      "atkFactor": 1.5,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 701,
+      "description": "D1\u5411\u4fa7\u9762\u4e00\u8dc3\uff0c\u6f02\u4eae\u7684\u8df3\u51fa\u4e86D2\u7684\u653b\u51fb\u8303\u56f4\u3002",
+      "param": 30,
+      "aglParam": 3.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 702,
+      "description": "D1\u5411\u4fa7\u9762\u8df3\u5f00\uff0cD2\u7ad6\u5288\u4e0b\u6765\u7684D3\u7a81\u7136\u5411\u4e0a\u4e00\u6311\uff0c\u6a2a\u7740\u780d\u5230\u4e86D1\u7684\u80a9\u4e0a\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 1.0,
+      "actParam": 1.0,
+      "atkFactor": 1.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 801,
+      "description": "D1\u4e3e\u8d77\u6b66\u5668\u683c\u6321\uff0c\u7136\u800cD2\u7684D3\u4e0a\u4f20\u6765\u7684\u529b\u9053\u5c45\u7136\u6050\u6016\u5982\u65af\uff0c\u867d\u7136\u6ca1\u53d7\u5230\u76f4\u63a5\u4f24\u5bb3\uff0c\u4f46\u662f\u51cc\u5389\u7684\u5251\u6c14\u5df2\u7ecf\u51fb\u4f24\u4e86D1\u7684\u5185\u810f\u3002",
+      "param": 100,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 1.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 802,
+      "description": "D1\u4e3e\u8d77\u683c\u6321\uff0c\u548cD2\u7684D3\u5728\u7a7a\u4e2d\u76f8\u78b0\u706b\u82b1\u56db\u6e85\uff0c\u4e24\u4e2a\u4eba\u6b64\u756a\u6b63\u9762\u76f8\u64bc\u7adf\u662f\u4e0d\u5206\u4f2f\u4ef2\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 1.0,
+      "actParam": 1.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 901,
+      "description": "D1\u5728\u539f\u5730\u7948\u7977D2\u7684D3\u7a81\u7136\u65ad\u6389\uff0c\u663e\u7136\u4ec0\u4e48\u4e5f\u6ca1\u6709\u53d1\u751f\uff0cD2\u7a33\u7a33\u7684\u780d\u4e2d\u4e86D1\u3002",
+      "param": 90,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 1.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 902,
+      "description": "D1\u5728\u539f\u5730\u7948\u7977D2\u7684D3\u7a81\u7136\u65ad\u6389\uff0cD2\u51b7\u7b11\u4e00\u58f0\u6325\u7740D3\u5f53\u5934\u4fbf\u65a9\uff0c\u8c01\u77e5\u8fd9D3\u65e0\u7aef\u7684\u5c31\u7a81\u7136\u65ad\u4e3a\u4e24\u622a\u3002",
+      "param": 10,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1001,
+      "description": "D1\u7ea2\u4e86\u773c\u775b\uff0c\u7adf\u7136\u4e5f\u62bd\u51fa\u6b66\u5668\u6446\u51fa\u6765\u640f\u547d\u7684\u67b6\u52bf\uff0cD2\u8fde\u5fd9\u8f6c\u653b\u4e3a\u5b88\uff0c\u5728\u6beb\u5398\u4e4b\u95f4\u6321\u4f4f\u4e86\u8fd9\u4e00\u547d\u6362\u547d\u7684\u4e00\u51fb\uff0c\u5374\u4e5f\u88ab\u524a\u4e86\u51e0\u6839\u5934\u53d1\u7c0c\u7c0c\u7684\u843d\u4e0b\u6765",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1002,
+      "description": "D1\u62bd\u51fa\u6b66\u5668\u5927\u543c\u4e00\u58f0\u4e00\u8dc3\u800c\u8d77\uff0cD2\u4e5f\u65e0\u9000\u5374\u4e4b\u610f\uff0c\u4e24\u4e2a\u4eba\u5728\u534a\u7a7a\u4e2d\u731b\u70c8\u7684\u649e\u5728\u4e00\u8d77\uff0c\u5de8\u54cd\u540e\u4e24\u4eba\u9f50\u9f50\u843d\u5730\uff0c\u8eab\u4e0a\u9c9c\u8840\u76f4\u6d41\u7adf\u662f\u53cc\u53cc\u53d7\u4f24\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 1.0,
+      "ctkFactor": 1.0
+    },
+    {
+      "id": 1101,
+      "description": "D1\u4e0d\u614c\u4e0d\u5fd9\u4ece\u53e3\u888b\u91cc\u638f\u51fa\u4e86\u4e00\u672c\u65e0\u795e\u8bba\uff0c\u6321\u5728\u8eab\u524d\uff0c\u90a3D4\u5486\u54ee\u800c\u81f3\uff0c\u6ca1\u60f3\u5230\u649e\u5728\u8fd9\u4e66\u4e0a\u5374\u662f\u5316\u6210\u4e86\u4e00\u7f15\u9752\u70df\u4ec0\u4e48\u4e5f\u6ca1\u5269\u4e0b\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1102,
+      "description": "D1\u5728\u8eab\u524d\u644a\u5f00\u4e86\u4e00\u672c\u65e0\u795e\u8bba\uff0cD4\u8f70\u9e23\u800c\u81f3\u6253\u5728D1\u8eab\u4e0a\uff0c\u7adf\u662f\u8fde\u4eba\u5e26\u4e66\u90fd\u88ab\u6253\u98de\u4e86\u51fa\u53bb",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 1.0,
+      "actParam": 1.0,
+      "atkFactor": 1.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1201,
+      "description": "\u9762\u5bf9\u5486\u54ee\u800c\u81f3\u7684D4\uff0cD1\u6ca1\u5948\u4f55\u5411\u8eab\u8fb9\u4e00\u8dc3\uff0c\u7adf\u662f\u8df3\u51fa\u4e86D4\u7684\u8303\u56f4\u64e6\u8eab\u800c\u8fc7\uff0c\u867d\u7136\u60ca\u9669\u5012\u4e5f\u6beb\u53d1\u65e0\u4f24\u3002",
+      "param": 30,
+      "aglParam": 3.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1202,
+      "description": "D4\u4ee5\u6cf0\u5c71\u538b\u9876\u4e4b\u52bf\u88ad\u6765\uff0cD1\u5411\u65c1\u8fb9\u4e00\u8dc3\uff0c\u867d\u7136\u6ca1\u6709\u88ab\u6b63\u9762\u51fb\u4e2d\uff0c\u4f46\u662f\u8fd8\u662f\u5728\u4f59\u6ce2\u7684\u51b2\u51fb\u4e0b\u9707\u7684\u810f\u8151\u6613\u4f4d\u6c14\u606f\u5927\u4e71\u3002",
+      "param": 30,
+      "aglParam": 0.0,
+      "weapParam": 1.0,
+      "actParam": 1.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1301,
+      "description": "\u89c1\u90a3D4\u6765\u52bf\u6c79\u6c79\uff0cD1\u7adf\u7136\u6ca1\u6709\u4e1d\u6beb\u56de\u907f\u4e4b\u610f\uff0c\u5c06\u624b\u4e2d\u7684\u6b66\u5668\u6a2a\u6301\uff0c\u7adf\u6a2a\u7740\u5288\u4e86\u51fa\u53bb\uff0c\u51cc\u5389\u7684\u5251\u610f\u548c\u9b54\u6cd5\u5728\u7a7a\u4e2d\u76f8\u649e\u5316\u89e3\u4e86D1\u3002",
+      "param": 100,
+      "aglParam": 0.0,
+      "weapParam": -1.0,
+      "actParam": -1.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1302,
+      "description": "D4\u5c06\u81f3\uff0cD1\u62ac\u624b\u5c06\u6b66\u5668\u6a2a\u6321\u4e8e\u9762\u95e8\u4e4b\u524d\uff0c\u53cc\u624b\u7d27\u63e1\uff0c\u4e0e\u90a3D4\u6b63\u9762\u76f8\u6297\uff0c\u5c18\u571f\u98de\u626c\u4e2d\u7684\u4eba\u5f71\u54c7\u7684\u5410\u4e86\u4e00\u53e3\u9c9c\u8840\uff0c\u663e\u7136\u8fd9\u4e0b\u6328\u5f97\u4e0d\u8f7b\u3002",
+      "param": 100,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1401,
+      "description": "D4\u89c1\u5230\u6b64\u666f\u4e1d\u6beb\u4e0d\u614c\uff0c\u4f38\u51fa\u4e00\u6839\u624b\u6307\u6309\u5728\u80f3\u818a\u4e0a\uff0c\u5c06\u81ea\u5df1\u7684\u808c\u80a4\u77f3\u5316\uff0c\u5728D1\u7684\u731b\u70c8\u8f70\u51fb\u4e4b\u540e\u7adf\u662f\u5b89\u7136\u65e0\u6059\u3002",
+      "param": 70,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1402,
+      "description": "D1\u5feb\u901f\u5ff5\u5492\u5c06\u81ea\u5df1\u77f3\u5316\uff0c\u6ca1\u60f3\u5230\u5ff5\u5492\u7684\u65f6\u5019\u4e0d\u5c0f\u5fc3\u7ed3\u5df4\u4e86\u4e00\u4e0b\u6ca1\u6709\u63a7\u5236\u597d\u529b\u5ea6\uff0c\u5c06\u81ea\u5df1\u6574\u4e2a\u77f3\u5316\u4e86\uff0c\u53d7\u5230\u4e86\u77f3\u5316\u672f\u7684\u5de8\u91cf\u4f24\u5bb3\u3002",
+      "param": 30,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 1.2,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1501,
+      "description": "D1\u95ed\u4e0a\u53cc\u773c\u611f\u53d7\u7a7a\u6c14\u4e2d\u5954\u817e\u66b4\u70c8\u7684\u5143\u7d20\u6d2a\u6d41\uff0c\u800c\u540e\u53cc\u76ee\u5706\u7741\u957f\u5578\u4e00\u58f0\uff0c\u7a7a\u6c14\u4e2d\u7684\u5143\u7d20\u7adf\u662f\u505c\u606f\u4e86\uff0c\u5728\u8fd9\u7247\u6c89\u9ed8\u7684\u9886\u57df\u4e2d\u6ca1\u6709\u9b54\u6cd5\u80fd\u591f\u65bd\u5c55\u3002",
+      "param": 180,
+      "aglParam": 0.0,
+      "weapParam": -0.5,
+      "actParam": -1.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1502,
+      "description": "D1\u95ed\u4e0a\u53cc\u773c\u53bb\u611f\u53d7\u5468\u56f4\u72c2\u4e71\u7684\u5143\u7d20\uff0c\u8bd5\u56fe\u5e73\u606f\u8eab\u8fb9\u7684\u9b54\u5492\uff0c\u53ef\u8fd9\u6d69\u701a\u7684\u5143\u7d20\u5373\u4fbf\u662f\u5f3a\u608d\u5982D1\u53c8\u662f\u600e\u80fd\u5728\u77ac\u95f4\u5e73\u606f\u7684\uff0c\u4e0d\u8fc7\u5728\u8fd9\u4e2a\u5de8\u5927\u7684\u57df\u4e2dD4\u7684\u5a01\u529b\u4e5f\u88ab\u524a\u5f31\uff0c\u6253\u5728D1\u8eab\u4e0a\u5012\u4e5f\u5e76\u6ca1\u6709\u9020\u6210\u5de8\u5927\u7684\u4f24\u5bb3\u3002",
+      "param": 20,
+      "aglParam": 0.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.2,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1601,
+      "description": "\u8bf4\u65f6\u8fdf\u90a3\u65f6\u5feb\uff0cD1\u773c\u89c1\u4e0d\u597d\uff0c\u5411\u524d\u4e00\u4e2a\u731b\u864e\u6251\u8857\u530d\u5310\u5728\u5730\u4e0a\uff0c\u90a3D5\u64e6\u7740\u5934\u76ae\u9669\u4e4b\u53c8\u9669\u7684\u98de\u8fc7\u53bb\uff0cD1\u4f38\u624b\u6478\u4e86\u6478\u8111\u888b\uff0c\u9664\u4e86\u51e0\u6839\u70e4\u7126\u7684\u5934\u53d1\u4ee5\u5916\u7adf\u662f\u6beb\u53d1\u65e0\u635f\u3002",
+      "param": 50,
+      "aglParam": 3.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1602,
+      "description": "D1\u773c\u89c1D5\u5c04\u8fc7\u6765\uff0c\u4e00\u4e2a\u524d\u6251\u5728\u5730\uff0c\u6ca1\u60f3\u5230\u8fd8\u662f\u8fdf\u4e86\uff0c\u80a9\u8180\u4e0a\u6328\u4e86\u4e00\u4e0b\u8840\u6d41\u4e0d\u6b62\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 1.0,
+      "actParam": 1.0,
+      "atkFactor": 1.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1701,
+      "description": "\u9762\u5bf9D5\uff0cD1\u522b\u65e0\u4ed6\u6cd5\u53ea\u6709\u7ad9\u5728\u539f\u5730\u542c\u5929\u7531\u547d\uff0c\u6ca1\u60f3\u5230\u8fd9\u4e00\u4e0b\u5c45\u7136\u6253\u504f\u4e86\u3002",
+      "param": 50,
+      "aglParam": 2.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1702,
+      "description": "D1\u522b\u65e0\u4ed6\u6cd5\u7ad9\u5728\u539f\u5730\u542c\u5929\u7531\u547d\uff0c\u8fd9\u6b63\u4e2d\u4e86D2\u4e0b\u6000\uff0c\u6ca6\u4e3a\u6d3b\u9776\u5b50\uff0c\u6253\u4e2d\u4e86D1\u7684\u5c0f\u8179\uff0c\u9c9c\u8840\u98de\u6e85\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 1.0,
+      "actParam": 1.0,
+      "atkFactor": 1.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1801,
+      "description": "D1\u6df1\u5438\u4e00\u53e3\u6c14\uff0c\u56de\u5fc6\u8d77\u5f53\u5e74\u7b77\u5b50\u5939\u82cd\u8747\u7684\u6280\u6cd5\uff0c\u4f38\u624b\u4e00\u635e\u4e00\u63fd\uff0c\u7adf\u662f\u5c06\u90a3\u534a\u7a7a\u4e2d\u98de\u901f\u7684D5\u63a5\u5728\u624b\u91cc\u3002",
+      "param": 50,
+      "aglParam": 5.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1802,
+      "description": "D1\u5fc3\u5982\u6b62\u6c34\u51fa\u624b\u5982\u7535\uff0c\u5bf9\u7740\u90a3D5\u51fa\u624b\u4fbf\u6293\uff0c\u5374\u662f\u6162\u4e86\u534a\u62cd\uff0c\u773c\u7741\u7741\u7684\u770b\u7740\u90a3D5\u7a7f\u8fc7\u98df\u6307\u548c\u4e2d\u6307\u95f4\u7684\u7a7a\u9699\u6253\u4e2d\u4e86\u81ea\u5df1\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 1.0,
+      "actParam": 1.0,
+      "atkFactor": 1.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1901,
+      "description": "D1\u4ed4\u7ec6\u89c2\u5bdfD5\u98de\u884c\u7684\u8f68\u8ff9\uff0c\u5728\u5239\u90a3\u95f4\u8fdb\u884c\u4e86\u65e0\u6570\u6b21\u8ba1\u7b97\uff0c\u4e0d\u614c\u4e0d\u5fd9\u8f7b\u8f7b\u7684\u8e0f\u524d\u4e00\u6b65\uff0c\u90a3D5\u64e6\u7740D1\u7684\u8863\u895f\u98de\u4e86\u51fa\u53bb\u3002",
+      "param": 50,
+      "aglParam": 1.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 1902,
+      "description": "D1\u89c2\u5bdf\u8fd9D5\u7684\u98de\u884c\u8f68\u8ff9\u8ba1\u7b97\u843d\u70b9\uff0c\u5411\u540e\u8f7b\u98d8\u98d8\u8fc8\u51fa\u4e00\u6b65\uff0c\u5374\u521a\u597d\u88ab\u6253\u4e2d\u4e86\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 1.0,
+      "actParam": 1.0,
+      "atkFactor": 1.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 2001,
+      "description": "\u773c\u89c1D5\u88ad\u6765\uff0cD1\u6325\u821e\u7740\u6b66\u5668\uff0c\u4e52\u4e52\u4e53\u4e53\u4e00\u9635\u8106\u54cd\uff0c\u7adf\u7136\u5c06\u7a7a\u4e2d\u7684D5\u5c3d\u6570\u51fb\u843d\u3002",
+      "param": 50,
+      "aglParam": 4.0,
+      "weapParam": 0.0,
+      "actParam": 0.0,
+      "atkFactor": 0.0,
+      "ctkFactor": 0.0
+    },
+    {
+      "id": 2002,
+      "description": "\u773c\u89c1D5\u88ad\u6765\uff0cD1\u7528\u6b66\u5668\u5728\u8eab\u524d\u821e\u52a8\uff0c\u770b\u8d77\u6765\u5f62\u6210\u4e86\u4e00\u9053\u5bc6\u4e0d\u900f\u98ce\u7684\u5c4f\u969c\uff0c\u5239\u90a3\u4e4b\u540e\u51e0\u9053\u9c9c\u8840\u4eceD1\u8eab\u4e0a\u98d9\u51fa\uff0cD1\u7adf\u662f\u4e00\u51fb\u90fd\u6ca1\u6709\u5f53\u4e0b\u6765\u3002",
+      "param": 50,
+      "aglParam": 0.0,
+      "weapParam": 1.0,
+      "actParam": 1.0,
+      "atkFactor": 1.0,
+      "ctkFactor": 0.0
+    }
+  ]
+}

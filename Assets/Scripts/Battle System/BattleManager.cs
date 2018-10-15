@@ -52,12 +52,6 @@ public class BattleManager : MonoBehaviour {
 	}
 	
 	// ------ Public Functions ------
-	public void TestCase(){
-		player = new Character("你", true);
-		enemy = new Character("赌博机");
-
-		StartCoroutine(Battle(player, enemy));
-	}
 
 	// ------ Private Functions ------
 	public IEnumerator Battle(Character c1, Character c2){
@@ -98,7 +92,7 @@ public class BattleManager : MonoBehaviour {
 			ending = BattleEnding.Character1Win;
 		else if(winner == c2)
 			ending = BattleEnding.Character2Win;
-		uim.SetEventInfo("获胜者 : " + winner.name, true);	
+		uim.SetEventInfo("获胜者 : " + winner.name + "\n", true);	
 	}
 
 	private IEnumerator Turn(Character attacker, Character defender){
@@ -110,7 +104,7 @@ public class BattleManager : MonoBehaviour {
 
 		// Updata attacker's pool and generate attack choices randomly
 		UpdatePool(attacker);
-		List<AttackAction> attackChoices = GenerateAttackChoices(attacker);
+		List<Attack> attackChoices = GenerateAttackChoices(attacker);
 
 		// - If the attacker is player
 		// 1. Enable buttons and update their texts
@@ -124,12 +118,12 @@ public class BattleManager : MonoBehaviour {
 				uim.RemoveEventBtnListeners(i);
 				int index = i;	
 				uim.AddEventBtnListener(i, delegate { OnSelect(index); });
-				uim.SetEventBtnText(i, attackChoices[i].description.ToBattleString(attacker, defender));
+				uim.SetEventBtnText(i, attackChoices[i].choice);
 			}
 			for(; i < uim.GetEventBtnsNumber(); i += 1){
 				uim.RemoveEventBtnListeners(i);
 			}
-			uim.SetEventInfo("你想要如何进攻：\n", true);
+			// uim.SetEventInfo("你想要如何进攻：\n", true);
 
 			atkIndex = -1;
 			yield return new WaitWhile(() => atkIndex == -1);
@@ -138,12 +132,12 @@ public class BattleManager : MonoBehaviour {
 		}
 
 		// Get attack choice and show text
-		AttackAction atkChoice = attackChoices[atkIndex];
-		uim.SetEventInfo(attacker.name + atkChoice.description.ToBattleString(attacker, defender) + "\n", true);
+		Attack atkChoice = attackChoices[atkIndex];
+		uim.SetEventInfo(atkChoice.description.ToBattleString(attacker, defender) + "\n", true);
 
 		// Updata defender's pool and generate defend choices randomly
 		UpdatePool(defender);
-		List<DefendAction> defendChoices = GenerateDefendChoices(defender, atkChoice.type);
+		List<Defend> defendChoices = GenerateDefendChoices(defender, atkChoice.types);
 		
 		// - If the attacker is player
 		// 1. Enable buttons and update their texts
@@ -162,7 +156,7 @@ public class BattleManager : MonoBehaviour {
 			for(; i < uim.GetEventBtnsNumber(); i += 1){
 				uim.RemoveEventBtnListeners(i);
 			}
-			uim.SetEventInfo("你想要如何防御：\n", true);
+			// uim.SetEventInfo("你想要如何防御：\n", true);
 
 			defIndex = -1;
 			yield return new WaitWhile(() => defIndex == -1);
@@ -170,38 +164,44 @@ public class BattleManager : MonoBehaviour {
 			defIndex = Random.Range(0, defendChoices.Count);
 		}
 
-		// Get defend choice and show text
-		DefendAction defChoice = defendChoices[defIndex];
-		uim.SetEventInfo(defChoice.description.ToBattleString(attacker, defender) + "\n", true);
+		// Get defend choice
+		Defend defChoice = defendChoices[defIndex];
 
 		// Calculate result
-		float totalProb = defChoice.GetTotalResultProb();
-		DefendAction.Result result = defChoice.results[0];
-		foreach(DefendAction.Result r in defChoice.results){
-			totalProb -= r.probability;
-			if(totalProb <= 0f)
-				result = r;
+		float totalProb = 0f;
+		foreach(int resultID in defChoice.results){
+			totalProb += Data.AllResults[resultID].param;
+		}
+		float randProb = Random.Range(0f, totalProb);
+		Result result = new Result(-1);
+		foreach(int resultID in defChoice.results){
+			result = Data.AllResults[resultID];
+			randProb -= result.param;
+			if(randProb <= 0f)
+				break;
 		}
 
 		// Process result
-		defender.GetDamage(result.atkFactor * atkChoice.baseDamage, 0f);
+		defender.GetDamage(result.atkFactor * atkChoice.pDamage, result.atkFactor * atkChoice.mDamage);
 
 		// Show result's text
 		uim.SetEventInfo(result.description.ToBattleString(attacker, defender) + "\n", true);
 		// Show enemy's hp (only in demo)
-		string hpStr = defender.currentProperty.hp.ToString() + " / " + defender.originalProperty.hp.ToString();
-		uim.SetEventInfo(defender.name + "的血量 : " + hpStr + "\n", true);
+		// string hpStr = defender.currentProperty.hp.ToString() + " / " + defender.originalProperty.hp.ToString();
+		// uim.SetEventInfo(defender.name + "的血量 : " + hpStr + "\n", true);
+
+		// Add sepration text
+		uim.SetEventInfo("--------------------\n", true);
 	}
 
 	private void UpdatePool(Character ch){
-		ch.attackPool = Data.AllAttacks;
-		ch.defendPool = Data.AllDefendsByType;
+		
 	}
 
-	private List<AttackAction> GenerateAttackChoices(Character ch, int size=3){
-		List<AttackAction> actions = new List<AttackAction>();
+	private List<Attack> GenerateAttackChoices(Character ch, int size=3){
+		List<Attack> actions = new List<Attack>();
 
-		AttackAction tmp;
+		Attack tmp;
 		int range = ch.attackPool.Count;
 		for(int i = 0; i < size; i++){
 			tmp = ch.attackPool[Random.Range(0, range)];
@@ -210,21 +210,24 @@ public class BattleManager : MonoBehaviour {
 			actions.Add(tmp);
 		}
 
+
 		return actions;
 	}
 
-	private List<DefendAction> GenerateDefendChoices(Character en, ActionType type, int size=3){
-		List<DefendAction> actions = new List<DefendAction>();
+	private List<Defend> GenerateDefendChoices(Character en, List<ActionType> types, int size=3){
+		List<Defend> actions = new List<Defend>();
 
-		DefendAction tmp;
-		int range = en.defendPool.Count;
+		Defend tmp;
 		for(int i = 0; i < size; i++){
-			tmp = en.defendPool[type][Random.Range(0, range)];
+			ActionType randType = types[Random.Range(0, types.Count)];
+			int range = en.defendPool[randType].Count;
+
+			tmp = en.defendPool[randType][Random.Range(0, range)];
 			while(actions.Contains(tmp))
-				tmp = en.defendPool[type][Random.Range(0, range)];
+				tmp = en.defendPool[randType][Random.Range(0, range)];
 			actions.Add(tmp);
 		}
-
+		
 		return actions;
 	}
 

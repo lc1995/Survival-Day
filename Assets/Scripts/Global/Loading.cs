@@ -16,7 +16,9 @@ public class Loading : MonoBehaviour {
 	
 	
 	// ------ Private Variables ------
-	private const string defActionsFileName = "Actions.json";
+	private const string defAttacksFileName = "Attacks.json";
+	private const string defDefendsFileName = "Defends.json";
+	private const string defResultsFileName = "Results.json";
 	
 	// ------ Required Components ------
 	
@@ -25,44 +27,86 @@ public class Loading : MonoBehaviour {
 	}
 
 	private void InitGameData(){
-		Data.player = new Character("Player", true);
-
-		StartCoroutine(LoadDefendData());
+		StartCoroutine(LoadData());
 	}
 
-	private IEnumerator LoadDefendData(){
-		string filePath = Path.Combine(Application.streamingAssetsPath, defActionsFileName);
-		string actionsText;
+	private IEnumerator LoadData(){
+		LoadFileText lft = new LoadFileText();
+
+		// Load attacks data
+		lft.fileName = defAttacksFileName;
+		yield return StartCoroutine(LoadFile(lft));
+
+		AttacksData attacksData = JsonUtility.FromJson<AttacksData>(lft.fileText);
+
+		foreach(Attack atk in attacksData.attacks){
+			Data.AllAttacks.Add(atk.id, atk);
+		}
+
+		// Load defends data
+		lft.fileName = defDefendsFileName;
+		yield return StartCoroutine(LoadFile(lft));
+
+		DefendsData defendsData = JsonUtility.FromJson<DefendsData>(lft.fileText);
+
+		foreach(ActionType type in System.Enum.GetValues(typeof(ActionType))){
+			Data.AllDefendsByType.Add(type, new List<int>());
+		}
+		foreach(Defend def in defendsData.defends){
+			Data.AllDefends.Add(def.id, def);
+			Data.AllDefendsByType[def.type].Add(def.id);
+		}
+
+		// Load results data
+		lft.fileName = defResultsFileName;
+		yield return StartCoroutine(LoadFile(lft));
+
+		ResultsData resultsData = JsonUtility.FromJson<ResultsData>(lft.fileText);
+
+		foreach(Result res in resultsData.results){
+			Data.AllResults.Add(res.id, res);
+		}
+
+		// Test: Check loading is right
+		Debug.Log(Data.AllAttacks.Count);
+		Debug.Log(Data.AllDefends.Count);
+		Debug.Log(Data.AllResults.Count);
+		Debug.Log(Data.AllAttacks[1001].types.Count);
+
+		// Test: Start small map
+		UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+	}
+
+	private IEnumerator LoadFile(LoadFileText lft){
+		string filePath = Path.Combine(Application.streamingAssetsPath, lft.fileName);
 
 		if(filePath.Contains("://") || filePath.Contains(":///")){
 			// On some specific platform, StreamingAssets cannot be directly accessed
 			WWW www = new WWW(filePath);
 			yield return www;
-			actionsText = www.text;
+			lft.fileText = www.text;
 		}else{
-			actionsText = File.ReadAllText(filePath);
-		}
-
-		ActionsData actionsData = JsonUtility.FromJson<ActionsData>(actionsText);
-
-		// Loading actions
-		Data.AllDefends = actionsData.defends;
-		Data.AllAttacks = actionsData.attacks;
-		Debug.Log("Total defends loaded : " + Data.AllDefends.Count);
-		Debug.Log("Total attacks loaded : " + Data.AllAttacks.Count);
-		
-		// Classify defends
-		foreach(ActionType at in System.Enum.GetValues(typeof(ActionType)))
-			Data.AllDefendsByType[at] = new List<DefendAction>();
-		foreach(DefendAction da in Data.AllDefends){
-			Data.AllDefendsByType[da.type].Add(da);
+			lft.fileText = File.ReadAllText(filePath);
 		}
 	}
+}
 
+class LoadFileText{
+	public string fileName;
+	public string fileText;
 }
 
 [System.Serializable]
-public struct ActionsData{
-	public List<DefendAction> defends;
-	public List<AttackAction> attacks;
+public struct AttacksData{
+	public List<Attack> attacks;
+}
+
+[System.Serializable]
+public struct DefendsData{
+	public List<Defend> defends;
+}
+
+[System.Serializable]
+public struct ResultsData{
+	public List<Result> results;
 }

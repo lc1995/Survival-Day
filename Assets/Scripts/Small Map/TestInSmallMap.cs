@@ -25,6 +25,20 @@ public class TestInSmallMap : MonoBehaviour {
     void Start () {
         Data.inBigMap = false;
 
+        Data.player = new Character("李菊", true);
+        Equipment sword = new Equipment(666, EquipmentType.Weapon);
+        sword.name = "【霜之高兴】";
+        Data.player.weapon = sword;
+
+        foreach(Attack atk in Data.AllAttacks.Values){
+            foreach(ActionType atkType in atk.types){
+                if(atkType == ActionType.MeleeWeapon){
+                    Data.player.attackPool.Add(atk);
+                    break;
+                }   
+            }
+        }
+
 		foreach(SmallMapObject zombie in zombies){
             InitZombie(zombie);
         }
@@ -50,11 +64,24 @@ public class TestInSmallMap : MonoBehaviour {
     private void InitZombie(SmallMapObject zombie){
         zombie.character = new Character("僵尸");
 
-        PBEventState s1 = new PBEventState("你遭遇了" + zombie.name);
+        Equipment sword = new Equipment(777, EquipmentType.Weapon);
+        sword.name = "【美工刀】";
+        zombie.character.weapon = sword;
+
+        foreach(Attack atk in Data.AllAttacks.Values){
+            foreach(ActionType atkType in atk.types){
+                if(atkType == ActionType.MeleeWeapon || atkType == ActionType.Magic){
+                    zombie.character.attackPool.Add(atk);
+                    break;
+                }   
+            }
+        }
+
+        PBEventState s1 = new PBEventState("你遭遇了" + zombie.character.name);
         PBBattleState s2 = new PBBattleState();
-        PBEventState s3 = new PBEventState("你把" + zombie.name + "砍死了");
+        PBEventState s3 = new PBEventState("你把" + zombie.character.name + "砍死了");
         s3.exitJobs = new PBJob[]{ delegate{ BattleWin(zombie); } };
-        PBEventState s4 = new PBEventState("你被" + zombie.name + "啃死了");
+        PBEventState s4 = new PBEventState("你被" + zombie.character.name + "啃死了");
         s4.exitJobs = new PBJob[]{ delegate{ BattleFail(zombie);} };
         
         PBEventAction a1 = new PBEventAction("战斗");
@@ -73,6 +100,19 @@ public class TestInSmallMap : MonoBehaviour {
 
     private void InitGamblingMachine(SmallMapObject gm){
         gm.character = new Character("赌博机");
+
+        Equipment wand = new Equipment(999, EquipmentType.Weapon);
+        wand.name = "【无用大棒】";
+        gm.character.weapon = wand;
+
+        foreach(Attack atk in Data.AllAttacks.Values){
+            foreach(ActionType atkType in atk.types){
+                if(atkType == ActionType.Magic){
+                    gm.character.attackPool.Add(atk);
+                    break;
+                }   
+            }
+        }
 
         PBEventState s1 = new PBEventState("遇到一个赌博机。");
         PBEventState s2 = new PBEventState("看起来这台老虎机还能用。");

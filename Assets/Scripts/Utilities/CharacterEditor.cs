@@ -59,7 +59,7 @@ public class CharacterEditor : EditorWindow {
 
         GUILayout.BeginHorizontal();
         EditorGUILayout.TextField("Strength", ch.currentProperty.strength.ToString());
-        EditorGUILayout.TextField("Dexterity", ch.currentProperty.dexterity.ToString());
+        EditorGUILayout.TextField("Dexterity", ch.currentProperty.aligity.ToString());
         EditorGUILayout.TextField("Intellect", ch.currentProperty.intellect.ToString());
         EditorGUILayout.TextField("Technology", ch.currentProperty.technology.ToString());
         GUILayout.EndHorizontal();
