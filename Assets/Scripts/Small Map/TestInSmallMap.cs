@@ -26,9 +26,6 @@ public class TestInSmallMap : MonoBehaviour {
         Data.inBigMap = false;
 
         Data.player = new Character("李菊", true);
-        Equipment sword = new Equipment(666, EquipmentType.Weapon);
-        sword.name = "【霜之高兴】";
-        Data.player.weapon = sword;
 
         foreach(Attack atk in Data.AllAttacks.Values){
             foreach(ActionType atkType in atk.types){
@@ -64,7 +61,7 @@ public class TestInSmallMap : MonoBehaviour {
     private void InitZombie(SmallMapObject zombie){
         zombie.character = new Character("僵尸");
 
-        Equipment sword = new Equipment(777, EquipmentType.Weapon);
+        Weapon sword = new Weapon(777, WeaponType.Melee);
         sword.name = "【美工刀】";
         zombie.character.weapon = sword;
 
@@ -101,7 +98,7 @@ public class TestInSmallMap : MonoBehaviour {
     private void InitGamblingMachine(SmallMapObject gm){
         gm.character = new Character("赌博机");
 
-        Equipment wand = new Equipment(999, EquipmentType.Weapon);
+        Weapon wand = new Weapon(999, WeaponType.Magic);
         wand.name = "【无用大棒】";
         gm.character.weapon = wand;
 
@@ -165,19 +162,14 @@ public class TestInSmallMap : MonoBehaviour {
     }
 
     private void InitTestInventory(){
-        // Inventory 1
-        Inventory inv1 = new Inventory(1);
-        inv1.name = "明菊";
-        inv1.description = "一种菊花，散发着奇特的香味";
-        inv1.weight = 1;
-        Data.player.inventories.Add(inv1, 3);
+        // Test All Equipments
+        foreach(Inventory inv in Data.AllInventories.Values){
+            Data.player.ObtainInventory(inv, Random.Range(1, 4));
+        }
 
-        // Inventory 2
-        Inventory inv2 = new Inventory(2);
-        inv2.name = "风干的咸鱼";
-        inv2.description = "风干的咸鱼";
-        inv2.weight = 2;
-        Data.player.inventories.Add(inv2, 1);
+        Data.player.weapon = Data.AllWeapons[2001];
+        Data.player.armor = Data.AllArmors[1001];
+        Data.player.accessory = Data.AllAccessories[15001];
     }
 
     private void BattleWin(SmallMapObject smo){

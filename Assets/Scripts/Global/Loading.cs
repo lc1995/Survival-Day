@@ -19,6 +19,9 @@ public class Loading : MonoBehaviour {
 	private const string defAttacksFileName = "Attacks.json";
 	private const string defDefendsFileName = "Defends.json";
 	private const string defResultsFileName = "Results.json";
+	private const string defEquipmentsFileName = "Equipments.json";
+	private const string defMaterialsFileName = "Materials.json";
+	private const string defFoodsFileName = "Foods.json";
 	
 	// ------ Required Components ------
 	
@@ -67,11 +70,57 @@ public class Loading : MonoBehaviour {
 			Data.AllResults.Add(res.id, res);
 		}
 
+		// Load equipments data
+		lft.fileName = defEquipmentsFileName;
+		yield return StartCoroutine(LoadFile(lft));
+
+		EquipmentsData equipmentsData = JsonUtility.FromJson<EquipmentsData>(lft.fileText);
+		
+		foreach(Weapon weapon in equipmentsData.weapons){
+			Data.AllWeapons.Add(weapon.id, weapon);
+			Data.AllInventories.Add(weapon.id, weapon as Inventory);
+		}
+		foreach(Armor armor in equipmentsData.armors){
+			Data.AllArmors.Add(armor.id, armor);
+			Data.AllInventories.Add(armor.id, armor as Inventory);
+		}
+		foreach(Accessory accessory in equipmentsData.accessories){
+			Data.AllAccessories.Add(accessory.id, accessory);
+			Data.AllInventories.Add(accessory.id, accessory as Inventory);
+		}
+
+		// Load materials data
+		lft.fileName = defFoodsFileName;
+		yield return StartCoroutine(LoadFile(lft));
+
+		FoodsData foodsData = JsonUtility.FromJson<FoodsData>(lft.fileText);
+
+		foreach(Food food in foodsData.foods){
+			Data.AllFoods.Add(food.id, food);
+			Data.AllInventories.Add(food.id, food as Inventory);
+		}
+
+		// Load foods data
+		lft.fileName = defMaterialsFileName;
+		yield return StartCoroutine(LoadFile(lft));
+
+		MaterialsData materialsData = JsonUtility.FromJson<MaterialsData>(lft.fileText);
+
+		foreach(Material material in materialsData.materials){
+			Data.AllMaterials.Add(material.id, material);
+			Data.AllInventories.Add(material.id, material as Inventory);
+		}
+
 		// Test: Check loading is right
-		Debug.Log(Data.AllAttacks.Count);
-		Debug.Log(Data.AllDefends.Count);
-		Debug.Log(Data.AllResults.Count);
-		Debug.Log(Data.AllAttacks[1001].types.Count);
+		Debug.Log("Total Attacks Loaded : " + Data.AllAttacks.Count);
+		Debug.Log("Total Defends Loaded : " + Data.AllDefends.Count);
+		Debug.Log("Total Results Loaded : " + Data.AllResults.Count);
+		Debug.Log("Total Inventories Loaded : " + Data.AllInventories.Count);
+		Debug.Log("Total Weapons Loaded : " + Data.AllWeapons.Count);
+		Debug.Log("Total Armors Loaded : " + Data.AllArmors.Count);
+		Debug.Log("Total Accessories Loaded : " + Data.AllAccessories.Count);
+		Debug.Log("Total Materials Loaded : " + Data.AllMaterials.Count);
+		Debug.Log("Total Foods loaded : " + Data.AllFoods.Count);
 
 		// Test: Start small map
 		UnityEngine.SceneManagement.SceneManager.LoadScene(3);
@@ -109,4 +158,21 @@ public struct DefendsData{
 [System.Serializable]
 public struct ResultsData{
 	public List<Result> results;
+}
+
+[System.Serializable]
+public struct EquipmentsData{
+	public List<Weapon> weapons;
+	public List<Armor> armors;
+	public List<Accessory> accessories;
+}
+
+[System.Serializable]
+public struct MaterialsData{
+	public List<Material> materials;
+}
+
+[System.Serializable]
+public struct FoodsData{
+	public List<Food> foods;
 }

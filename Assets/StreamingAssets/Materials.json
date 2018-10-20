@@ -1,0 +1,109 @@
+{
+  "materials": [
+    {
+      "id": 8001,
+      "name": "\u5149\u5b66\u96f6\u4ef6",
+      "weight": 2.0,
+      "description": "\u5149\u5b66\u5143\u4ef6\uff0c\u53ef\u4ee5\u5236\u9020\u5149\u5b66\u79d1\u6280\u6b66\u5668",
+      "value": 30.0
+    },
+    {
+      "id": 8002,
+      "name": "\u529b\u5b66\u96f6\u4ef6",
+      "weight": 2.0,
+      "description": "\u529b\u5b66\u5143\u4ef6\uff0c\u53ef\u4ee5\u5236\u9020\u529b\u5b66\u79d1\u6280\u6b66\u5668",
+      "value": 30.0
+    },
+    {
+      "id": 8003,
+      "name": "\u7535\u78c1\u96f6\u4ef6",
+      "weight": 2.0,
+      "description": "\u7535\u78c1\u5143\u4ef6\uff0c\u53ef\u4ee5\u5236\u9020\u7535\u78c1\u5b66\u79d1\u6280\u6b66\u5668",
+      "value": 30.0
+    },
+    {
+      "id": 8004,
+      "name": "\u4f20\u611f\u5668",
+      "weight": 2.0,
+      "description": "\u4f20\u611f\u5668\uff0c\u7528\u4ee5\u5236\u9020\u79d1\u6280\u6b66\u5668",
+      "value": 30.0
+    },
+    {
+      "id": 8005,
+      "name": "\u7ebf\u5708",
+      "weight": 2.0,
+      "description": "\u7ebf\u5708\uff0c\u7528\u4ee5\u5236\u9020\u79d1\u6280\u6b66\u5668",
+      "value": 30.0
+    },
+    {
+      "id": 8006,
+      "name": "\u7834\u70c2\u7684\u81ea\u884c\u8f66",
+      "weight": 3.0,
+      "description": "\u5df2\u7ecf\u6ca1\u529e\u6cd5\u4f7f\u7528\uff0c\u4e0d\u8fc7\u53ef\u4ee5\u62c6\u5f00\u83b7\u5f97\u4e00\u4e9b\u6750\u6599",
+      "value": 10.0
+    },
+    {
+      "id": 8007,
+      "name": "\u4e00\u5927\u5806\u4e71\u7cdf\u7cdf\u7684\u5934\u53d1",
+      "weight": 1.0,
+      "description": "\u6563\u53d1\u51fa\u602a\u5f02\u7684\u81ed\u6c14\uff0c\u53ef\u4ee5\u7528\u6765\u5236\u4f5c\u5e03\u6599",
+      "value": 5.0
+    },
+    {
+      "id": 8008,
+      "name": "\u788e\u73bb\u7483",
+      "weight": 2.0,
+      "description": "\u4e00\u5305\u788e\u73bb\u7483\u78b4",
+      "value": 15.0
+    },
+    {
+      "id": 8009,
+      "name": "\u7b14\u8bb0\u672c\u7535\u8111",
+      "weight": 2.0,
+      "description": "\u4e00\u4e2a\u7834\u65e7\u7684\u7b14\u8bb0\u672c\u7535\u8111",
+      "value": 40.0
+    },
+    {
+      "id": 8010,
+      "name": "\u94c1\u4e1d",
+      "weight": 1.0,
+      "description": "\u4e00\u4e9b\u94c1\u4e1d",
+      "value": 10.0
+    },
+    {
+      "id": 8011,
+      "name": "\u635f\u574f\u7684\u9677\u9631",
+      "weight": 2.0,
+      "description": "\u4e00\u4e2a\u7528\u574f\u7684\u9677\u9631\uff0c\u53ef\u4ee5\u5206\u89e3\u83b7\u5f97\u4e00\u4e9b\u6750\u6599",
+      "value": 10.0
+    },
+    {
+      "id": 8012,
+      "name": "\u80fd\u6e90\u7cbe\u7cb9",
+      "weight": 1.0,
+      "description": "\u7eaf\u51c0\u7684\u80fd\u6e90\u7cbe\u7cb9\uff0c\u53ef\u4ee5\u4e3a\u9ad8\u79d1\u6280\u6b66\u5668\u5145\u80fd",
+      "value": 30.0
+    },
+    {
+      "id": 8013,
+      "name": "\u80fd\u6e90\u6838\u5fc3",
+      "weight": 2.0,
+      "description": "\u80fd\u6e90\u7cbe\u7cb9\u8fdb\u884c\u591a\u6b21\u63d0\u7eaf\u7684\u6210\u679c\uff0c\u9002\u914d\u6700\u6bc1\u706d\u6027\u7684\u5404\u79cd\u6b66\u5668",
+      "value": 50.0
+    },
+    {
+      "id": 8014,
+      "name": "\u7535\u6c60",
+      "weight": 1.0,
+      "description": "\u4f3c\u4e4e\u7535\u91cf\u8fd8\u6bd4\u8f83\u5145\u8db3",
+      "value": 20.0
+    },
+    {
+      "id": 8015,
+      "name": "\u706b\u836f",
+      "weight": 1.0,
+      "description": "\u9ed1\u706b\u836f\uff0c\u53ef\u4ee5\u7528\u6765\u5236\u9020\u5b50\u5f39",
+      "value": 15.0
+    }
+  ]
+}

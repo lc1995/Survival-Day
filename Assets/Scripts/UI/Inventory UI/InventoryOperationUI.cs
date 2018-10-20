@@ -45,6 +45,7 @@ public class InventoryOperationUI : MonoBehaviour {
         description.text = inventory.description;
     }
 
+
     // ------ Private Functions ------
 
 }

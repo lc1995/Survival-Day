@@ -175,7 +175,8 @@ public class UIManager : MonoBehaviour{
     public void OnBoardBtnClick(GameObject go){
         mapHub.SetActive(false);
         go.SetActive(true);
-        go.GetComponent<BoardBase>().Enter();
+        if(go.GetComponent<BoardBase>() != null)
+            go.GetComponent<BoardBase>().Enter();
     }
 
     /// <summary>
@@ -184,7 +185,8 @@ public class UIManager : MonoBehaviour{
     /// </summary>
     /// <param name="go">GameObject to disative</param>
     public void OnBoardExitClick(GameObject go){
-        go.GetComponent<BoardBase>().Exit();
+        if(go.GetComponent<BoardBase>() != null)
+            go.GetComponent<BoardBase>().Exit();
         go.SetActive(false);
         mapHub.SetActive(true);
     }

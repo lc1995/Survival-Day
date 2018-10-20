@@ -13,9 +13,8 @@ public class InventoryUI : BoardBase {
 
     // ------ Public Variables ------
     public InventoryOperationUI operationUI;
-
-    public Transform inventoryPanel;
-    public SimpleObjectPool objectPool;
+    public InventoryListUI listUI;
+    public InventoryCurrentUI currentUI;
 
     // ------ Shared Variables ------
 
@@ -32,28 +31,16 @@ public class InventoryUI : BoardBase {
 		
 	}
 
+    // ------ Public Functions ------
     public override void Enter(){
-        // Initialize all inventories
-        foreach(Inventory inv in Data.player.inventories.Keys){
-            GameObject go = objectPool.GetObject();
-            go.transform.SetParent(inventoryPanel);
-            go.GetComponent<InventoryButtonUI>().inventoryUI = this;
-
-            InventoryButtonUI buttonUI = go.GetComponent<InventoryButtonUI>();
-            buttonUI.inventory = inv;
-            buttonUI.UpdateUI();
-        }
+        currentUI.UpdateUI();
+        listUI.ShowAllInventories();
     }
 
     public override void Exit(){
-        // Release all buttons
-        foreach(Transform btn in inventoryPanel.GetComponentsInChildren<Transform>()){
-            if(btn.GetComponent<InventoryButtonUI>())
-                objectPool.ReturnObject(btn.gameObject);
-        }
+        listUI.HideAllInventories();
     }
 
-    // ------ Public Functions ------
     public void ActivateOperationPanel(Inventory inventory){
         operationUI.gameObject.SetActive(true);
         operationUI.Initialize(inventory);

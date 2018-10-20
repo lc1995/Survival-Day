@@ -1,17 +1,17 @@
 ﻿/*******************************************
 * Description
-* This class is the interaction for placing object
+* This class is repsonsible for all items.
+*
 *******************************************/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractionPlaceObject : Interaction{
+[System.Serializable]
+public class Item : Inventory {
 
     // ------ Public Variables ------
-    public GameObject objectToPlace;
-    public float duration;
 
     // ------ Shared Variables ------
 
@@ -20,15 +20,8 @@ public class InteractionPlaceObject : Interaction{
     // ------ Required Components ------
 
     // ------ Public Functions ------
-    public InteractionPlaceObject(string desc, GameObject pObject) : base(desc){
-        this.objectToPlace = pObject;
-        this.duration = 1f;
-    }
-
-    public override void Interact(){
-        base.Interact();
-
-        PlayerControl.instance.PlaceObject(this);
+    public Item(int id) : base(id){
+        
     }
 
     // ------ Private Functions ------

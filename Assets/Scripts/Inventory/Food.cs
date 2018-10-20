@@ -1,20 +1,18 @@
 ﻿/*******************************************
 * Description
-* This class is the base class for all inventories.
-* Inventory includes equipments(weapon and armor), food, items and others
+* This class is repsonsible for all food.
+*
 *******************************************/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory{
+[System.Serializable]
+public class Food : Inventory {
 
     // ------ Public Variables ------
-    public int id;
-    public string name;
-    public string description;
-    public float weight;
+    public float hungryRecover;
 
     // ------ Shared Variables ------
 
@@ -22,14 +20,9 @@ public class Inventory{
 
     // ------ Required Components ------
 
-    // ------ Event Functions ------
-
     // ------ Public Functions ------
-    public Inventory(int id){
-        this.id = id;
-        this.name = "Default";
-        this.description = "Default";
-        this.weight = 1f;
+    public Food(int id) : base(id){
+        this.hungryRecover = 0f;
     }
 
     // ------ Private Functions ------

@@ -1,25 +1,22 @@
 ﻿/*******************************************
 * Description
-* This class is responsible for all equipments, including weapons and armors
+* This class is the base class for all inventories.
+* Inventory includes equipments(weapon and armor), food, items and others
 *******************************************/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EquipmentType{
-    Weapon,
-    Armor,
-    Accessory
-}
-
-public class Equipment : Inventory {
+[System.Serializable]
+public class Inventory{
 
     // ------ Public Variables ------
-    EquipmentType type;
-    float pAtk;
-    float mAtk;
-    float hit;
+    public int id;
+    public string name;
+    public string description;
+    public float weight;
+    public float value;
 
     // ------ Shared Variables ------
 
@@ -30,8 +27,12 @@ public class Equipment : Inventory {
     // ------ Event Functions ------
 
     // ------ Public Functions ------
-    public Equipment(int id, EquipmentType type) : base(id){
-        this.type = type;
+    public Inventory(int id){
+        this.id = id;
+        this.name = "Default";
+        this.description = "Default";
+        this.weight = 1f;
+        this.value = 1f;
     }
 
     // ------ Private Functions ------

@@ -658,7 +658,7 @@ GameObject:
   - component: {fileID: 93793079}
   - component: {fileID: 93793080}
   m_Layer: 5
-  m_Name: Panel (4)
+  m_Name: Accessory Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1267,6 +1267,45 @@ MonoBehaviour:
   character:
     isPlayer: 0
     name: 
+    currentWeight: 0
+    maxWeight: 0
+    money: 0
+    weapon:
+      id: 0
+      name: 
+      description: 
+      weight: 0
+      value: 0
+      type: 0
+      pAtk: 0
+      mAtk: 0
+      accuracy: 0
+    armor:
+      id: 0
+      name: 
+      description: 
+      weight: 0
+      value: 0
+      pDefense: 0
+      mDefense: 0
+      strength: 0
+      intellect: 0
+      agility: 0
+      health: 0
+      coldWarm: 0
+    accessory:
+      id: 0
+      name: 
+      description: 
+      weight: 0
+      value: 0
+      pDefense: 0
+      mDefense: 0
+      strength: 0
+      intellect: 0
+      agility: 0
+      health: 0
+      coldWarm: 0
     attackPool: []
   speed: 1
 --- !u!58 &195807056
@@ -1388,6 +1427,29 @@ Transform:
   m_Father: {fileID: 533486255}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &223087605 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1242263103880632, guid: d5fa7ac2c9c456940b9beb760b4e39a6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1255475442}
+--- !u!95 &223087606
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 223087605}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1608023708401464c8610184d46e3fd8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &239664800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,7 +1839,7 @@ GameObject:
   - component: {fileID: 318168103}
   - component: {fileID: 318168102}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Weight And Money Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2159,7 +2221,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 350681825}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2002107397}
+        m_MethodName: ShowFoods
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &350681825
@@ -2500,7 +2573,7 @@ GameObject:
   - component: {fileID: 414761264}
   - component: {fileID: 414761265}
   m_Layer: 5
-  m_Name: Panel (3)
+  m_Name: Armor Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2775,7 +2848,7 @@ GameObject:
   - component: {fileID: 437522365}
   - component: {fileID: 437522364}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3165,7 +3238,7 @@ GameObject:
   - component: {fileID: 514860336}
   - component: {fileID: 514860335}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3614,7 +3687,7 @@ GameObject:
   - component: {fileID: 617256856}
   - component: {fileID: 617256855}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3689,7 +3762,7 @@ GameObject:
   - component: {fileID: 618895319}
   - component: {fileID: 618895318}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3739,7 +3812,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 6
     m_MaxSize: 60
-    m_Alignment: 5
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -4123,8 +4196,9 @@ GameObject:
   - component: {fileID: 714319005}
   - component: {fileID: 714319004}
   - component: {fileID: 714319003}
+  - component: {fileID: 714319006}
   m_Layer: 5
-  m_Name: Current
+  m_Name: Inventory Current
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4208,6 +4282,23 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 714319001}
   m_CullTransparentMesh: 0
+--- !u!114 &714319006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 714319001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280bfb584d32ac74e8a9556aa5c1a227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 1323914625}
+  weightText: {fileID: 618895318}
+  moneyText: {fileID: 437522364}
+  weaponText: {fileID: 617256855}
+  armorText: {fileID: 1601710643}
+  accessoryText: {fileID: 719929654}
 --- !u!1 &719929652
 GameObject:
   m_ObjectHideFlags: 0
@@ -4219,7 +4310,7 @@ GameObject:
   - component: {fileID: 719929655}
   - component: {fileID: 719929654}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4964,6 +5055,45 @@ MonoBehaviour:
   character:
     isPlayer: 0
     name: 
+    currentWeight: 0
+    maxWeight: 0
+    money: 0
+    weapon:
+      id: 0
+      name: 
+      description: 
+      weight: 0
+      value: 0
+      type: 0
+      pAtk: 0
+      mAtk: 0
+      accuracy: 0
+    armor:
+      id: 0
+      name: 
+      description: 
+      weight: 0
+      value: 0
+      pDefense: 0
+      mDefense: 0
+      strength: 0
+      intellect: 0
+      agility: 0
+      health: 0
+      coldWarm: 0
+    accessory:
+      id: 0
+      name: 
+      description: 
+      weight: 0
+      value: 0
+      pDefense: 0
+      mDefense: 0
+      strength: 0
+      intellect: 0
+      agility: 0
+      health: 0
+      coldWarm: 0
     attackPool: []
   speed: 0
 --- !u!58 &922310376
@@ -5174,7 +5304,7 @@ GameObject:
   - component: {fileID: 947491184}
   - component: {fileID: 947491185}
   m_Layer: 5
-  m_Name: Panel (1)
+  m_Name: Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5296,7 +5426,7 @@ GameObject:
   - component: {fileID: 981272738}
   - component: {fileID: 981272737}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5743,7 +5873,7 @@ GameObject:
   - component: {fileID: 1064837134}
   - component: {fileID: 1064837133}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6116,6 +6246,45 @@ MonoBehaviour:
   character:
     isPlayer: 0
     name: 
+    currentWeight: 0
+    maxWeight: 0
+    money: 0
+    weapon:
+      id: 0
+      name: 
+      description: 
+      weight: 0
+      value: 0
+      type: 0
+      pAtk: 0
+      mAtk: 0
+      accuracy: 0
+    armor:
+      id: 0
+      name: 
+      description: 
+      weight: 0
+      value: 0
+      pDefense: 0
+      mDefense: 0
+      strength: 0
+      intellect: 0
+      agility: 0
+      health: 0
+      coldWarm: 0
+    accessory:
+      id: 0
+      name: 
+      description: 
+      weight: 0
+      value: 0
+      pDefense: 0
+      mDefense: 0
+      strength: 0
+      intellect: 0
+      agility: 0
+      health: 0
+      coldWarm: 0
     attackPool: []
   speed: 1
 --- !u!58 &1143015155
@@ -6247,7 +6416,7 @@ GameObject:
   - component: {fileID: 1148915620}
   - component: {fileID: 1148915621}
   m_Layer: 5
-  m_Name: Panel (2)
+  m_Name: Weapon Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6781,7 +6950,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1192721992}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2002107397}
+        m_MethodName: ShowOthers
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1192721992
@@ -6893,7 +7073,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1196610379}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2002107397}
+        m_MethodName: ShowEquipments
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1196610379
@@ -7276,6 +7467,27 @@ Prefab:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 609897005}
+    - target: {fileID: 212380450265683010, guid: d5fa7ac2c9c456940b9beb760b4e39a6,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e4ec0b69156acce4fa05a578178e7884,
+        type: 3}
+    - target: {fileID: 212380450265683010, guid: d5fa7ac2c9c456940b9beb760b4e39a6,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.40625
+      objectReference: {fileID: 0}
+    - target: {fileID: 212380450265683010, guid: d5fa7ac2c9c456940b9beb760b4e39a6,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2.8125
+      objectReference: {fileID: 0}
+    - target: {fileID: 212380450265683010, guid: d5fa7ac2c9c456940b9beb760b4e39a6,
+        type: 2}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5fa7ac2c9c456940b9beb760b4e39a6, type: 2}
   m_IsPrefabAsset: 0
@@ -7432,6 +7644,45 @@ MonoBehaviour:
   character:
     isPlayer: 0
     name: 
+    currentWeight: 0
+    maxWeight: 0
+    money: 0
+    weapon:
+      id: 0
+      name: 
+      description: 
+      weight: 0
+      value: 0
+      type: 0
+      pAtk: 0
+      mAtk: 0
+      accuracy: 0
+    armor:
+      id: 0
+      name: 
+      description: 
+      weight: 0
+      value: 0
+      pDefense: 0
+      mDefense: 0
+      strength: 0
+      intellect: 0
+      agility: 0
+      health: 0
+      coldWarm: 0
+    accessory:
+      id: 0
+      name: 
+      description: 
+      weight: 0
+      value: 0
+      pDefense: 0
+      mDefense: 0
+      strength: 0
+      intellect: 0
+      agility: 0
+      health: 0
+      coldWarm: 0
     attackPool: []
   speed: 1
 --- !u!1 &1270242590
@@ -7623,7 +7874,7 @@ GameObject:
   - component: {fileID: 1299005789}
   - component: {fileID: 1299005788}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7891,8 +8142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   operationUI: {fileID: 945271265}
-  inventoryPanel: {fileID: 975727464}
-  objectPool: {fileID: 1323914624}
+  listUI: {fileID: 2002107397}
+  currentUI: {fileID: 714319006}
 --- !u!114 &1323914626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8246,7 +8497,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1413956838}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2002107397}
+        m_MethodName: ShowAllInventories
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1413956838
@@ -8533,7 +8795,7 @@ GameObject:
   - component: {fileID: 1442919994}
   - component: {fileID: 1442919993}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Operation Buttons Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9174,7 +9436,7 @@ GameObject:
   - component: {fileID: 1601710644}
   - component: {fileID: 1601710643}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9770,7 +10032,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1707906690}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2002107397}
+        m_MethodName: ShowItems
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1707906690
@@ -9917,7 +10190,7 @@ GameObject:
   - component: {fileID: 1718672237}
   - component: {fileID: 1718672238}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Weight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10158,7 +10431,7 @@ GameObject:
   - component: {fileID: 1787974997}
   - component: {fileID: 1787974996}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11514,8 +11787,10 @@ GameObject:
   - component: {fileID: 2002107394}
   - component: {fileID: 2002107396}
   - component: {fileID: 2002107395}
+  - component: {fileID: 2002107397}
+  - component: {fileID: 2002107398}
   m_Layer: 5
-  m_Name: Inventory
+  m_Name: Inventory List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11575,6 +11850,32 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2002107393}
   m_CullTransparentMesh: 0
+--- !u!114 &2002107397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2002107393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8729c5ed263ea5540a9d93cb2a90e3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 1323914625}
+  inventoryPanel: {fileID: 975727464}
+  objectPool: {fileID: 2002107398}
+--- !u!114 &2002107398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2002107393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d734c634887ad40b54732de1b08f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1544754825307958, guid: 073717949d936d0489733768dd31f113, type: 2}
 --- !u!1 &2092963825
 GameObject:
   m_ObjectHideFlags: 0

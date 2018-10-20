@@ -15,13 +15,17 @@ public class Character{
 	public bool isPlayer;
 	public string name;
 
+	public float currentWeight;
+	public float maxWeight;
+	public float money;
+
 	public CharProperty originalProperty;	// Initial property
 	public CharProperty finalProperty;	// Final property considering equipments and labels
 	public CharProperty currentProperty;	// Current property
 
-	public Equipment weapon;
-	public Equipment armor;
-	public Equipment accessory;
+	public Weapon weapon;
+	public Armor armor;
+	public Accessory accessory;
 
 	public List<Label> labels;
 
@@ -49,6 +53,10 @@ public class Character{
 		isPlayer = ip;
 
 		// Initialization
+		// Weight And Money
+		maxWeight = 20f;
+		currentWeight = 0f;
+		money = 200f;
 		// Property
 		originalProperty = CharProperty.standard;
 		UpdateFinalProperty();
@@ -72,21 +80,6 @@ public class Character{
 	}
 
 	/// <summary>
-	/// Initialize a character by CharProperty
-	/// </summary>
-	/// <param name="n">Name</param>
-	/// <param name="cp">Character property</param>
-	/// <param name="ip">Is player</param>
-	public Character(string n, CharProperty cp, bool ip=false){
-		name = n;
-		isPlayer = ip;
-
-		originalProperty = cp;
-		UpdateFinalProperty();
-		currentProperty = finalProperty;
-	}
-
-	/// <summary>
 	/// Character gets damage both physical and magical
 	/// </summary>
 	/// <param name="pDamage">Physical damage</param>
@@ -98,6 +91,38 @@ public class Character{
 
 	public void Reset(){
 		currentProperty = finalProperty;
+	}
+
+	/// <summary>
+	/// Character obtains inventory
+	/// </summary>
+	/// <param name="inventory">The inventory obtained</param>
+	/// <param name="number">Number of the inventories</param>
+	public void ObtainInventory(Inventory inventory, int number){
+		if(inventories.ContainsKey(inventory)){
+			inventories[inventory] += number;
+		}else{
+			inventories.Add(inventory, number);
+		}
+		currentWeight += inventory.weight * number;
+	}
+
+	/// <summary>
+	/// Character comsumes inventory
+	/// </summary>
+	/// <param name="inventory">The inventory comsumed</param>
+	/// <param name="number">Number of the inventories</param>
+	/// <returns>Whether there is enough number of given inventories to consume</returns>
+	public bool ConsumeInventory(Inventory inventory, int number){
+		if(inventories.ContainsKey(inventory) && inventories[inventory] >= number){
+			inventories[inventory] -= number;
+			if(inventories[inventory] == 0)
+				inventories.Remove(inventory);
+			currentWeight -= inventory.weight * number;
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	/// <summary>
