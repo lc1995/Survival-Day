@@ -21,7 +21,6 @@ public class Character{
 
 	public CharProperty originalProperty;	// Initial property
 	public CharProperty finalProperty;	// Final property considering equipments and labels
-	public CharProperty currentProperty;	// Current property
 
 	public Weapon weapon;
 	public Armor armor;
@@ -53,14 +52,18 @@ public class Character{
 		isPlayer = ip;
 
 		// Initialization
+		// Equipments
+		weapon = Weapon.Default;
+		armor = Armor.Default;
+		accessory = Accessory.Default;
 		// Weight And Money
 		maxWeight = 20f;
 		currentWeight = 0f;
 		money = 200f;
 		// Property
 		originalProperty = CharProperty.standard;
-		UpdateFinalProperty();
-		currentProperty = finalProperty;
+		finalProperty = originalProperty;
+		UpdateFinalProperty(true);
 		// Label
 		labels = new List<Label>();
 		// Inventory
@@ -85,12 +88,12 @@ public class Character{
 	/// <param name="pDamage">Physical damage</param>
 	/// <param name="mDamage">Magical damage</param>
 	public void GetDamage(float pDamage, float mDamage){
-		currentProperty.hp -= pDamage * 100f / (100f + currentProperty.pResist);
-		currentProperty.hp -= mDamage * 100f / (100f + currentProperty.mResist);
+		finalProperty.hp -= pDamage * 100f / (100f + finalProperty.pResist);
+		finalProperty.hp -= mDamage * 100f / (100f + finalProperty.mResist);
 	}
 
 	public void Reset(){
-		currentProperty = finalProperty;
+		finalProperty.hp = finalProperty.hpMax;
 	}
 
 	/// <summary>
@@ -125,25 +128,77 @@ public class Character{
 		}
 	}
 
+	public bool HasEquip(Inventory inventory){
+		if(this.weapon == inventory as Weapon ||
+		this.armor == inventory as Armor ||
+		this.accessory == inventory as Accessory)
+			return true;
+		else
+			return false;
+	}
+
+	public void Equip(Weapon weapon){
+		this.weapon = weapon;
+		UpdateFinalProperty();
+	}
+
+	public void Equip(Armor armor){
+		this.armor = armor;
+		UpdateFinalProperty();
+	}
+
+	public void Equip(Accessory accessory){
+		this.accessory = accessory;
+		UpdateFinalProperty();
+	}
+
+	public void Eat(Food food){
+		float hunger = finalProperty.hunger += food.hungryRecover;
+		if(hunger > finalProperty.hungerMax)
+			finalProperty.hunger = finalProperty.hungerMax;
+		else
+			finalProperty.hunger = hunger;
+	}
+
 	/// <summary>
 	/// Update final property calculated by equipments and labels
 	/// </summary>
-	public void UpdateFinalProperty(){
+	public void UpdateFinalProperty(bool isFirstUpdate=false){
 		// Calculate property by equipments and labels
 		// ...
-		finalProperty = originalProperty;
+		CharProperty newProperty = originalProperty;
+
+		newProperty.hpMax += armor.health + accessory.health;
+
+		newProperty.pDamage += weapon.pAtk;
+		newProperty.mDamage += weapon.mAtk;
+
+		newProperty.strength += armor.strength + accessory.strength;
+		newProperty.aligity += armor.agility + accessory.agility;
+		newProperty.intellect += armor.intellect + accessory.intellect;
+
+		newProperty.pResist += armor.pDefense + accessory.pDefense;
+		newProperty.mResist += armor.mDefense + accessory.mDefense;
 
 		// Calculate 2-level property by 1-level property
-		finalProperty.dodge += finalProperty.aligity * 1f;
-		finalProperty.pResist += finalProperty.strength * 1f;
-		finalProperty.mResist += finalProperty.intellect * 1f;
+		newProperty.dodge += finalProperty.aligity * 1f;
+		newProperty.pResist += finalProperty.strength * 1f;
+		newProperty.mResist += finalProperty.intellect * 1f;
+
+		// Keep hp and hunger
+		newProperty.hp = finalProperty.hp;
+		newProperty.hunger = finalProperty.hunger;
+
+		finalProperty = newProperty;
 	}
 }
 
 public struct CharProperty{
 
 	public float hp;
+	public float hpMax;
 	public float hunger;
+	public float hungerMax;
 
 	public float strength;
 	public float aligity;
@@ -158,7 +213,9 @@ public struct CharProperty{
 
 	public CharProperty(float hp, float hunger, float str, float dex, float inte, float tech){
 		this.hp = hp;
+		this.hpMax = hp;
 		this.hunger = hunger;
+		this.hungerMax = hunger;
 
 		this.strength = str;
 		this.aligity = dex;

@@ -167,9 +167,9 @@ public class TestInSmallMap : MonoBehaviour {
             Data.player.ObtainInventory(inv, Random.Range(1, 4));
         }
 
-        Data.player.weapon = Data.AllWeapons[2001];
-        Data.player.armor = Data.AllArmors[1001];
-        Data.player.accessory = Data.AllAccessories[15001];
+        Data.player.Equip(Data.AllWeapons[2001]);
+        Data.player.Equip(Data.AllArmors[1001]);
+        Data.player.Equip(Data.AllAccessories[15001]);
     }
 
     private void BattleWin(SmallMapObject smo){

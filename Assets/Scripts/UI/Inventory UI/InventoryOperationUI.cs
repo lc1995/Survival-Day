@@ -16,9 +16,16 @@ public class InventoryOperationUI : MonoBehaviour {
     public RectTransform operationBoard;
     public Text description;
 
+    [Header("Operation Buttons")]
+    public Button eatBtn;
+    public Button equipBtn;
+    public Button decomposeBtn;
+    public Button abandonBtn;
+
     // ------ Shared Variables ------
 
     // ------ Private Variables ------
+    private InventoryButtonUI ibtn;
 
     // ------ Required Components ------
 
@@ -32,7 +39,13 @@ public class InventoryOperationUI : MonoBehaviour {
 	}
 
     // ------ Public Functions ------
-    public void Initialize(Inventory inventory){
+    /// <summary>
+    /// Initialize the operation board for specific inventory
+    /// </summary>
+    /// <param name="ibtn">Referenced InventoryButtonUI</param>
+    public void Initialize(InventoryButtonUI ibtn){
+        this.ibtn = ibtn;
+
         // Set pivot and position of the board
         if(Input.mousePosition.x + operationBoard.rect.width > Display.main.systemWidth){
             operationBoard.pivot = new Vector2(1, 1);
@@ -41,10 +54,61 @@ public class InventoryOperationUI : MonoBehaviour {
         }
         operationBoard.position = Input.mousePosition;
 
+        // Update buttons
+        System.Type inventoryType = ibtn.inventory.GetType();
+        if((inventoryType == typeof(Weapon) || inventoryType == typeof(Armor) || inventoryType == typeof(Accessory)) &&
+        !Data.player.HasEquip(ibtn.inventory)){
+            equipBtn.interactable = true;
+        }else{
+            equipBtn.interactable = false;
+        }
+        if(inventoryType == typeof(Food)){
+            eatBtn.interactable = true;
+        }else{
+            eatBtn.interactable = false;
+        }
+        decomposeBtn.interactable = false;
+        if(Data.player.HasEquip(ibtn.inventory)){
+            abandonBtn.interactable = false;
+        }else{
+            abandonBtn.interactable = true;
+        }
+
         // Update text
-        description.text = inventory.description;
+        description.text = ibtn.inventory.description;
     }
 
+    public void Equip(){
+        System.Type inventoryType = ibtn.inventory.GetType();
+        if(inventoryType == typeof(Weapon)){
+            Data.player.Equip(ibtn.inventory as Weapon);
+        }else if(inventoryType == typeof(Armor)){
+            Data.player.Equip(ibtn.inventory as Armor);
+        }else{
+            Data.player.Equip(ibtn.inventory as Accessory);
+        }
+
+        inventoryUI.listUI.UpdateUI();
+        inventoryUI.currentUI.UpdateUI();
+        gameObject.SetActive(false);
+    }
+
+    public void Eat(){
+        Data.player.Eat(ibtn.inventory as Food);
+        Data.player.ConsumeInventory(ibtn.inventory, 1);
+
+        inventoryUI.listUI.UpdateUI();
+        inventoryUI.currentUI.UpdateUI();
+        gameObject.SetActive(false);
+    }
+
+    public void Abandon(){
+        Data.player.ConsumeInventory(ibtn.inventory, 1);
+
+        inventoryUI.listUI.UpdateUI();
+        inventoryUI.currentUI.UpdateUI();
+        gameObject.SetActive(false);
+    }
 
     // ------ Private Functions ------
 

@@ -31,12 +31,17 @@ public class InventoryButtonUI : MonoBehaviour {
 
     // ------ Public Functions ------
     public void UpdateUI(){
-        nameWithNumberText.text = inventory.name + " x " + Data.player.inventories[inventory].ToString();
-        weightText.text = inventory.weight.ToString() + "kg";
+        if(Data.player.HasEquip(inventory)){
+            nameWithNumberText.text = inventory.name + "（已装备）" + " x " + Data.player.inventories[inventory].ToString();
+        }else{
+            nameWithNumberText.text = inventory.name + " x " + Data.player.inventories[inventory].ToString();
+        }
+    
+        weightText.text = inventory.weight.ToString() + "kg";     
     }
 
     public void OnButtonClick(){
-        inventoryUI.ActivateOperationPanel(inventory);
+        inventoryUI.ActivateOperationPanel(this);
     }
 
     // ------ Private Functions ------

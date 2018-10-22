@@ -10,6 +10,9 @@ using UnityEngine;
 [System.Serializable]
 public class Armor : Inventory {
 
+    // ------ Static Variables ------
+    public static Armor Default = new Armor(-1);
+
     // ------ Public Variables ------
     public float pDefense;
     public float mDefense;

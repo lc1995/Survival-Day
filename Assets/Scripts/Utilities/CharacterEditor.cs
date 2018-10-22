@@ -35,6 +35,11 @@ public class CharacterEditor : EditorWindow {
     }
 
     void OnGUI(){
+        if(!Application.isEditor)
+            return;
+        if(characters.Keys.Count == 0)
+            return;
+
         string[] names = characters.Keys.ToArray();
         selected = EditorGUILayout.Popup(selected, names);
         Character ch = characters[names[selected]];
@@ -46,25 +51,25 @@ public class CharacterEditor : EditorWindow {
         EditorGUILayout.TextField("Name", ch.name);
 
         GUILayout.BeginHorizontal();
-        EditorGUILayout.TextField("Hp", ch.currentProperty.hp.ToString() + " / " + ch.finalProperty.hp.ToString());
-        EditorGUILayout.TextField("Hunger", ch.currentProperty.hunger.ToString() + " / " + ch.finalProperty.hunger.ToString());
+        EditorGUILayout.TextField("Hp", ch.finalProperty.hp.ToString() + " / " + ch.finalProperty.hpMax.ToString());
+        EditorGUILayout.TextField("Hunger", ch.finalProperty.hunger.ToString() + " / " + ch.finalProperty.hungerMax.ToString());
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
-        EditorGUILayout.TextField("Physical Damage", ch.currentProperty.pDamage.ToString());
-        EditorGUILayout.TextField("Magical Damage", ch.currentProperty.mDamage.ToString());
-        EditorGUILayout.TextField("Physical Resist", ch.currentProperty.pResist.ToString());
-        EditorGUILayout.TextField("Magical Resist", ch.currentProperty.mResist.ToString());
+        EditorGUILayout.TextField("Physical Damage", ch.finalProperty.pDamage.ToString());
+        EditorGUILayout.TextField("Magical Damage", ch.finalProperty.mDamage.ToString());
+        EditorGUILayout.TextField("Physical Resist", ch.finalProperty.pResist.ToString());
+        EditorGUILayout.TextField("Magical Resist", ch.finalProperty.mResist.ToString());
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
-        EditorGUILayout.TextField("Strength", ch.currentProperty.strength.ToString());
-        EditorGUILayout.TextField("Dexterity", ch.currentProperty.aligity.ToString());
-        EditorGUILayout.TextField("Intellect", ch.currentProperty.intellect.ToString());
-        EditorGUILayout.TextField("Technology", ch.currentProperty.technology.ToString());
+        EditorGUILayout.TextField("Strength", ch.finalProperty.strength.ToString());
+        EditorGUILayout.TextField("Dexterity", ch.finalProperty.aligity.ToString());
+        EditorGUILayout.TextField("Intellect", ch.finalProperty.intellect.ToString());
+        EditorGUILayout.TextField("Technology", ch.finalProperty.technology.ToString());
         GUILayout.EndHorizontal();
 
-        EditorGUILayout.TextField("Dodge", ch.currentProperty.dodge.ToString());
+        EditorGUILayout.TextField("Dodge", ch.finalProperty.dodge.ToString());
 
         EditorGUI.EndDisabledGroup();
     }

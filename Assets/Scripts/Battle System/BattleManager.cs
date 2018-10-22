@@ -233,10 +233,10 @@ public class BattleManager : MonoBehaviour {
 
 	private void CheckBattleIsOver(Character ch1, Character ch2){
 		winner = null;
-		if(ch1.currentProperty.hp <= 0){
+		if(ch1.finalProperty.hp <= 0){
 			winner = ch2;
 			state = BattleState.GameOver;
-		}else if(ch2.currentProperty.hp <= 0){
+		}else if(ch2.finalProperty.hp <= 0){
 			winner = ch1;
 			state = BattleState.GameOver;
 		}

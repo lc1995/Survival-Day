@@ -8,6 +8,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum FilterMode{
+    All,
+    Items,
+    Equipments,
+    Foods,
+    Others
+}
 
 public class InventoryListUI : MonoBehaviour {
 
@@ -20,6 +27,7 @@ public class InventoryListUI : MonoBehaviour {
     // ------ Shared Variables ------
 
     // ------ Private Variables ------
+    private FilterMode currentFilter;
 
     // ------ Required Components ------
 
@@ -33,7 +41,28 @@ public class InventoryListUI : MonoBehaviour {
 	}
 
     // ------ Public Functions ------
+    public void UpdateUI(){
+        switch(currentFilter){
+            case FilterMode.All:
+                ShowAllInventories();
+                break;
+            case FilterMode.Equipments:
+                ShowEquipments();
+                break;
+            case FilterMode.Foods:
+                ShowFoods();
+                break;
+            case FilterMode.Items:
+                ShowItems();
+                break;
+            case FilterMode.Others:
+                ShowOthers();
+                break;
+        }
+    }
+
     public void ShowAllInventories(){
+        currentFilter = FilterMode.All;
         HideAllInventories();
         foreach(Inventory inv in Data.player.inventories.Keys){
             GameObject go = objectPool.GetObject();
@@ -47,6 +76,7 @@ public class InventoryListUI : MonoBehaviour {
     }
 
     public void ShowEquipments(){
+        currentFilter = FilterMode.Equipments;
         HideAllInventories();
         foreach(Inventory inv in Data.player.inventories.Keys){
             if(inv.GetType() != typeof(Weapon) && inv.GetType() != typeof(Armor) &&
@@ -64,6 +94,7 @@ public class InventoryListUI : MonoBehaviour {
     }
 
     public void ShowFoods(){
+        currentFilter = FilterMode.Foods;
         HideAllInventories();
         foreach(Inventory inv in Data.player.inventories.Keys){
             if(inv.GetType() != typeof(Food))
@@ -81,6 +112,7 @@ public class InventoryListUI : MonoBehaviour {
 
 
     public void ShowItems(){
+        currentFilter = FilterMode.Items;
         HideAllInventories();
         foreach(Inventory inv in Data.player.inventories.Keys){
             if(inv.GetType() != typeof(Item))
@@ -97,6 +129,7 @@ public class InventoryListUI : MonoBehaviour {
     }
 
     public void ShowOthers(){
+        currentFilter = FilterMode.Others;
         HideAllInventories();
         foreach(Inventory inv in Data.player.inventories.Keys){
             if(inv.GetType() != typeof(Material))

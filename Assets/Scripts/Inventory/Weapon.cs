@@ -23,6 +23,9 @@ public enum WeaponType{
 [System.Serializable]
 public class Weapon : Inventory {
 
+    // ------ Static Variables ------
+    public static Weapon Default = new Weapon(-1, WeaponType.Special);
+
     // ------ Public Variables ------
     public WeaponType type;
     public float pAtk;
@@ -39,9 +42,9 @@ public class Weapon : Inventory {
     public Weapon(int id, WeaponType type) : base(id){
         this.type = type;
 
-        this.pAtk = 10f;
-        this.mAtk = 10f;
-        this.accuracy = 100f;
+        this.pAtk = 0f;
+        this.mAtk = 0f;
+        this.accuracy = 0f;
     }
 
     // ------ Private Functions ------

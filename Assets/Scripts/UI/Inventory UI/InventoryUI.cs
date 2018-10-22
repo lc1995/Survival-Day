@@ -41,9 +41,9 @@ public class InventoryUI : BoardBase {
         listUI.HideAllInventories();
     }
 
-    public void ActivateOperationPanel(Inventory inventory){
+    public void ActivateOperationPanel(InventoryButtonUI ibtn){
         operationUI.gameObject.SetActive(true);
-        operationUI.Initialize(inventory);
+        operationUI.Initialize(ibtn);
     }
 
     public void DisativateOperationPanel(){
