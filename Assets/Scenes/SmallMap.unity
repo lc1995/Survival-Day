@@ -1246,6 +1246,7 @@ GameObject:
   - component: {fileID: 195807057}
   - component: {fileID: 195807056}
   - component: {fileID: 195807055}
+  - component: {fileID: 195807061}
   m_Layer: 9
   m_Name: Zombie (1)
   m_TagString: Character
@@ -1427,6 +1428,24 @@ Transform:
   m_Father: {fileID: 533486255}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &195807061
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 195807054}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f7e81a5a9c8fff41832a74483c43b4d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &223087605 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1242263103880632, guid: d5fa7ac2c9c456940b9beb760b4e39a6,
@@ -4975,6 +4994,7 @@ GameObject:
   - component: {fileID: 922310377}
   - component: {fileID: 922310376}
   - component: {fileID: 922310375}
+  - component: {fileID: 922310379}
   m_Layer: 9
   m_Name: Gambling Machine
   m_TagString: Character
@@ -5156,6 +5176,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &922310379
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 922310372}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26194240bb5755043af6ab3ff6c71b72, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &945271260
 GameObject:
   m_ObjectHideFlags: 0
@@ -6225,6 +6263,7 @@ GameObject:
   - component: {fileID: 1143015156}
   - component: {fileID: 1143015155}
   - component: {fileID: 1143015154}
+  - component: {fileID: 1143015160}
   m_Layer: 9
   m_Name: Zombie (2)
   m_TagString: Character
@@ -6406,6 +6445,24 @@ Transform:
   m_Father: {fileID: 533486255}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1143015160
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1143015153}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f7e81a5a9c8fff41832a74483c43b4d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1148915619
 GameObject:
   m_ObjectHideFlags: 0
@@ -7504,6 +7561,7 @@ GameObject:
   - component: {fileID: 1263471717}
   - component: {fileID: 1263471719}
   - component: {fileID: 1263471720}
+  - component: {fileID: 1263471721}
   m_Layer: 9
   m_Name: Zombie
   m_TagString: Character
@@ -7685,6 +7743,24 @@ MonoBehaviour:
       coldWarm: 0
     attackPool: []
   speed: 1
+--- !u!95 &1263471721
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1263471714}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f7e81a5a9c8fff41832a74483c43b4d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1270242590
 GameObject:
   m_ObjectHideFlags: 0
