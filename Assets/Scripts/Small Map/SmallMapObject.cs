@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class SmallMapObject : MonoBehaviour {
 
     // ------ Public Variables ------
@@ -24,12 +24,18 @@ public class SmallMapObject : MonoBehaviour {
 
     // ------ Required Components ------
     private Rigidbody2D rb2d;
+    private SpriteRenderer sr;
     private Animator animator;
 
     // ------ Event Functions ------
     void Start () {
 		rb2d = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        // Set default ai control
+        if(ai == null)
+            ai = new StaticAI();
 	}
 
     void Update () {
@@ -38,11 +44,19 @@ public class SmallMapObject : MonoBehaviour {
 		    GetComponent<Rigidbody2D>().position += direction * speed * Time.deltaTime;
 
         // Update animation
-        if(direction != Vector2.zero){
-            animator.SetBool("IsMoving", true);
-        }else{
-            animator.SetBool("IsMoving", false);
-        }       
+        if(animator != null){
+            if(direction != Vector2.zero){
+                animator.SetBool("IsMoving", true);
+            }else{
+                animator.SetBool("IsMoving", false);
+            }
+        }
+        
+        // Flipping
+        if(direction.x <= 0)
+            sr.flipX = false;
+        else
+            sr.flipX = true;
 	}
 
     void OnTriggerEnter2D(Collider2D other){    
@@ -55,7 +69,6 @@ public class SmallMapObject : MonoBehaviour {
             if(interaction != null)
                 InteractionManager.instance.AddInteraction(interaction); 
         }
-          
     }
 
     void OnTriggerExit2D(Collider2D other){
@@ -64,6 +77,9 @@ public class SmallMapObject : MonoBehaviour {
     }
 
     // ------ Public Functions ------
+    public void DestroyItself(){
+        Destroy(gameObject);
+    }
 
     // ------ Private Functions ------
 

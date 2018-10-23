@@ -48,6 +48,7 @@ public class InventoryUI : BoardBase {
 
     public void DisativateOperationPanel(){
         operationUI.gameObject.SetActive(false);
+        operationUI.abandomUI.gameObject.SetActive(false);
     }
 
     // ------ Private Functions ------

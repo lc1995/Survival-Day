@@ -22,6 +22,12 @@ public class InventoryOperationUI : MonoBehaviour {
     public Button decomposeBtn;
     public Button abandonBtn;
 
+
+
+    [Header("Abandom UI")]
+    public InventoryAbandomUI abandomUI;
+    public RectTransform abandomBoard;
+
     // ------ Shared Variables ------
 
     // ------ Private Variables ------
@@ -48,9 +54,15 @@ public class InventoryOperationUI : MonoBehaviour {
 
         // Set pivot and position of the board
         if(Input.mousePosition.x + operationBoard.rect.width > Display.main.systemWidth){
-            operationBoard.pivot = new Vector2(1, 1);
+            if(Input.mousePosition.y - operationBoard.rect.height > 0)
+                operationBoard.pivot = new Vector2(1, 1);
+            else
+                operationBoard.pivot = new Vector2(1, 0);
         }else{
-            operationBoard.pivot = new Vector2(0, 1);
+            if(Input.mousePosition.y - operationBoard.rect.height > 0)
+                operationBoard.pivot = new Vector2(0, 1);
+            else
+                operationBoard.pivot = new Vector2(0, 0);
         }
         operationBoard.position = Input.mousePosition;
 
@@ -102,12 +114,9 @@ public class InventoryOperationUI : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    public void Abandon(){
-        Data.player.ConsumeInventory(ibtn.inventory, 1);
-
-        inventoryUI.listUI.UpdateUI();
-        inventoryUI.currentUI.UpdateUI();
-        gameObject.SetActive(false);
+    public void TryAbandom(){
+        abandomBoard.gameObject.SetActive(true);
+        abandomUI.Init(ibtn.inventory, Data.player.inventories[ibtn.inventory]);
     }
 
     // ------ Private Functions ------

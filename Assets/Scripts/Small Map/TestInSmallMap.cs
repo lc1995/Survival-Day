@@ -13,6 +13,7 @@ public class TestInSmallMap : MonoBehaviour {
     // ------ Public Variables ------
     public List<SmallMapObject> zombies;
     public SmallMapObject gamblingMachine;
+    public SmallMapObject bag;
     public GameObject trapObject;
 
     // ------ Shared Variables ------
@@ -44,6 +45,8 @@ public class TestInSmallMap : MonoBehaviour {
         InitTrapInteraction();
 
         InitTestInventory();
+
+        InitTestBag(bag);
 	}
 
     void Update () {
@@ -172,9 +175,17 @@ public class TestInSmallMap : MonoBehaviour {
         Data.player.Equip(Data.AllAccessories[15001]);
     }
 
+    private void InitTestBag(SmallMapObject bag){
+        // 探险家之剑
+        Weapon weapon = Data.AllWeapons[2001];
+        InteractionObtainObject swordBag = new InteractionObtainObject("捡起" + weapon.name, weapon, 1, bag);
+
+        bag.interaction = swordBag;
+    }
+
     private void BattleWin(SmallMapObject smo){
         UIManager.instance.AddInfoInBoard("你把" + smo.character.name + "砍死了");
-        Destroy(smo.gameObject);
+        smo.DestroyItself();
     }
 
     private void BattleFail(SmallMapObject smo){
