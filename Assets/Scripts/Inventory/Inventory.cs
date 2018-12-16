@@ -17,6 +17,7 @@ public class Inventory{
     public string description;
     public float weight;
     public float value;
+    public Sprite sprite;
 
     // ------ Shared Variables ------
 

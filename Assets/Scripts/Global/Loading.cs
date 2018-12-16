@@ -77,14 +77,23 @@ public class Loading : MonoBehaviour {
 		EquipmentsData equipmentsData = JsonUtility.FromJson<EquipmentsData>(lft.fileText);
 		
 		foreach(Weapon weapon in equipmentsData.weapons){
+			Sprite sprite = Resources.Load<Sprite>("Sprites/Weapons/" + weapon.id);
+			weapon.sprite = sprite;
+
 			Data.AllWeapons.Add(weapon.id, weapon);
 			Data.AllInventories.Add(weapon.id, weapon as Inventory);
 		}
 		foreach(Armor armor in equipmentsData.armors){
+			Sprite sprite = Resources.Load<Sprite>("Sprites/Clothes/" + armor.id);
+			armor.sprite = sprite;
+
 			Data.AllArmors.Add(armor.id, armor);
 			Data.AllInventories.Add(armor.id, armor as Inventory);
 		}
 		foreach(Accessory accessory in equipmentsData.accessories){
+			Sprite sprite = Resources.Load<Sprite>("Sprites/Hats/" + accessory.id);
+			accessory.sprite = sprite;
+
 			Data.AllAccessories.Add(accessory.id, accessory);
 			Data.AllInventories.Add(accessory.id, accessory as Inventory);
 		}

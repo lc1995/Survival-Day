@@ -26,7 +26,7 @@ public class Character{
 	public Armor armor;
 	public Accessory accessory;
 
-	public List<Label> labels;
+	public List<Label> labels = new List<Label>();
 
 	public Dictionary<Inventory, int> inventories;
 
@@ -140,16 +140,22 @@ public class Character{
 	public void Equip(Weapon weapon){
 		this.weapon = weapon;
 		UpdateFinalProperty();
+
+		PlayerControl.instance.weaponSr.sprite = weapon.sprite;
 	}
 
 	public void Equip(Armor armor){
 		this.armor = armor;
 		UpdateFinalProperty();
+
+		PlayerControl.instance.clothesSr.sprite = armor.sprite;
 	}
 
 	public void Equip(Accessory accessory){
 		this.accessory = accessory;
 		UpdateFinalProperty();
+
+		PlayerControl.instance.hatSr.sprite = accessory.sprite;
 	}
 
 	public void Eat(Food food){
@@ -165,7 +171,7 @@ public class Character{
 	/// </summary>
 	public void UpdateFinalProperty(bool isFirstUpdate=false){
 		// Calculate property by equipments and labels
-		// ...
+		// 1. Equipments
 		CharProperty newProperty = originalProperty;
 
 		newProperty.hpMax += armor.health + accessory.health;
@@ -174,21 +180,26 @@ public class Character{
 		newProperty.mDamage += weapon.mAtk;
 
 		newProperty.strength += armor.strength + accessory.strength;
-		newProperty.aligity += armor.agility + accessory.agility;
+		newProperty.agility += armor.agility + accessory.agility;
 		newProperty.intellect += armor.intellect + accessory.intellect;
 
 		newProperty.pResist += armor.pDefense + accessory.pDefense;
 		newProperty.mResist += armor.mDefense + accessory.mDefense;
 
 		// Calculate 2-level property by 1-level property
-		newProperty.dodge += finalProperty.aligity * 1f;
-		newProperty.pResist += finalProperty.strength * 1f;
-		newProperty.mResist += finalProperty.intellect * 1f;
+		newProperty.dodge += newProperty.agility * 1f;
+		newProperty.pResist += newProperty.strength * 1f;
+		newProperty.mResist += newProperty.intellect * 1f;
 
 		// Keep hp and hunger
 		newProperty.hp = finalProperty.hp;
 		newProperty.hunger = finalProperty.hunger;
 
+		// 2. Labels
+		foreach(Label label in labels){
+			newProperty = InequalityParse.EffectParse(label.effect, newProperty);
+		}
+		
 		finalProperty = newProperty;
 	}
 }
@@ -201,7 +212,7 @@ public struct CharProperty{
 	public float hungerMax;
 
 	public float strength;
-	public float aligity;
+	public float agility;
 	public float intellect;
 	public float technology;
 
@@ -218,7 +229,7 @@ public struct CharProperty{
 		this.hungerMax = hunger;
 
 		this.strength = str;
-		this.aligity = dex;
+		this.agility = dex;
 		this.intellect = inte;
 		this.technology = tech;
 

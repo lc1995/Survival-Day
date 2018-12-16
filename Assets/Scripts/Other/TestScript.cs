@@ -11,8 +11,12 @@ public class TestScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		string a = "D0\u9762\u5bb9\u6c89\u9759\uff0c\u53cc\u624b\u63e1\u7740D1\u9ad8\u4e3e\u8fc7\u5934\u9876\uff0c\u4e00\u51fb\u65a9\u843d\u3002";
-		Debug.Log(a.Replace("D0", "fff"));
+		string str = "E3+10|E4-10.1";
+		CharProperty cp = CharProperty.standard;
+		cp = InequalityParse.EffectParse(str, cp);
+
+		Debug.Log("strength: " + cp.strength);
+		Debug.Log("agility: " + cp.agility);
 	}
 	
 	// Update is called once per frame

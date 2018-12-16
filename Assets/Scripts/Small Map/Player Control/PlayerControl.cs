@@ -18,10 +18,14 @@ public class PlayerControl : MonoBehaviour {
     public float speed = 2f;
 
     public Joystick joystick;
+    public SpriteRenderer weaponSr;
+    public SpriteRenderer clothesSr;
+    public SpriteRenderer hatSr;
 
     // ------ Shared Variables ------
 
     // ------ Private Variables ------
+    private SpriteRenderer[] sprites;
 
     // ------ Required Components ------
     private Rigidbody2D rb2d;
@@ -40,6 +44,7 @@ public class PlayerControl : MonoBehaviour {
 		rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        sprites = GetComponentsInChildren<SpriteRenderer>();
 	}
 
     void Update () {
@@ -61,9 +66,9 @@ public class PlayerControl : MonoBehaviour {
 
         // Player Sprite Flipping
         if(joystick.Direction.x >= 0)
-            sr.flipX = true;
+            Flip(true);
         else
-            sr.flipX = false;
+            Flip(false);
 	}
 
     // ------ Public Functions ------
@@ -83,5 +88,15 @@ public class PlayerControl : MonoBehaviour {
 
         animator.SetBool("IsInteraction", false);
         Instantiate(ipo.objectToPlace, transform.position, Quaternion.identity);
+    }
+
+    /// <summary>
+    /// Flip all sprites
+    /// </summary>
+    /// <param name="isRight">Is face right</param>
+    private void Flip(bool isRight){
+        foreach(SpriteRenderer sr in sprites){
+            sr.flipX = isRight;
+        }
     }
 }

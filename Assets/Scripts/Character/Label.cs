@@ -1,7 +1,6 @@
 ﻿/*******************************************
 * Description
 * This script is responsible for character's label.
-*
 *******************************************/
 
 using System.Collections;
@@ -12,7 +11,12 @@ public class Label{
 
     // ------ Public Variables ------
     public int id;
-    public string label;
+    public string name;
+    public string description;
+    public int visible;
+    public int time;
+    public string condition;
+    public string effect;
 
     // ------ Shared Variables ------
 
@@ -20,19 +24,15 @@ public class Label{
 
     // ------ Required Components ------
 
-    // ------ Event Functions ------
-    void Start () {
-		
-	}
-
-    void Update () {
-		
-	}
-
     // ------ Public Functions ------
     public Label(int id){
         this.id = id;
-        this.label = "Default Label";
+        this.name = "Default Label";
+        this.description = "Default Description";
+        this.visible = 1;
+        this.time = -1;
+        this.condition = "";
+        this.effect = "";
     }
 
     // ------ Private Functions ------
