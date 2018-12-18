@@ -31,6 +31,7 @@ public class Weapon : Inventory {
     public float pAtk;
     public float mAtk;
     public float accuracy;
+    public int[] effect;
 
     // ------ Shared Variables ------
 

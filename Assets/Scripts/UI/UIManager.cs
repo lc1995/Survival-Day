@@ -173,6 +173,8 @@ public class UIManager : MonoBehaviour{
     /// </summary>
     /// <param name="go">GameObject to active</param>
     public void OnBoardBtnClick(GameObject go){
+        Time.timeScale = 0f;
+
         mapHub.SetActive(false);
         go.SetActive(true);
         if(go.GetComponent<BoardBase>() != null)
@@ -189,6 +191,8 @@ public class UIManager : MonoBehaviour{
             go.GetComponent<BoardBase>().Exit();
         go.SetActive(false);
         mapHub.SetActive(true);
+
+        Time.timeScale = 1f;
     }
 
     /// <summary>

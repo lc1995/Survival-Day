@@ -21,6 +21,7 @@ public class Armor : Inventory {
     public float agility;
     public float health;
     public float coldWarm;
+    public int[] effect;
 
     // ------ Shared Variables ------
 

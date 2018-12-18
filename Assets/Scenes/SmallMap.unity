@@ -1146,7 +1146,7 @@ SpriteRenderer:
   m_SortingLayerID: 1052997411
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 87f9a95f4d707d0428161be5f6079ca4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1154,7 +1154,7 @@ SpriteRenderer:
   m_Size: {x: 1.8, y: 3.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &167356097
@@ -1391,6 +1391,7 @@ MonoBehaviour:
       pAtk: 0
       mAtk: 0
       accuracy: 0
+      effect: 
     armor:
       id: 0
       name: 
@@ -1405,6 +1406,7 @@ MonoBehaviour:
       agility: 0
       health: 0
       coldWarm: 0
+      effect: 
     accessory:
       id: 0
       name: 
@@ -1419,6 +1421,7 @@ MonoBehaviour:
       agility: 0
       health: 0
       coldWarm: 0
+      effect: 
     attackPool: []
   speed: 1
 --- !u!58 &195807056
@@ -5694,6 +5697,7 @@ MonoBehaviour:
       pAtk: 0
       mAtk: 0
       accuracy: 0
+      effect: 
     armor:
       id: 0
       name: 
@@ -5708,6 +5712,7 @@ MonoBehaviour:
       agility: 0
       health: 0
       coldWarm: 0
+      effect: 
     accessory:
       id: 0
       name: 
@@ -5722,6 +5727,7 @@ MonoBehaviour:
       agility: 0
       health: 0
       coldWarm: 0
+      effect: 
     attackPool: []
   speed: 0
 --- !u!58 &922310376
@@ -6913,6 +6919,7 @@ MonoBehaviour:
       pAtk: 0
       mAtk: 0
       accuracy: 0
+      effect: 
     armor:
       id: 0
       name: 
@@ -6927,6 +6934,7 @@ MonoBehaviour:
       agility: 0
       health: 0
       coldWarm: 0
+      effect: 
     accessory:
       id: 0
       name: 
@@ -6941,6 +6949,7 @@ MonoBehaviour:
       agility: 0
       health: 0
       coldWarm: 0
+      effect: 
     attackPool: []
   speed: 1
 --- !u!58 &1143015155
@@ -8326,7 +8335,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5e748f213ead054408f7847106575df5,
+      objectReference: {fileID: 21300000, guid: 75e05e83c56993541a9d9569f4020ef9,
         type: 3}
     - target: {fileID: 212380450265683010, guid: d5fa7ac2c9c456940b9beb760b4e39a6,
         type: 2}
@@ -8577,6 +8586,7 @@ MonoBehaviour:
       pAtk: 0
       mAtk: 0
       accuracy: 0
+      effect: 
     armor:
       id: 0
       name: 
@@ -8591,6 +8601,7 @@ MonoBehaviour:
       agility: 0
       health: 0
       coldWarm: 0
+      effect: 
     accessory:
       id: 0
       name: 
@@ -8605,6 +8616,7 @@ MonoBehaviour:
       agility: 0
       health: 0
       coldWarm: 0
+      effect: 
     attackPool: []
   speed: 1
 --- !u!95 &1263471721
@@ -10350,7 +10362,7 @@ SpriteRenderer:
   m_SortingLayerID: 1052997411
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 476393469117c7747a7dac6cb572a27b, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10358,7 +10370,7 @@ SpriteRenderer:
   m_Size: {x: 1.40625, y: 2.8125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1489750574
@@ -10804,7 +10816,7 @@ SpriteRenderer:
   m_SortingLayerID: 1052997411
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 628b7a165f602284f92b0cb740956e8f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10812,7 +10824,7 @@ SpriteRenderer:
   m_Size: {x: 1.8, y: 3.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1598989363
