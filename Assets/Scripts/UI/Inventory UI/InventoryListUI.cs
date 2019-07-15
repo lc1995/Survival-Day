@@ -67,6 +67,7 @@ public class InventoryListUI : MonoBehaviour {
         foreach(Inventory inv in Data.player.inventories.Keys){
             GameObject go = objectPool.GetObject();
             go.transform.SetParent(inventoryPanel);
+            go.transform.localScale = Vector3.one;
             go.GetComponent<InventoryButtonUI>().inventoryUI = inventoryUI;
 
             InventoryButtonUI buttonUI = go.GetComponent<InventoryButtonUI>();
@@ -85,6 +86,7 @@ public class InventoryListUI : MonoBehaviour {
 
             GameObject go = objectPool.GetObject();
             go.transform.SetParent(inventoryPanel);
+            go.transform.localScale = Vector3.one;
             go.GetComponent<InventoryButtonUI>().inventoryUI = inventoryUI;
 
             InventoryButtonUI buttonUI = go.GetComponent<InventoryButtonUI>();
@@ -102,6 +104,7 @@ public class InventoryListUI : MonoBehaviour {
 
             GameObject go = objectPool.GetObject();
             go.transform.SetParent(inventoryPanel);
+            go.transform.localScale = Vector3.one;
             go.GetComponent<InventoryButtonUI>().inventoryUI = inventoryUI;
 
             InventoryButtonUI buttonUI = go.GetComponent<InventoryButtonUI>();
@@ -120,6 +123,7 @@ public class InventoryListUI : MonoBehaviour {
 
             GameObject go = objectPool.GetObject();
             go.transform.SetParent(inventoryPanel);
+            go.transform.localScale = Vector3.one;
             go.GetComponent<InventoryButtonUI>().inventoryUI = inventoryUI;
 
             InventoryButtonUI buttonUI = go.GetComponent<InventoryButtonUI>();
@@ -137,6 +141,7 @@ public class InventoryListUI : MonoBehaviour {
 
             GameObject go = objectPool.GetObject();
             go.transform.SetParent(inventoryPanel);
+            go.transform.localScale = Vector3.one;
             go.GetComponent<InventoryButtonUI>().inventoryUI = inventoryUI;
 
             InventoryButtonUI buttonUI = go.GetComponent<InventoryButtonUI>();

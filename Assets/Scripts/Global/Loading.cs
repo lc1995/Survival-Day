@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using System.IO;
 
 /// <summary>
@@ -140,9 +141,9 @@ public class Loading : MonoBehaviour {
 
 		if(filePath.Contains("://") || filePath.Contains(":///")){
 			// On some specific platform, StreamingAssets cannot be directly accessed
-			WWW www = new WWW(filePath);
+			UnityWebRequest www = new UnityWebRequest(filePath);
 			yield return www;
-			lft.fileText = www.text;
+			lft.fileText = www.downloadHandler.text;
 		}else{
 			lft.fileText = File.ReadAllText(filePath);
 		}
