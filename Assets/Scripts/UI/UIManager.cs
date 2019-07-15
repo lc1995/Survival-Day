@@ -211,20 +211,25 @@ public class UIManager : MonoBehaviour{
         #if UNITY_IOS
         if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved){
             Camera.main.transform.position += new Vector3(-Input.GetTouch(0).deltaPosition.x, 0);
+            if(Camera.main.transform.position.x < leftBorder)
+                Camera.main.transform.position = new Vector3(leftBorder, 0, -10f);
+            if(Camera.main.transform.position.x > rightBorder)
+                Camera.main.transform.position = new Vector3(rightBorder, 0, -10f);
         }
 
         #elif UNITY_STANDALONE
-        float horizontal = Input.GetAxis("Horizontal");
         if(Input.GetMouseButton(0)){
-            
+            float horizontal = Input.GetAxis("Horizontal");
+            Camera.main.transform.position += new Vector3(-horizontal * dragSpeed, 0);
+            if(Camera.main.transform.position.x < leftBorder)
+                Camera.main.transform.position = new Vector3(leftBorder, 0, -10f);
+            if(Camera.main.transform.position.x > rightBorder)
+                Camera.main.transform.position = new Vector3(rightBorder, 0, -10f);
         }
 
         #elif UNITY_WEBGL
         if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved){
             Camera.main.transform.position += new Vector3(-Input.GetTouch(0).deltaPosition.x, 0);
-        }else if(Input.GetMouseButton(0)){
-            float horizontal = Input.GetAxis("Horizontal");
-            Camera.main.transform.position += new Vector3(-horizontal * dragSpeed, 0);
             if(Camera.main.transform.position.x < leftBorder)
                 Camera.main.transform.position = new Vector3(leftBorder, 0, -10f);
             if(Camera.main.transform.position.x > rightBorder)

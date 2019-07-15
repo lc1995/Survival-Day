@@ -629,7 +629,7 @@ PlayerSettings:
   facebookStatus: 1
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 6
   cloudProjectId: 835cfc25-e6a8-4d72-b76a-1c34374bc2ee
   framebufferDepthMemorylessMode: 0
   projectName: Demo

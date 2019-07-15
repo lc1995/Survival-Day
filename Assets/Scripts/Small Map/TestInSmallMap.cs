@@ -26,7 +26,15 @@ public class TestInSmallMap : MonoBehaviour {
     void Start () {
         Data.inBigMap = false;
 
-        Data.player = new Character("李菊", true);
+        if(Data.player == null){
+            Data.player = new Character("李菊", true);
+            InitTestInventory();
+        }else{
+            Data.player.Equip(Data.player.weapon);
+            Data.player.Equip(Data.player.armor);
+            Data.player.Equip(Data.player.accessory);
+        }
+        
 
         foreach(Attack atk in Data.AllAttacks.Values){
             foreach(ActionType atkType in atk.types){
@@ -42,9 +50,7 @@ public class TestInSmallMap : MonoBehaviour {
         }
         InitGamblingMachine(gamblingMachine);
 
-        InitTrapInteraction();
-
-        InitTestInventory();
+        InitTrapInteraction();    
 
         InitTestBag(bag);
 	}

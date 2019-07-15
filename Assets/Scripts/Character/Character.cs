@@ -141,21 +141,24 @@ public class Character{
 		this.weapon = weapon;
 		UpdateFinalProperty();
 
-		PlayerControl.instance.weaponSr.sprite = weapon.sprite;
+		if(!Data.inBigMap)
+			PlayerControl.instance.weaponSr.sprite = weapon.sprite;
 	}
 
 	public void Equip(Armor armor){
 		this.armor = armor;
 		UpdateFinalProperty();
 
-		PlayerControl.instance.clothesSr.sprite = armor.sprite;
+		if(!Data.inBigMap)
+			PlayerControl.instance.clothesSr.sprite = armor.sprite;
 	}
 
 	public void Equip(Accessory accessory){
 		this.accessory = accessory;
 		UpdateFinalProperty();
 
-		PlayerControl.instance.hatSr.sprite = accessory.sprite;
+		if(!Data.inBigMap)
+			PlayerControl.instance.hatSr.sprite = accessory.sprite;
 	}
 
 	public void Eat(Food food){

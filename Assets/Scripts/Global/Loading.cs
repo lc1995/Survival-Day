@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 using System.IO;
 
 /// <summary>
@@ -11,7 +12,7 @@ using System.IO;
 public class Loading : MonoBehaviour {
 
 	// ------ Public Variables ------
-	
+	public Text loadingText;
 	
 	// ------ Shared Variables ------
 	
@@ -35,9 +36,11 @@ public class Loading : MonoBehaviour {
 	}
 
 	private IEnumerator LoadData(){
+
 		LoadFileText lft = new LoadFileText();
 
 		// Load attacks data
+		loadingText.text = "读取攻击数据...";
 		lft.fileName = defAttacksFileName;
 		yield return StartCoroutine(LoadFile(lft));
 
@@ -48,6 +51,7 @@ public class Loading : MonoBehaviour {
 		}
 
 		// Load defends data
+		loadingText.text = "读取防御数据...";
 		lft.fileName = defDefendsFileName;
 		yield return StartCoroutine(LoadFile(lft));
 
@@ -62,6 +66,7 @@ public class Loading : MonoBehaviour {
 		}
 
 		// Load results data
+		loadingText.text = "读取攻击结果数据...";
 		lft.fileName = defResultsFileName;
 		yield return StartCoroutine(LoadFile(lft));
 
@@ -72,6 +77,7 @@ public class Loading : MonoBehaviour {
 		}
 
 		// Load equipments data
+		loadingText.text = "读取装备数据...";
 		lft.fileName = defEquipmentsFileName;
 		yield return StartCoroutine(LoadFile(lft));
 
@@ -100,6 +106,7 @@ public class Loading : MonoBehaviour {
 		}
 
 		// Load materials data
+		loadingText.text = "读取材料数据...";
 		lft.fileName = defFoodsFileName;
 		yield return StartCoroutine(LoadFile(lft));
 
@@ -111,6 +118,7 @@ public class Loading : MonoBehaviour {
 		}
 
 		// Load foods data
+		loadingText.text = "读取食物数据...";
 		lft.fileName = defMaterialsFileName;
 		yield return StartCoroutine(LoadFile(lft));
 

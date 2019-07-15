@@ -4,6 +4,7 @@
 * Interaction has the following type:
 * 1. Event
 * 2. Place Object
+* 3. Obtain Object
 *******************************************/
 
 using System.Collections;

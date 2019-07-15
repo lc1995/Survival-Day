@@ -29,7 +29,7 @@ public class SmallMapExitPoint : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "Player")
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 
     // ------ Public Functions ------
