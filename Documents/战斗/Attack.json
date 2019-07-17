@@ -1,0 +1,559 @@
+{
+  "attacks": [
+    {
+      "agility": 0.0, 
+      "description": "D0\u731b\u7684\u8dc3\u8d77\u51e0\u5c3a\u9ad8\uff0c\u5927\u559d\u4e00\u58f0\u5c06\u624b\u4e2d\u7684D1\u5288\u4e0b\u53bb\u3002", 
+      "choice": "\u5411\u524d\u8df3\u5288", 
+      "precision": 50, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 50, 
+      "id": 1001, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        3
+      ], 
+      "type": [
+        1
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u5982\u540c\u6355\u98df\u7684\u731b\u864e\u822c\u538b\u4f4e\u8eab\u5b50\uff0c\u4f0f\u5728\u5730\u4e0a\u7a9c\u4e86\u51fa\u53bb\uff0c\u624b\u4e2d\u7684D1\u76f4\u6307D2\u5c0f\u8179\u3002", 
+      "choice": "\u731b\u51b2\u5e76\u5411\u524d\u7a81\u523a", 
+      "precision": 70, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 40, 
+      "id": 1002, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        3, 
+        1
+      ], 
+      "type": [
+        1
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u9762\u5bb9\u6c89\u9759\uff0c\u53cc\u624b\u63e1\u7740D1\u9ad8\u4e3e\u8fc7\u5934\u9876\uff0c\u4e00\u51fb\u65a9\u843d\u3002", 
+      "choice": "\u53cc\u624b\u6301\u5251\u4e3e\u8fc7\u5934\u9876\uff0c\u4e00\u5251\u5288\u4e0b", 
+      "precision": 30, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 70, 
+      "id": 1003, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        3
+      ], 
+      "type": [
+        1
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u5355\u624b\u63e1\u4f4fD1\uff0c\u6a2a\u7740\u4e00\u8bb0\u5e73\u780d\u3002", 
+      "choice": "\u6a2a\u5411\u6325\u780d", 
+      "precision": 50, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 50, 
+      "id": 1004, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        3
+      ], 
+      "type": [
+        1
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u77ee\u8eab\u6c89\u8170\uff0c\u5f2f\u4e0b\u8eab\u53bb\u6b3a\u8fdbD1\u8eab\u524d\uff0c\u7adf\u662f\u7784\u51c6\u4e86D2\u7684\u4e0b\u76d8\u3002", 
+      "choice": "\u77ee\u8eab\u6c89\u8170\uff0c\u653b\u51fb\u5bf9\u624b\u7684\u4e0b\u76d8", 
+      "precision": 70, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 40, 
+      "id": 1005, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        3, 
+        1
+      ], 
+      "type": [
+        1
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u6df1\u5438\u4e00\u53e3\u6c14\uff0c\u63d0\u8d77D1\u5411\u524d\u75be\u7a81\uff0c\u6a2a\u780d\u3001\u4e0b\u6311\u53c8\u63a5\u4e86\u4e00\u8bb0\u7eb5\u5288\u3002", 
+      "choice": "\u3010\u4e09\u6bb5\u51fb\u3011", 
+      "precision": 50, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 80, 
+      "id": 1006, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        3
+      ], 
+      "type": [
+        1
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "\u7a81\u7136\u98ce\u8d77\uff0c\u5439\u9f13\u7684D0\u8863\u89d2\u98d2\u98d2\u4f5c\u54cd\uff0cD1\u5728\u98ce\u91cc\u8f7b\u76c8\u7684\u65a9\u51fb\uff0c\u5e7d\u84dd\u8272\u7684\u5251\u6c14\u7834\u7a7a\u800c\u6765\u3002", 
+      "choice": "\u3010\u6f88\u98ce\u65a9\u3011", 
+      "precision": 90, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 60, 
+      "id": 1007, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        2
+      ], 
+      "type": [
+        1
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u95ea\u8eab\u5230D1\u8eab\u540e\uff0c\u626d\u8f6c\u8eab\u5b50\u6325\u52a8D2\u5411D3\u80cc\u540e\u624e\u53bb\u3002", 
+      "choice": "\u3010\u80cc\u523a\u3011", 
+      "precision": 100, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 30, 
+      "id": 1008, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        1, 
+        3, 
+        1
+      ], 
+      "type": [
+        1
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u8f7b\u6296D1\uff0c\u4e00\u6b65\u4e00\u6b65\u8fc8\u5411D2\uff0c\u51cc\u5389\u7684\u5251\u610f\u51dd\u7ed3\u6210\u4e3a\u65e0\u6570\u98de\u71d5\u76d8\u65cb\uff0cD3\u731b\u7684\u6325\u51fa\u4e00\u51fb\uff0c\u7fa4\u9e1f\u6295\u6797\u822c\u5c04\u5411\u4e86D4\u3002", 
+      "choice": "\u3010\u4e09\u5343\u5f52\u71d5\u3011", 
+      "precision": 90, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 80, 
+      "id": 1009, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        3, 
+        1, 
+        2
+      ], 
+      "type": [
+        1
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u7709\u5934\u8f7b\u76b1\uff0c\u8863\u670d\u5374\u65e0\u98ce\u81ea\u9f13\uff0c\u4e00\u53ea\u53c8\u4e00\u53ea\u4e4c\u9e26\u7684\u4ece\u9ed1\u6eda\u6eda\u7684\u715e\u6c14\u4e2d\u6d6e\u73b0\uff0c\u5239\u90a3\u95f4\u91d1\u521a\u6012\u76ee\u53cc\u773c\u5706\u7741\uff0c\u63d0D1\u671d\u7740D2\u7709\u5fc3\u4fbf\u523a\uff0c\u5251\u6c14\u5316\u6210\u7684\u4e4c\u9e26\u4e71\u53eb\u7740\u88ad\u4e0a\u53bb\u7684\u602a\u72b6\u715e\u662f\u53ef\u6016\u3002", 
+      "choice": "\u3010\u9e26\u98e8\u5bb4\u3011", 
+      "precision": 90, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 100, 
+      "id": 1010, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        3, 
+        1
+      ], 
+      "type": [
+        1
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u4f38\u51fa\u624b\uff0c\u4e00\u4e2a\u5de8\u5927\u7684\u706b\u7403\u4ece\u624b\u4e2d\u51dd\u805a\u6210\u5f62\u7529\u4e86\u51fa\u53bb\u3002", 
+      "choice": "\u3010\u706b\u7403\u672f\u3011", 
+      "precision": 50, 
+      "cd": 0, 
+      "strength": 0.0, 
+      "phyDamage": 0, 
+      "id": 2001, 
+      "condition": 0, 
+      "magDamage": 50, 
+      "magic": 1.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2
+      ], 
+      "type": [
+        2
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u95ed\u4e0a\u53cc\u773c\uff0c\u8584\u8584\u7684\u51b0\u971c\u5728\u4ed6\u7684\u8eab\u4e0a\u8513\u5ef6\u5f00\uff0c\u7136\u540e\u7a81\u7136\u7741\u5f00\u773c\u775b\uff0c\u4f38\u624b\u4e00\u62e2\uff0c\u80cc\u540e\u7684\u865a\u5f71\u6d6e\u73b0\uff0c\u4e00\u53ea\u5de8\u5927\u7684\u5bd2\u51b0\u4e4b\u638c\u5e26\u7740\u8680\u9aa8\u7684\u5bd2\u610f\u671d\u7740D1\u6781\u901f\u88ad\u6765\u3002", 
+      "choice": "\u3010\u5bd2\u51ac\u4e4b\u63e1\u3011", 
+      "precision": 90, 
+      "cd": 0, 
+      "strength": 0.0, 
+      "phyDamage": 0, 
+      "id": 2002, 
+      "condition": 0, 
+      "magDamage": 90, 
+      "magic": 1.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        1
+      ], 
+      "type": [
+        2
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "\u7a7a\u6c14\u4e2d\u7a81\u7136\u5f00\u59cb\u53d8\u5f97\u708e\u70ed\uff0cD0\u53cc\u638c\u63a5\u5730\u534a\u8dea\u5728\u5730\u4e0a\uff0c\u5927\u5730\u9f9f\u88c2\uff0c\u66b4\u8650\u7684\u706b\u5143\u7d20\u77ac\u95f4\u5c06\u65b9\u5706\u6570\u5341\u7c73\u7684\u8303\u56f4\u5185\u5316\u6210\u4e86\u7126\u707c\u7684\u70c8\u7130\u5730\u72f1\uff0c\u7ea2\u83b2\u4e4b\u706b\u51fa\u51fa\u76db\u5f00\u3002", 
+      "choice": "\u3010\u7ea2\u83b2\u5730\u72f1\u3011", 
+      "precision": 90, 
+      "cd": 0, 
+      "strength": 0.0, 
+      "phyDamage": 0, 
+      "id": 2003, 
+      "condition": 0, 
+      "magDamage": 120, 
+      "magic": 1.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2
+      ], 
+      "type": [
+        2
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u5f20\u5f00\u6000\u62b1\uff0c\u80cc\u540e\u65e0\u6570\u652f\u5de8\u5927\u7684\u51b0\u77e2\u51dd\u7ed3\u6210\u578b\uff0c\u547c\u5578\u800c\u51fa\u3002", 
+      "choice": "\u3010\u51b0\u77e2\u672f\u3011", 
+      "precision": 90, 
+      "cd": 0, 
+      "strength": 0.0, 
+      "phyDamage": 0, 
+      "id": 2004, 
+      "condition": 0, 
+      "magDamage": 40, 
+      "magic": 1.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2
+      ], 
+      "type": [
+        2
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u5f2f\u8170\uff0c\u638c\u5fc3\u63a5\u5730\uff0c\u62ac\u624b\u95f4\u7adf\u662f\u4ece\u5927\u5730\u4e2d\u62bd\u51fa\u4e86\u4e00\u628a\u7531\u7194\u5ca9\u6784\u6210\u7684\u5de8\u5251\uff0c\u671d\u7740D1\u4e00\u5251\u5288\u4e0b\u3002", 
+      "choice": "\u3010\u7194\u5ca9\u4e4b\u5251\u3011", 
+      "precision": 0, 
+      "cd": 0, 
+      "strength": 0.0, 
+      "phyDamage": 0, 
+      "id": 2005, 
+      "condition": 0, 
+      "magDamage": 80, 
+      "magic": 1.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        1
+      ], 
+      "type": [
+        1, 
+        2
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u6beb\u65e0\u7ae0\u6cd5\u7684\u6253\u51fa\u51e0\u62f3\u7167\u7740D1\u7684\u8111\u888b\u5c31\u662f\u4e00\u987f\u62db\u547c\u3002", 
+      "choice": "\u4f7f\u7528\u65e0\u5e08\u81ea\u901a\u7684\u8857\u5934\u6df7\u6df7\u6597\u6bb4\u62f3\u6cd5", 
+      "precision": 50, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 30, 
+      "id": 3001, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        1
+      ], 
+      "type": [
+        0
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u5411\u524d\u8be1\u8c32\u7684\u4e00\u8e0f\uff0c\u53f3\u81c2\u8f7b\u4f38\uff0c\u7adf\u662f\u7784\u7740\u4e0b\u4e09\u8def\u53bb\u7684\u4e0b\u6d41\u529f\u592b\u3002", 
+      "choice": "\u770b\u51c6\u65f6\u673a\uff0c\u731b\u653b\u5bf9\u624b\u7684\u4e0b\u4e09\u8def", 
+      "precision": 30, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 40, 
+      "id": 3002, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2
+      ], 
+      "type": [
+        0
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "D0\u773c\u89c1\u7740D1\u8822\u8822\u6b32\u52a8\u5373\u5c06\u88ad\u6765\uff0c\u4fbf\u662f\u4e00\u51fb\u6734\u5b9e\u7684\u76f4\u62f3\u76f4\u5954\u7740\u8981\u5bb3\u6253\u51fa\u53bb\u3002", 
+      "choice": "\u76f4\u62f3\u75db\u51fb\u5bf9\u624b\u9762\u90e8\u3002", 
+      "precision": 50, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 40, 
+      "id": 3003, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        1
+      ], 
+      "type": [
+        0
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.5, 
+      "description": "D0\u98df\u6307\u4e2d\u6307\u5fae\u5c48\uff0c\u6446\u51fa\u4e8c\u9f99\u620f\u73e0\u4e4b\u52bf\u4e00\u8dc3\u4e0a\u94b1\u62a2\u653bD1\u7684\u53cc\u773c\u3002", 
+      "choice": "\u98df\u6307\u4e2d\u6307\u5fae\u5c48\uff0c\u4e8c\u9f99\u620f\u73e0\u76f4\u62a2\u5411\u5bf9\u624b\u53cc\u76ee\u3002", 
+      "precision": 40, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 50, 
+      "id": 3004, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        1
+      ], 
+      "type": [
+        0
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 0.0, 
+      "description": "\u8bf4\u65f6\u8fdf\u90a3\u65f6\u5feb\uff0cD0\u8de8\u51fa\u4e00\u6b65\u8d34\u5728D1\u8eab\u524d\uff0c\u63d0\u819d\u671d\u7740D2\u5c0f\u8179\u4fbf\u649e\u8fc7\u53bb\u3002", 
+      "choice": "\u63d0\u819d\u731b\u649e\u5bf9\u624b\u5c0f\u8179\u3002", 
+      "precision": 50, 
+      "cd": 0, 
+      "strength": 1.0, 
+      "phyDamage": 60, 
+      "id": 3005, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        1, 
+        1
+      ], 
+      "type": [
+        0
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 1.0, 
+      "description": "D0\u62ac\u8d77D1\uff0c\u4e0d\u7ba1\u4e09\u4e03\u4e8c\u5341\u4e00\u5c31\u662f\u4e00\u9635\u75af\u72c2\u7684\u626b\u5c04\u3002", 
+      "choice": "\u626b\u5c04", 
+      "precision": 50, 
+      "cd": 0, 
+      "strength": 0.0, 
+      "phyDamage": 100, 
+      "id": 4001, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        3
+      ], 
+      "type": [
+        3
+      ], 
+      "ammo": 10001
+    }, 
+    {
+      "agility": 1.0, 
+      "description": "D0\u63e1\u4f4fD1\uff0c\u6325\u821e\u7740\u8d34\u4e0a\u8eab\u53bb\u4e00\u987f\u4e71\u6572\u3002", 
+      "choice": "\u6325\u821e\u6b66\u5668\u6765\u8fd1\u6218", 
+      "precision": 30, 
+      "cd": 0, 
+      "strength": 0.0, 
+      "phyDamage": 30, 
+      "id": 4002, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        3
+      ], 
+      "type": [
+        3
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 1.0, 
+      "description": "D0\u51b7\u9759\u7684\u63e1\u4f4fD1\uff0c\u5c4f\u606f\uff0c\u7784\u51c6\uff0c\u6263\u52a8\u6273\u673a\u3002", 
+      "choice": "\u7784\u51c6\u5bf9\u624b\u7684\u773c\u775b\u70b9\u5c04", 
+      "precision": 90, 
+      "cd": 0, 
+      "strength": 0.0, 
+      "phyDamage": 70, 
+      "id": 4003, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        3
+      ], 
+      "type": [
+        3
+      ], 
+      "ammo": 10001
+    }, 
+    {
+      "agility": 1.0, 
+      "description": "D0\u4f38\u624b\u6263\u4f4fD1\uff0c\u5fc3\u795e\u5408\u4e00\uff0c\u624b\u6307\u7528\u529b\u51fb\u5f26\u7adf\u662f\u53d1\u51fa\u4e86\u91d1\u77f3\u822c\u7684\u6fc0\u8d8a\u4e4b\u58f0\uff0c\u51dd\u7ed3\u7684\u65e0\u6570\u5251\u610f\u77ac\u95f4\u5f39\u53d1\u3002", 
+      "choice": "\u3010\u767e\u9707\u5f26\u3011", 
+      "precision": 80, 
+      "cd": 0, 
+      "strength": 0.0, 
+      "phyDamage": 100, 
+      "id": 4004, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        3
+      ], 
+      "type": [
+        3
+      ], 
+      "ammo": 0
+    }, 
+    {
+      "agility": 1.0, 
+      "description": "D0\u63e1\u4f4fD1\uff0c\u957f\u957f\u7684\u547c\u51fa\u4e00\u53e3\u6c14\uff0c\u4f38\u624b\u5411\u540e\u4e00\u5f15\uff0c\u5f13\u5982\u6ee1\u6708\uff0c\u800c\u633d\u5f13\u7684\u4eba\u7709\u773c\u5982\u661f\uff0c\u51cc\u5389\u7684\u610f\u5fd7\u51dd\u7ed3\u6210\u4e3a\u5b9e\u4f53\uff0c\u7206\u5c04\u800c\u51fa\u3002", 
+      "choice": "\u3010\u5343\u77e2\u5f15\u3011", 
+      "precision": 90, 
+      "cd": 0, 
+      "strength": 0.0, 
+      "phyDamage": 130, 
+      "id": 4005, 
+      "condition": 0, 
+      "magDamage": 0, 
+      "magic": 0.0, 
+      "objGenerated": 0, 
+      "substitude": [
+        2, 
+        3
+      ], 
+      "type": [
+        3
+      ], 
+      "ammo": 0
+    }
+  ]
+}
