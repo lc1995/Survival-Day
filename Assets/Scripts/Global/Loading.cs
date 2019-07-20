@@ -11,7 +11,10 @@ using System.IO;
 /// </summary>
 public class Loading : MonoBehaviour {
 
+	public static Loading instance = null;
+
 	// ------ Public Variables ------
+	public bool inLoadingScene = true;
 	public Text loadingText;
 	
 	// ------ Shared Variables ------
@@ -28,21 +31,131 @@ public class Loading : MonoBehaviour {
 	// ------ Required Components ------
 	
 	void Awake(){
-		InitGameData();
+		// Singleton
+		if(instance == null)
+			instance = this;
+		else if(instance != this){
+			Destroy(this);
+			return;
+		}
+			
+		DontDestroyOnLoad(this);
+
+		// Load data
+		if(inLoadingScene)
+			StartCoroutine(LoadDataAsync());
+		else
+			LoadDataSync();
 	}
 
-	private void InitGameData(){
-		StartCoroutine(LoadData());
+	private void LoadDataSync(){
+		LoadFileText lft = new LoadFileText();
+
+		// Load attacks data
+		lft.fileName = defAttacksFileName;
+		LoadFileSync(lft);
+
+		AttacksData attacksData = JsonUtility.FromJson<AttacksData>(lft.fileText);
+
+		foreach(Attack atk in attacksData.attacks){
+			Data.AllAttacks.Add(atk.id, atk);
+		}
+
+		// Load defends data
+		lft.fileName = defDefendsFileName;
+		LoadFileSync(lft);
+
+		DefendsData defendsData = JsonUtility.FromJson<DefendsData>(lft.fileText);
+
+		foreach(ActionType type in System.Enum.GetValues(typeof(ActionType))){
+			Data.AllDefendsByType.Add(type, new List<int>());
+		}
+		foreach(Defend def in defendsData.defends){
+			Data.AllDefends.Add(def.id, def);
+			Data.AllDefendsByType[def.type].Add(def.id);
+		}
+
+		// Load results data
+		lft.fileName = defResultsFileName;
+		LoadFileSync(lft);
+
+		ResultsData resultsData = JsonUtility.FromJson<ResultsData>(lft.fileText);
+
+		foreach(Result res in resultsData.results){
+			Data.AllResults.Add(res.id, res);
+		}
+
+		// Load equipments data
+		lft.fileName = defEquipmentsFileName;
+		LoadFileSync(lft);
+
+		EquipmentsData equipmentsData = JsonUtility.FromJson<EquipmentsData>(lft.fileText);
+		
+		foreach(Weapon weapon in equipmentsData.weapons){
+			Sprite sprite = Resources.Load<Sprite>("Sprites/Weapons/" + weapon.id);
+			weapon.sprite = sprite;
+
+			Data.AllWeapons.Add(weapon.id, weapon);
+			Data.AllInventories.Add(weapon.id, weapon as Inventory);
+		}
+		foreach(Armor armor in equipmentsData.armors){
+			Sprite sprite = Resources.Load<Sprite>("Sprites/Clothes/" + armor.id);
+			armor.sprite = sprite;
+
+			Data.AllArmors.Add(armor.id, armor);
+			Data.AllInventories.Add(armor.id, armor as Inventory);
+		}
+		foreach(Accessory accessory in equipmentsData.accessories){
+			Sprite sprite = Resources.Load<Sprite>("Sprites/Hats/" + accessory.id);
+			accessory.sprite = sprite;
+
+			Data.AllAccessories.Add(accessory.id, accessory);
+			Data.AllInventories.Add(accessory.id, accessory as Inventory);
+		}
+
+		// Load materials data
+		lft.fileName = defFoodsFileName;
+		LoadFileSync(lft);
+
+		FoodsData foodsData = JsonUtility.FromJson<FoodsData>(lft.fileText);
+
+		foreach(Food food in foodsData.foods){
+			Data.AllFoods.Add(food.id, food);
+			Data.AllInventories.Add(food.id, food as Inventory);
+		}
+
+		// Load foods data
+		lft.fileName = defMaterialsFileName;
+		LoadFileSync(lft);
+
+		MaterialsData materialsData = JsonUtility.FromJson<MaterialsData>(lft.fileText);
+
+		foreach(Material material in materialsData.materials){
+			Data.AllMaterials.Add(material.id, material);
+			Data.AllInventories.Add(material.id, material as Inventory);
+		}
+
+		// Test: Check loading is right
+		Debug.Log("Total Attacks Loaded : " + Data.AllAttacks.Count);
+		Debug.Log("Total Defends Loaded : " + Data.AllDefends.Count);
+		Debug.Log("Total Results Loaded : " + Data.AllResults.Count);
+		Debug.Log("Total Inventories Loaded : " + Data.AllInventories.Count);
+		Debug.Log("Total Weapons Loaded : " + Data.AllWeapons.Count);
+		Debug.Log("Total Armors Loaded : " + Data.AllArmors.Count);
+		Debug.Log("Total Accessories Loaded : " + Data.AllAccessories.Count);
+		Debug.Log("Total Materials Loaded : " + Data.AllMaterials.Count);
+		Debug.Log("Total Foods loaded : " + Data.AllFoods.Count);
+
 	}
 
-	private IEnumerator LoadData(){
+	private IEnumerator LoadDataAsync(){
 
 		LoadFileText lft = new LoadFileText();
 
 		// Load attacks data
 		loadingText.text = "读取攻击数据...";
 		lft.fileName = defAttacksFileName;
-		yield return StartCoroutine(LoadFile(lft));
+		yield return StartCoroutine(LoadFileAsync(lft));
 
 		AttacksData attacksData = JsonUtility.FromJson<AttacksData>(lft.fileText);
 
@@ -53,7 +166,7 @@ public class Loading : MonoBehaviour {
 		// Load defends data
 		loadingText.text = "读取防御数据...";
 		lft.fileName = defDefendsFileName;
-		yield return StartCoroutine(LoadFile(lft));
+		yield return StartCoroutine(LoadFileAsync(lft));
 
 		DefendsData defendsData = JsonUtility.FromJson<DefendsData>(lft.fileText);
 
@@ -68,7 +181,7 @@ public class Loading : MonoBehaviour {
 		// Load results data
 		loadingText.text = "读取攻击结果数据...";
 		lft.fileName = defResultsFileName;
-		yield return StartCoroutine(LoadFile(lft));
+		yield return StartCoroutine(LoadFileAsync(lft));
 
 		ResultsData resultsData = JsonUtility.FromJson<ResultsData>(lft.fileText);
 
@@ -79,7 +192,7 @@ public class Loading : MonoBehaviour {
 		// Load equipments data
 		loadingText.text = "读取装备数据...";
 		lft.fileName = defEquipmentsFileName;
-		yield return StartCoroutine(LoadFile(lft));
+		yield return StartCoroutine(LoadFileAsync(lft));
 
 		EquipmentsData equipmentsData = JsonUtility.FromJson<EquipmentsData>(lft.fileText);
 		
@@ -108,7 +221,7 @@ public class Loading : MonoBehaviour {
 		// Load materials data
 		loadingText.text = "读取材料数据...";
 		lft.fileName = defFoodsFileName;
-		yield return StartCoroutine(LoadFile(lft));
+		yield return StartCoroutine(LoadFileAsync(lft));
 
 		FoodsData foodsData = JsonUtility.FromJson<FoodsData>(lft.fileText);
 
@@ -120,7 +233,7 @@ public class Loading : MonoBehaviour {
 		// Load foods data
 		loadingText.text = "读取食物数据...";
 		lft.fileName = defMaterialsFileName;
-		yield return StartCoroutine(LoadFile(lft));
+		yield return StartCoroutine(LoadFileAsync(lft));
 
 		MaterialsData materialsData = JsonUtility.FromJson<MaterialsData>(lft.fileText);
 
@@ -144,13 +257,25 @@ public class Loading : MonoBehaviour {
 		UnityEngine.SceneManagement.SceneManager.LoadScene(3);
 	}
 
-	private IEnumerator LoadFile(LoadFileText lft){
+	private IEnumerator LoadFileAsync(LoadFileText lft){
 		string filePath = Path.Combine(Application.streamingAssetsPath, lft.fileName);
 
 		if(filePath.Contains("://") || filePath.Contains(":///")){
 			// On some specific platform, StreamingAssets cannot be directly accessed
 			UnityWebRequest www = new UnityWebRequest(filePath);
 			yield return www;
+			lft.fileText = www.downloadHandler.text;
+		}else{
+			lft.fileText = File.ReadAllText(filePath);
+		}
+	}
+
+	private void LoadFileSync(LoadFileText lft){
+		string filePath = Path.Combine(Application.streamingAssetsPath, lft.fileName);
+
+		if(filePath.Contains("://") || filePath.Contains(":///")){
+			// On some specific platform, StreamingAssets cannot be directly accessed
+			UnityWebRequest www = new UnityWebRequest(filePath);
 			lft.fileText = www.downloadHandler.text;
 		}else{
 			lft.fileText = File.ReadAllText(filePath);
